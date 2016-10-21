@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
+use Auth;
 class AdminOnly
 {
     /**
@@ -13,8 +13,11 @@ class AdminOnly
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
-        return $next($request);
+    public function handle($request, Closure $next){
+        if(Auth::user()->hasRole('admin')){
+            return $next($request);
+        }else{
+            return redirect('/');
+        }
     }
 }
