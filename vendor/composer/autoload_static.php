@@ -69,6 +69,10 @@ class ComposerStaticInit19ebf26c737ee20b65ced2c68a37985d
         array (
             'League\\Flysystem\\' => 17,
         ),
+        'K' => 
+        array (
+            'Klaravel\\Ntrust\\' => 16,
+        ),
         'I' => 
         array (
             'Illuminate\\' => 11,
@@ -200,6 +204,10 @@ class ComposerStaticInit19ebf26c737ee20b65ced2c68a37985d
         'League\\Flysystem\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
+        ),
+        'Klaravel\\Ntrust\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/klaravel/ntrust/src/Ntrust',
         ),
         'Illuminate\\' => 
         array (
@@ -725,6 +733,7 @@ class ComposerStaticInit19ebf26c737ee20b65ced2c68a37985d
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'RolesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/RolesTableSeeder.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',
@@ -806,6 +815,7 @@ class ComposerStaticInit19ebf26c737ee20b65ced2c68a37985d
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'UserNtrustSetupTables' => __DIR__ . '/../..' . '/database/migrations/2016_10_21_061853_user_ntrust_setup_tables.php',
         'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
     );
 

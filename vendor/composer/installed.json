@@ -3548,5 +3548,55 @@
         ],
         "description": "Symfony DomCrawler Component",
         "homepage": "https://symfony.com"
+    },
+    {
+        "name": "klaravel/ntrust",
+        "version": "v1.0.3",
+        "version_normalized": "1.0.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/klaravel/ntrust.git",
+            "reference": "6a9452490a3a9958c2e8f520022b3e8bd9840002"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/klaravel/ntrust/zipball/6a9452490a3a9958c2e8f520022b3e8bd9840002",
+            "reference": "6a9452490a3a9958c2e8f520022b3e8bd9840002",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/cache": "5.*",
+            "illuminate/console": "5.*",
+            "illuminate/support": "5.*"
+        },
+        "time": "2016-10-06 15:19:12",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Klaravel\\Ntrust\\": "src/Ntrust"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Keyur Ajmera",
+                "email": "ajmerainfo@gmail.com"
+            }
+        ],
+        "description": "Role-Based Permissions for Laravel 5.3+",
+        "keywords": [
+            "admin",
+            "laravel",
+            "ntrust",
+            "permissions",
+            "role",
+            "trust",
+            "user",
+            "user role permissions"
+        ]
     }
 ]

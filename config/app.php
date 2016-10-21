@@ -178,6 +178,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+            OTROS
+        */
+        Klaravel\Ntrust\NtrustServiceProvider::class,
     ],
 
     /*
@@ -226,6 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Ntrust' => Klaravel\Ntrust\NtrustFacade::class,
     ],
 
 ];

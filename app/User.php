@@ -4,16 +4,30 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Klaravel\Ntrust\Traits\NtrustUserTrait;
 
-class User extends Authenticatable
-{
+use App\Role;
+class User extends Authenticatable{
     use Notifiable;
-
+    use NtrustUserTrait; // add this trait to your user model
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+    
+    public function getRolesNames(){
+        $roles=Role::all();
+        $user_roles=array();
+        foreach ($roles as $r) {
+            if($this->hasRole($r->name)){
+                array_push($user_roles, $r->display_name);
+            }
+        }
+        return $user_roles;
+
+    }
+    
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -26,4 +40,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    protected $roleProfile = 'user';
+
 }

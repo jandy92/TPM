@@ -16,7 +16,12 @@
 //si el usuario esta logueado continúa, de otro modo, se enviará a la pantalla de login
 route::group(['middleware'=>'check_login'],function(){
 	Route::get('/','PagesController@index');
-	
+	Route::get('/demo/cotizacion_form','PagesController@showFormularioCotizacion');
+
+	Route::group(['middleware'=>'AdminOnly'],function(){
+		Route::get('/users/list','PagesController@showUsersList');
+	});
+
 });
 
 route::get('/login','Auth\LoginController@showLoginForm');
