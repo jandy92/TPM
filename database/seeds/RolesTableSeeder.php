@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Role;
+use App\Permission;
 class RolesTableSeeder extends Seeder{
     /**
      * Run the database seeds.
@@ -31,6 +32,38 @@ class RolesTableSeeder extends Seeder{
         ));
         $cont->save();
 
+        $editUsers=new Permission(array(
+            'name'=>'admin_users',
+            'display_name'=>'Administrar usuarios',
+            'description'=>'Puede agregar/editar/eliminar usuarios.'
+        ));
+        $editUsers->save();
 
+        $admin_cot=new Permission(array(
+            'name'=>'admin_cot',
+            'display_name'=>'Administrar cotizaciones',
+            'description'=>'Puede agregar/editar/eliminar una cotizacion.'
+        ));
+        $admin_cot->save();
+
+        $admin_trab=new Permission(array(
+            'name'=>'admin_trab',
+            'display_name'=>'Administrar trabajos',
+            'description'=>'Puede agregar/editar/eliminar un trabajo.'
+        ));
+        $admin_trab->save();
+
+        $admin_rolPerm=new Permission(array(
+            'name'=>'admin_rolPerm',
+            'display_name'=>'Administrar roles y permisos',
+            'description'=>'Puede agregar/editar/eliminar roles y permisos.'
+        ));
+        $admin_rolPerm->save();
+
+
+        $admin->attachPermission($editUsers);
+        $admin->attachPermission($admin_rolPerm);
+        $user->attachPermission($admin_cot);
+        $user->attachPermission($admin_trab);
     }
 }

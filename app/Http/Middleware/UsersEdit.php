@@ -4,7 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
-class AdminOnly{
+class UsersEdit
+{
     /**
      * Handle an incoming request.
      *
@@ -13,10 +14,12 @@ class AdminOnly{
      * @return mixed
      */
     public function handle($request, Closure $next){
-        if(Auth::user()->hasRole('admin')){
+        $user=Auth::user();
+        if($user->can('admin_users')){
             return $next($request);
         }else{
-            return redirect('/');
+            return redirect()->back();
         }
+
     }
 }

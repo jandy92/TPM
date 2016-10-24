@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Klaravel\Ntrust\Traits\NtrustUserTrait;
 
 use App\Role;
+
 class User extends Authenticatable{
     use Notifiable;
     use NtrustUserTrait; // add this trait to your user model
@@ -25,9 +26,18 @@ class User extends Authenticatable{
             }
         }
         return $user_roles;
-
     }
     
+    public function getRoles(){
+        $roles=array();
+        $R=Role::all();
+        foreach ($R as $rol) {
+            if($this->hasRole($rol->name))
+            array_push($roles, $rol);
+        }
+        return $roles;
+    }
+
     protected $fillable = [
         'name', 'email', 'password',
     ];

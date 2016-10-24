@@ -2,7 +2,7 @@
 @section('title','Nueva cotizacion')
 @section('content')
 
-<div class="container">
+<div class="container col-lg-8 col-lg-push-2">
     <h1> Nueva Cotización</h1>
     <form class="form-horizontal" role="form">
   <div class="form-group">
@@ -39,7 +39,7 @@
   </div>
 
 
-  <button type="submit" class="btn btn-primary">Realizar Cotización</button>
+  <button type="submit" class="btn btn-success">Realizar Cotización</button>
 </form>
   </div>
 

@@ -11,19 +11,33 @@
 |
 */
 
-
 //Para rutas dentro del siguiente grupo se llamará al middleware check_login
 //si el usuario esta logueado continúa, de otro modo, se enviará a la pantalla de login
 route::group(['middleware'=>'check_login'],function(){
 	Route::get('/','PagesController@index');
 	Route::get('/demo/cotizacion_form','PagesController@showFormularioCotizacion');
 
-	Route::group(['middleware'=>'AdminOnly'],function(){
-		Route::get('/users/list','PagesController@showUsersList');
+	Route::get('/me/details/','UsersController@showCurrentUserInfo');
+	Route::get('/me/edit/','UsersController@showCurrentUserEditForm');
+	Route::post('/me/edit/','UsersController@selfEditUser');
+
+	Route::get('/security/roles_and_permissions/','RolesPermissionsController@showTable');
+	Route::get('/security/role/{name}/edit','RolesPermissionsController@showRoleEditForm');
+
+	Route::group(['middleware'=>['permission:admin_users']],function(){
+		Route::get('/users/list','UsersController@showUsersList');
+		Route::get('/user/new','UsersController@showNewUserForm');
+		Route::post('/user/new','UsersController@addNewUser');
+		Route::get('/user/{u}/edit/','UsersController@showEditUserForm');
+		Route::post('/user/{u}/edit/','UsersController@editUser');
+		Route::get('/user/{u}/delete/','UsersController@delUser');
+		Route::get('/user/{u}/details/','UsersController@showUserInfo');
 	});
 
-});
+	Route::group([],function(){
 
+	});
+});
 route::get('/login','Auth\LoginController@showLoginForm');
 route::post('/login','Auth\LoginController@login');
 route::get('logout','Auth\LoginController@logout');

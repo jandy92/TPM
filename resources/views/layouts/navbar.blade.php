@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -20,14 +20,15 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Demo <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{{action('PagesController@showFormularioCotizacion')}}">Formulario Cotización</a></li>
-            <!--li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li><a href="{{action('RolesPermissionsController@showTable')}}">Roles y permisos</a></li>
             <li role="separator" class="divider"></li>
+            <li><a href="#"><del>Tutoriales</del></a></li>
+            <!--li><a href="#">Something else here</a></li>
             <li><a href="#">Separated link</a></li-->
-            @role('admin')
+            @permission('admin_users')
             <li role="separator" class="divider"></li>
-            <li><a href="{{action('PagesController@showUsersList')}}">Lista de usuarios</a>
-            @endrole
+            <li><a href="{{action('UsersController@showUsersList')}}">Lista de usuarios</a>
+            @endpermission
             </li>
           </ul>
         </li>
@@ -41,10 +42,12 @@
       <ul class="nav navbar-nav navbar-right">
         <!--li><a href="#">Link</a></li-->
         <li class="dropdown">
+        @if(Auth::check())
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}<span class="caret"></span></a>
+          @endif
           <ul class="dropdown-menu">
-            <!--li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
+            <li><a href="{{action('UsersController@showCurrentUserInfo')}}">Detalles de la cuenta</a></li>
+            <!--li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li-->
             <li><a href="{{action('Auth\LoginController@logout')}}">Salir</a></li>

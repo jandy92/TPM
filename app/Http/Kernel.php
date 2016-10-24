@@ -53,8 +53,9 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         
         'check_login'=>\App\Http\Middleware\CheckLogin::class,
-
         'AdminOnly'=>\App\Http\Middleware\AdminOnly::class,
+        'admin_users'=>\App\Http\Middleware\UsersEdit::class,
+
 
         'role' => \Klaravel\Ntrust\Middleware\NtrustRole::class,
         'permission' => \Klaravel\Ntrust\Middleware\NtrustPermission::class,
