@@ -9,10 +9,7 @@
 </head>
 <body>
 <style type="text/css">
-	footer{
-		position: absolute;
-		bottom: 0px;
-	}
+
 </style>
 @include('layouts.navbar')
 @yield('content')

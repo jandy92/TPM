@@ -61,8 +61,19 @@ class RolesTableSeeder extends Seeder{
         $admin_rolPerm->save();
 
 
+        $admin_clicont=new Permission(array(
+            'name'=>'admin_clicont',
+            'display_name'=>'Administrar clientes y contactos',
+            'description'=>'Puede agregar/editar/eliminar clientes y contactos.'
+        ));
+        $admin_clicont->save();
+
+
+
         $admin->attachPermission($editUsers);
         $admin->attachPermission($admin_rolPerm);
+
+        $user->attachPermission($admin_clicont);
         $user->attachPermission($admin_cot);
         $user->attachPermission($admin_trab);
 

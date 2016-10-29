@@ -11,9 +11,8 @@ class NewClientRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
-    {
-        return false;
+    public function authorize(){
+        return true;
     }
 
     /**
@@ -21,10 +20,13 @@ class NewClientRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules(){
         return [
-            //
+            'rut'=>'required|unique:cliente,rut',
+            'name'=>'required',
+            'phone'=>'required',
+            'giro'=>'required',
+            'adress'=>'required',
         ];
     }
 }

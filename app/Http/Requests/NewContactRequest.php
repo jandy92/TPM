@@ -22,7 +22,7 @@ class NewContactRequest extends FormRequest
      */
     public function rules(){
         return [
-            'rut'=>'required',
+            'rut'=>'required|unique:contacto,rut',
             'name'=>'required',
             'email'=>'required',
         ];

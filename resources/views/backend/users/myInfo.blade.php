@@ -4,7 +4,7 @@
 	@section('title','Editar usuario')
 	@section('content')
 	
-	<div class="container col-lg-8 col-lg-push-2">
+	<div class="container">
 		<div class="well">
 			<legend>Información del usuario.</legend>
 			<table class="table">
