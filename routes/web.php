@@ -44,12 +44,24 @@ route::group(['middleware'=>'check_login'],function(){
 		Route::get('/cots/new','PagesController@showFormularioCotizacion');
 		Route::get('/cots','PagesController@showCotizacionesList');
 	});
-/*
-	Route::group([],function(){
 
-	});
-*/
+
+	//contactos y clientes [falta restringir por permisos!!]
+
+	Route::get('/contacts','ContactsController@showContactosList');
+	Route::get('/contacts/new','ContactsController@showNewContactoForm');
+	Route::post('/contacts/new','ContactsController@addNewContact');
+
+	Route::get('/clients','ClientsController@showClientesList');
+	Route::get('/clients/new','ClientsController@showNewClienteForm');
+	Route::post('/clients/new','ClientsController@addNewClient');	
+
 });
 route::get('/login','Auth\LoginController@showLoginForm');
 route::post('/login','Auth\LoginController@login');
 route::get('logout','Auth\LoginController@logout');
+
+/*	plantilla grupo de rutas
+	Route::group([],function(){
+	});
+*/

@@ -28,4 +28,5 @@ class PagesController extends Controller{
     function showCotizacionesList(){
         return view('backend.cotizacion.list');
     }
+
 }

@@ -56,11 +56,11 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clientes y contactos <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Nuevo Cliente</a></li>
-            <li><a href="#">Nuevo Contacto</a></li>
+            <li><a href="{{action('ClientsController@showNewClienteForm')}}">Nuevo Cliente</a></li>
+            <li><a href="{{action('ContactsController@showNewContactoForm')}}">Nuevo Contacto</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Ver clientes</a></li>
-            <li><a href="#">Ver contactos</a></li>
+            <li><a href="{{action('ContactsController@showContactosList')}}">Ver contactos</a></li>
           </ul>
         </li>
 
