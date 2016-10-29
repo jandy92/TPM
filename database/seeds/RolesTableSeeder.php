@@ -65,5 +65,11 @@ class RolesTableSeeder extends Seeder{
         $admin->attachPermission($admin_rolPerm);
         $user->attachPermission($admin_cot);
         $user->attachPermission($admin_trab);
+
+
+        //test
+        /*
+        $admin->attachPermission($admin_cot);
+        */
     }
 }

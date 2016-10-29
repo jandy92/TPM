@@ -8,7 +8,18 @@
 	<script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
 </head>
 <body>
+<style type="text/css">
+	footer{
+		position: absolute;
+		bottom: 0px;
+	}
+</style>
 @include('layouts.navbar')
 @yield('content')
 </body>
+<footer>	
+<div class="container">
+	PROCESOS TPM INGENIERIA - {{Carbon\Carbon::now()}}
+</div>
+</footer>
 </html>

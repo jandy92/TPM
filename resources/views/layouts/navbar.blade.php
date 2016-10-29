@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">TPM Ingeniería</a>
+      <a class="navbar-brand" href="{{action('PagesController@index')}}">TPM Ingeniería</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -19,19 +19,51 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Demo <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{{action('PagesController@showFormularioCotizacion')}}">Formulario Cotización</a></li>
             <li><a href="{{action('RolesPermissionsController@showTable')}}">Roles y permisos</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#"><del>Tutoriales</del></a></li>
-            <!--li><a href="#">Something else here</a></li>
-            <li><a href="#">Separated link</a></li-->
             @permission('admin_users')
             <li role="separator" class="divider"></li>
             <li><a href="{{action('UsersController@showUsersList')}}">Lista de usuarios</a>
             @endpermission
+            <li role="separator" class="divider"></li>
+            <li><a href="#"><del>Tutoriales</del></a></li>
+            <!--li><a href="#">Something else here</a></li>
+            <li><a href="#">Separated link</a></li-->
             </li>
           </ul>
         </li>
+        
+        @if(Auth::user()->can('admin_cot')||Auth::user()->can('admin_trab'))
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cotizaciones y trabajos <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            @permission('admin_cot')
+            <li><a href="{{action('PagesController@showFormularioCotizacion')}}">Nueva Cotizacion</a></li>
+            @endpermission
+            @permission('admin_trab')
+            <li><a href="{{action('PagesController@showFormularioNuevoTrabajo')}}">Nuevo Trabajo (?)</a></li>
+            @endpermission
+            <li role="separator" class="divider"></li>
+            @permission('admin_cot')
+            <li><a href="{{action('PagesController@showCotizacionesList')}}">Ver cotizaciones</a></li>
+            @endpermission
+            @permission('admin_trab')
+            <li><a href="{{action('PagesController@showTrabajosList')}}">Ver trabajos</a></li>
+            @endpermission
+          </ul>
+        </li>
+        @endif
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clientes y contactos <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Nuevo Cliente</a></li>
+            <li><a href="#">Nuevo Contacto</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Ver clientes</a></li>
+            <li><a href="#">Ver contactos</a></li>
+          </ul>
+        </li>
+
       </ul>
       <!--form class="navbar-form navbar-left">
         <div class="form-group">

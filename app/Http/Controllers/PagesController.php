@@ -14,6 +14,18 @@ class PagesController extends Controller{
     }
 
     function showFormularioCotizacion(){
-    	return view('demo.cotizacion');
+    	return view('backend.cotizacion.new');
+    }
+
+    function showFormularioNuevoTrabajo(){
+    	return view('backend.jobs.new');
+    }
+
+    function showTrabajosList(){
+    	return view('backend.jobs.list');
+    }
+
+    function showCotizacionesList(){
+        return view('backend.cotizacion.list');
     }
 }

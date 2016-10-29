@@ -1,11 +1,9 @@
 @extends('master')
-@section('title','Inicio')
+@section('title','Nuevo trabajo')
 @section('content')
-
 <div class="container">
 	<div class="well well-lg-8-push-2">
-		<legend>Bienvenid@, {{Auth::user()->name}}.</legend>
+		<legend>Nuevo trabajo</legend>
 	</div>
 </div>
-
 @endsection

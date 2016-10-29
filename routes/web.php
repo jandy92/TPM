@@ -15,7 +15,6 @@
 //si el usuario esta logueado continúa, de otro modo, se enviará a la pantalla de login
 route::group(['middleware'=>'check_login'],function(){
 	Route::get('/','PagesController@index');
-	Route::get('/demo/cotizacion_form','PagesController@showFormularioCotizacion');
 
 	Route::get('/me/details/','UsersController@showCurrentUserInfo');
 	Route::get('/me/edit/','UsersController@showCurrentUserEditForm');
@@ -34,9 +33,22 @@ route::group(['middleware'=>'check_login'],function(){
 		Route::get('/user/{u}/details/','UsersController@showUserInfo');
 	});
 
+
+
+	Route::group(['middleware'=>['permission:admin_trab']],function(){
+		Route::get('/jobs/new','PagesController@showFormularioNuevoTrabajo');
+		Route::get('/jobs','PagesController@showTrabajosList');
+
+	});
+	Route::group(['middleware'=>['permission:admin_cot']],function(){
+		Route::get('/cots/new','PagesController@showFormularioCotizacion');
+		Route::get('/cots','PagesController@showCotizacionesList');
+	});
+/*
 	Route::group([],function(){
 
 	});
+*/
 });
 route::get('/login','Auth\LoginController@showLoginForm');
 route::post('/login','Auth\LoginController@login');
