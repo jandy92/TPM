@@ -2,7 +2,7 @@
 @section('title','Lista de clientes')
 @section('content')
 
-<div class="col col-lg-8 col-lg-push-2">
+<div class="container">
 	<div class="col">
 		<a href="{{action('ClientsController@showNewClienteForm')}}" class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Agregar nuevo cliente</a>
 	</div>

@@ -64,4 +64,22 @@
 		</form>
 	</div>
 </div>
+
+<script type="text/javascript">
+		$('#rut').on('input',function(){
+			//quitar espacios y validar rut al ingresar valores
+			var r=$('#rut').val();
+			r = r.replace(/\s+/g, '');
+			$('#rut').val(r);
+			var v=$.Rut.validar($('#rut').val());
+			if(!v){
+				$('#rut').css('color','red');
+			}else{
+				$('#rut').css('color','green');
+			}
+		});
+		$('#rut').Rut({
+			format_on: 'keyup'
+		});
+</script>
 @endsection
