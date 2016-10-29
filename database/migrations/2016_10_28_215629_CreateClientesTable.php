@@ -13,12 +13,13 @@ class CreateClientesTable extends Migration
      */
     public function up(){
         Schema::create('cliente', function (Blueprint $table) {  
-            $table->string('rut')->primaryKey();
+            $table->string('rut');
             $table->string('nombre');
             $table->string('direccion');
             $table->string('telefono');
             $table->string('giro');
             $table->timestamps();
+            $table->primary('rut');
         });
     }
     /**

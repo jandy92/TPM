@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePersonaContactoTable extends Migration
+class CreateCotizacionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,12 @@ class CreatePersonaContactoTable extends Migration
      * @return void
      */
     public function up(){
-        Schema::create('contacto', function (Blueprint $table) {  
-            $table->string('rut');
-            $table->string('nombre');
-            $table->string('telefono');
-            $table->string('email');
+        Schema::create('cotizacion', function (Blueprint $table) {  
+            $table->string('folio')->primaryKey();
+            $table->string('titulo');
+            $table->primary('folio');
+            $table->string('rut_contacto')->foreign()->references('rut')->on('contacto');
             $table->timestamps();
-            $table->primary('rut');
         });
     }
 
@@ -28,6 +27,6 @@ class CreatePersonaContactoTable extends Migration
      * @return void
      */
     public function down(){
-        Schema::drop('contacto');
+        Schema::drop('cotizacion');
     }
 }

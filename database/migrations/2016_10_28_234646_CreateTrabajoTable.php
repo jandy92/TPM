@@ -21,6 +21,8 @@ class CreateTrabajoTable extends Migration{
             $table->date('fecha_emision_cobro');
             $table->date('fecha_pago');
             $table->string('num_factura');
+            $table->string('folio_cotizacion');
+            $table->foreign('folio_cotizacion')->references('folio')->on('cotizacion');
             $table->timestamps();
         });
     }
