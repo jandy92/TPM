@@ -20,7 +20,7 @@ class ClientsController extends Controller{
 
     function addNewClient(NewClientRequest $req){
     	$c=new Cliente(array(
-    		'rut'=>get('rut'),
+    		'rut'=>$req->get('rut'),
     		'nombre'=>$req->get('name'),
     		'direccion'=>$req->get('adress'),
     		'giro'=>$req->get('giro'),

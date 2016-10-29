@@ -42,6 +42,7 @@ route::group(['middleware'=>'check_login'],function(){
 	});
 	Route::group(['middleware'=>['permission:admin_cot']],function(){
 		Route::get('/cots/new','PagesController@showFormularioCotizacion');
+		Route::post('/cots/new','PagesController@crearCotizacion');
 		Route::get('/cots','PagesController@showCotizacionesList');
 	});
 

@@ -14,7 +14,7 @@
 	@endif
 	<div class="well">
 		<legend>Registrar nuevo usuario</legend>
-		<form class="form" method="POST">
+		<form class="form" method="POST" autocomplete="off">
 			<fieldset>
 				{{csrf_field()}}
 				<div class="form-group">
@@ -31,7 +31,6 @@
 						<input type="password" class="form-control" id="password" name="password">
 					</div>
 				</div>
-
 
 				<div class="form-group">
 					<label class="control-label col-md-2" for="password">Verificar contraseña:</label>

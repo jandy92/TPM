@@ -37,7 +37,7 @@
           </ul>
         </li>
         @endif
-
+        @permission('admin_clicont')
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clientes y contactos <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -48,7 +48,7 @@
             <li><a href="{{action('ContactsController@showContactosList')}}">Ver contactos</a></li>
           </ul>
         </li>
-
+        @endpermission
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administración <span class="caret"></span></a>
           <ul class="dropdown-menu">
