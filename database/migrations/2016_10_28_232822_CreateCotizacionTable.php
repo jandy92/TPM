@@ -16,6 +16,7 @@ class CreateCotizacionTable extends Migration
             $table->increments('folio');
             $table->string('titulo');
             $table->string('rut_contacto')->foreign()->references('rut')->on('contacto');
+            $table->string('rut_cliente')->foreign()->references('rut')->on('cliente');
             $table->timestamps();
         });
     }

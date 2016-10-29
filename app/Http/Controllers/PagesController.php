@@ -22,7 +22,12 @@ class PagesController extends Controller{
     }
 
     function crearCotizacion(NewCotizacionRequest $req){
-        
+        $cot=new Cotizacion(array(
+            'titulo'=>$req->get('titulo'),
+            'rut_contacto'=>$req->get('contacto'),
+            //'titulo'=>$req->get('titulo'),
+        ));
+        $cot->save();
         return redirect()->action('PagesController@showCotizacionesList');
     }
 
@@ -35,7 +40,8 @@ class PagesController extends Controller{
     }
 
     function showCotizacionesList(){
-        return view('backend.cotizacion.list');
+        $cots=Cotizacion::all();
+        return view('backend.cotizacion.list',compact('cots'));
     }
 
 }

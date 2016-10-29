@@ -44,11 +44,11 @@
 							</select>
 						</div>
 					</div>
+				</fieldset>
 					<div class="form-group">
-						<a class="btn btn-warning" href="#">Volver</a>
+						<a class="btn btn-warning" href="{{action('PagesController@showCotizacionesList')}}">Volver a lista de cotizaciones</a>
 						<button class="btn btn-success" type="submit">Crear cotización</button>
 					</div>
-				</fieldset>
 			</form>
 		</div>
 	</div>

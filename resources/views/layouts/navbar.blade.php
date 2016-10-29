@@ -55,6 +55,7 @@
             <li><a href="{{action('RolesPermissionsController@showTable')}}">Roles y permisos</a></li>
             @permission('admin_users')
             <li role="separator" class="divider"></li>
+            <li><a href="{{action('UsersController@showNewUserForm')}}">Nuevo usuario</a></li>
             <li><a href="{{action('UsersController@showUsersList')}}">Lista de usuarios</a>
             @endpermission            
             <!--li><a href="#">Something else here</a></li>
