@@ -63,7 +63,7 @@
 			@endif
 			<div class="col col-lg-12">
 			<a class="btn btn-primary" 
-			href="{{action('PagesController@showFormularioNuevoTrabajo',['folio'=>'1'])}}"
+			href="{{action('PagesController@showFormularioNuevoTrabajo',['folio'=>$cot->folio])}}"
 			>
 			Agregar un nuevo trabajo a esta cotización</a>
 			</div>
