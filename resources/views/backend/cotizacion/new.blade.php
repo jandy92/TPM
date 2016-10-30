@@ -15,6 +15,17 @@
 		  	</ul>
 		  </div>
 		@endif
+		@if($clients->isEmpty()||$contacts->isEmpty())
+			<div class="alert alert-warning">
+				No se podrá realizar esta operación, ya que:
+				@if($clients->isEmpty())
+					<li>No hay clientes registrados.</li>
+				@endif
+				@if($contacts->isEmpty())
+					<li>No hay contactos registrados.</li>
+				@endif
+			</div>
+		@endif
 			<form class="form" method="post" autocomplete="off">
 				<fieldset>
 					{{csrf_field()}}

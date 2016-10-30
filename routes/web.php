@@ -44,6 +44,8 @@ route::group(['middleware'=>'check_login'],function(){
 		Route::get('/cots/new','PagesController@showFormularioCotizacion');
 		Route::post('/cots/new','PagesController@crearCotizacion');
 		Route::get('/cots','PagesController@showCotizacionesList');
+
+		Route::get('/cots/{folio}/details','PagesController@showCotizacionDetail');
 	});
 
 	//contactos y clientes
@@ -54,7 +56,10 @@ route::group(['middleware'=>'check_login'],function(){
 
 		Route::get('/clients','ClientsController@showClientesList');
 		Route::get('/clients/new','ClientsController@showNewClienteForm');
-		Route::post('/clients/new','ClientsController@addNewClient');	
+		Route::post('/clients/new','ClientsController@addNewClient');
+
+		Route::get('/contacts/{rut}/details','ContactsController@showDetails');
+
 	});
 
 

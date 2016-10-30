@@ -25,23 +25,29 @@ class PagesController extends Controller{
         $cot=new Cotizacion(array(
             'titulo'=>$req->get('titulo'),
             'rut_contacto'=>$req->get('contacto'),
-            //'titulo'=>$req->get('titulo'),
+            'rut_cliente'=>$req->get('cliente'),
         ));
         $cot->save();
         return redirect()->action('PagesController@showCotizacionesList');
-    }
-
-    function showFormularioNuevoTrabajo(){
-    	return view('backend.jobs.new');
-    }
-
-    function showTrabajosList(){
-    	return view('backend.jobs.list');
     }
 
     function showCotizacionesList(){
         $cots=Cotizacion::all();
         return view('backend.cotizacion.list',compact('cots'));
     }
+
+    function showCotizacionDetail($folio){
+        $cot=Cotizacion::whereFolio($folio)->first();
+        return view('backend.cotizacion.details',compact('cot'));
+    }
+
+    function showFormularioNuevoTrabajo(){
+        return view('backend.jobs.new');
+    }
+
+    function showTrabajosList(){
+        return view('backend.jobs.list');
+    }
+
 
 }

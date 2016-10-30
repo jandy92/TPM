@@ -28,4 +28,9 @@ class ContactsController extends Controller{
     	$c->save();
     	return redirect()->action('ContactsController@showContactosList');
     }
+
+    function showDetails($rut){
+        $contact=Contacto::whereRut($rut)->first();
+        return view('backend.contacts.details',compact('contact'));
+    }
 }

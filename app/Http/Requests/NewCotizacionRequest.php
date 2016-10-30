@@ -24,7 +24,7 @@ class NewCotizacionRequest extends FormRequest
         return [
             'titulo'=>'required',
             'cliente'=>'required',
-            'contacto'=>'required',
+            'contacto'=>'required'
         ];
     }
 }
