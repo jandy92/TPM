@@ -71,7 +71,7 @@
 								<td>
 									<a class="btn btn-warning" href="{{action('PagesController@showTrabajoDetail',$job->id)}}">Detalles
 									</a>
-									<a class="btn btn-danger" href="#">Eliminar</a>
+									<a class="btn btn-danger" href="{{action('PagesController@deleteTrabajo',$job->id)}}">Eliminar</a>
 								</td>
 							</tr>
 							@endforeach

@@ -83,7 +83,6 @@ class PagesController extends Controller{
 
     function showFormularioNuevoTrabajo($folio){
         $cot=Cotizacion::whereFolio($folio)->first();
-        
         return view('backend.jobs.new',compact('folio'));
     }
 
@@ -92,6 +91,12 @@ class PagesController extends Controller{
         return view('backend.jobs.list',compact('jobs'));
     }
 
+    function deleteTrabajo($job_id){
+        $job=Trabajo::find($job_id);
+        $cot_id=$job->cotizacion->folio;
+        $job->delete();
+        return redirect()->action('PagesController@showCotizacionDetail',$cot_id);
+    }
 
     //items
     function showNewItemForm($job_id){

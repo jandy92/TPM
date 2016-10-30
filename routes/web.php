@@ -48,6 +48,8 @@ route::group(['middleware'=>'check_login'],function(){
 		Route::get('/jobs/{id}/addItem','PagesController@showNewItemForm');
 		Route::post('/jobs/{id}/addItem','PagesController@addnewItemToJob');
 
+		Route::get('/jobs/{id}/delete','PagesController@deleteTrabajo');
+
 	});
 	Route::group(['middleware'=>['permission:admin_cot']],function(){
 		Route::get('/cots/new','PagesController@showFormularioCotizacion');
