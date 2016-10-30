@@ -12,7 +12,13 @@ class Trabajo extends Model{
     function cotizacion(){
     	return $this->belongsTo('App\Cotizacion','folio_cotizacion');
     }
+    
     function estado(){
     	return $this->hasOne('App\estado');
     }
+
+    function items(){
+    	return $this->hasMany('App\Item','id_trabajo','id');
+    }
+
 }

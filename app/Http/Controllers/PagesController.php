@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\NewCotizacionRequest;
 use App\Http\Requests\NewTrabajoRequest;
+use App\Http\Requests\NewItemRequest;
 
 use App\Cliente;
 use App\Contacto;
 use App\Cotizacion;
 use App\Trabajo;
-
+use App\Item;
 
 class PagesController extends Controller{
     function index(){
@@ -44,6 +45,12 @@ class PagesController extends Controller{
         $cot=Cotizacion::whereFolio($folio)->first();
         $jobs=Trabajo::whereFolio_cotizacion($folio)->get();   
         return view('backend.cotizacion.details',compact('cot','jobs'));
+    }
+
+
+    function showTrabajoDetail($id){
+        $job=Trabajo::find($id);
+        return view('backend.jobs.details',compact('job'));
     }
 
     function crearTrabajo(NewTrabajoRequest $req){
@@ -85,5 +92,24 @@ class PagesController extends Controller{
         return view('backend.jobs.list',compact('jobs'));
     }
 
+
+    //items
+    function showNewItemForm($job_id){
+        $job=Trabajo::find($job_id);
+        return view('backend.items.new',compact('job'));
+    }
+
+    function addnewItemToJob(NewItemRequest $req){
+        $job=Trabajo::find($req->get('job_id'));
+        $i=new Item(array(
+            'nombre'=>$req->get('nombre'),
+            'cantidad'=>$req->get('cantidad'),
+            'precio_unitario'=>$req->get('precio_unitario'),
+            'unidad_medida'=>$req->get('unidad_medida'),
+        ));
+        $i->trabajo()->associate($job);
+        $i->save();
+        return redirect()->action('PagesController@showTrabajoDetail',$req->get('job_id'));
+    }
 
 }

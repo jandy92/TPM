@@ -9,6 +9,7 @@
 	<script type="text/javascript" src="{{asset('js/jquery.Rut.min.js')}}"></script>
 </head>
 <body>
+<input id="auth" type="hidden" value="" >
 <style type="text/css">
 
 </style>
@@ -16,12 +17,26 @@
 @yield('content')
 
 <script type="text/javascript">
+
+ $(document).ready(function(){
+   $('body').hide();
+            if ($('#auth').val().length == 0){
+                $('#auth').val('yes');
+                $('body').show();
+            }
+            else{
+                location.reload();
+            }
+ });
+
+
 $(window).keydown(function(event){
     if((event.which== 13) && ($(event.target)[0]!=$("textarea")[0])) {
       event.preventDefault();
       return false;
     }
   });
+
 </script>
 
 </body>

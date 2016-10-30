@@ -14,15 +14,15 @@ class CreateItemTable extends Migration
     public function up(){
         Schema::create('item',function(BluePrint $t){
             $t->increments('id');
-            $t->string('cantidad_material');
+            $t->string('nombre');
+            $t->string('cantidad');
             $t->integer('precio_unitario');
-            $t->string('unidad_medida_material');
+            $t->string('unidad_medida');
             $t->integer('id_trabajo')->unsigned();
             $t->foreign('id_trabajo')->references('id')->on('trabajo')->onDelete('cascade');
             $t->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

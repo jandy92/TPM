@@ -54,7 +54,7 @@
 								<td>{{$job->titulo}}</td>
 								<td>{{$job->descripcion}}</td>
 								<td>NOT_YET</td>
-								<td><a class="btn btn-primary" href="#">Detalles...</a></td>
+								<td><a class="btn btn-warning" href="{{action('PagesController@showTrabajoDetail',$job->id)}}">Detalles</a></td>
 							</tr>
 							@endforeach
 						</tbody>

@@ -39,6 +39,10 @@ route::group(['middleware'=>'check_login'],function(){
 		Route::get('/jobs/new/{folio?}','PagesController@showFormularioNuevoTrabajo');
 		Route::post('/jobs/new/{folio?}','PagesController@crearTrabajo');
 		Route::get('/jobs','PagesController@showTrabajosList');
+		Route::get('/jobs/{id}/details','PagesController@showTrabajoDetail');
+
+		Route::get('/jobs/{id}/addItem','PagesController@showNewItemForm');
+		Route::post('/jobs/{id}/addItem','PagesController@addnewItemToJob');
 
 	});
 	Route::group(['middleware'=>['permission:admin_cot']],function(){
