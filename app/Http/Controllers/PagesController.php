@@ -54,18 +54,24 @@ class PagesController extends Controller{
             'orden_compra'=>$req->get('oc'),
             'utilidad'=>$req->get('utilidad'),
             'num_factura'=>$req->get('numfac'),
-            'folio_cotizacion'=>$req->get('folio'),
-            //'fecha_emision_cobro'=>$req->get('fecha_emision'),
-            //'fecha_pago'=>$req->get('fecha_pago'),
         ));
+        
         if($req->get('fecha_emision')!=''){
             $job->fecha_emision_cobro=$req->get('fecha_emision');
         }
         if($req->get('fecha_pago')!=''){
             $job->fecha_pago=$req->get('fecha_pago');
         }
+        $cot=Cotizacion::whereFolio($req->get('folio'))->first();
+        $job->cotizacion()->associate($cot);
         $job->save();
-        return redirect()->action('PagesController@showTrabajosList');
+
+        if($req->get('returnTo')=='cot_list'){
+            return redirect()->action('PagesController@showCotizacionDetail',$req->get('folio'));
+        }else{
+             return redirect()->action('PagesController@showTrabajosList');
+        }
+        //return redirect()->action('PagesController@showTrabajosList');
     }
 
     function showFormularioNuevoTrabajo($folio=-1){

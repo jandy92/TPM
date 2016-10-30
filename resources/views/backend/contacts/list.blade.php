@@ -25,7 +25,11 @@
 						<td>{{$con->nombre}}</td>
 						<td>{{$con->email}}</td>
 						<td>{{$con->telefono}}</td>
-						<td>NOT_YET</td>
+						<td>
+							@foreach($con->clientes as $cli)
+								<div><a href="#">{{$cli->nombre}}</a></div>
+							@endforeach
+						</td>
 						<td>
 							<a class="btn btn-warning" href="{{action('ContactsController@showDetails',$con->rut)}}">informacion</a>
 						</td>

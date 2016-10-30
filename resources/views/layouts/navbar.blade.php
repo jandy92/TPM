@@ -25,7 +25,7 @@
             <li><a href="{{action('PagesController@showFormularioCotizacion')}}">Nueva Cotizacion</a></li>
             @endpermission
             @permission('admin_trab')
-            <li><a href="{{action('PagesController@showFormularioNuevoTrabajo')}}">Nuevo Trabajo (?)</a></li>
+            <li><a href="{{action('PagesController@showFormularioNuevoTrabajo')}}">Nuevo Trabajo</a></li>
             @endpermission
             <li role="separator" class="divider"></li>
             @permission('admin_cot')

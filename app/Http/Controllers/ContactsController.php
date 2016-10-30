@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Requests\NewContactRequest;
 
 use App\Contacto;
+use App\Cliente;
+
 class ContactsController extends Controller{
     function showContactosList(){
     	$contacts=Contacto::all();
@@ -15,17 +17,23 @@ class ContactsController extends Controller{
     }
 
     function showNewContactoForm(){
-    	return view('backend.contacts.new');
+        $clients=Cliente::orderBy('nombre','DESC')->get();
+    	return view('backend.contacts.new',compact('clients'));
     }
 
     function addNewContact(NewContactRequest $req){
-    	$c=new Contacto(array(
+    	$cont=new Contacto(array(
     		'rut'=>$req->get('rut'),
     		'nombre'=>$req->get('name'),
     		'telefono'=>$req->get('phone'),
     		'email'=>$req->get('email'),
     	));
-    	$c->save();
+    	$cont->save();
+        $clientes=$req->get('clientes');
+        foreach($clientes as $c){
+            $cliente=Cliente::whereRut($c)->first();
+            $cliente->contactos()->attach($cont->rut);
+        }
     	return redirect()->action('ContactsController@showContactosList');
     }
 

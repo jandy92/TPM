@@ -49,10 +49,12 @@
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-md-2" for="roles">Representa a cliente</label>
+						<label class="control-label col-md-2" for="roles">cliente(s):</label>
 						<div class="col-md-10">
-							<select class="form-control"  name="empresas[]" disabled>
-								
+							<select class="form-control"  name="clientes[]" multiple>
+								@foreach($clients as $cli)
+									<option value="{{$cli->rut}}">{{$cli->nombre}}</option>
+								@endforeach
 							</select>
 						</div>
 					</div>

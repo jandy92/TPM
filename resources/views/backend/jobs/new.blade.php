@@ -29,6 +29,7 @@
 							<input type="text" name="folio" class="form-control">
 							@else
 							<input type="text" name="folio" class="form-control" required readonly value="{{$folio}}">
+							<input type="hidden" name="returnTo" value="cot_list">
 							@endif
 						</div>
 					</div>
@@ -75,7 +76,7 @@
 					</div>
 				</fieldset>
 				<div class="form-group">
-					<a class="btn btn-warning" href="#">Volver a lista de trabajos</a>
+					<a class="btn btn-warning" href="{{action('PagesController@showTrabajosList')}}">Volver a lista de trabajos</a>
 					<button type="submit" class="btn btn-success">Crear nuevo trabajo</button>
 				</div>
 			</form>
