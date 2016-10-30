@@ -36,7 +36,8 @@ route::group(['middleware'=>'check_login'],function(){
 
 
 	Route::group(['middleware'=>['permission:admin_trab']],function(){
-		Route::get('/jobs/new','PagesController@showFormularioNuevoTrabajo');
+		Route::get('/jobs/new/{folio?}','PagesController@showFormularioNuevoTrabajo');
+		Route::post('/jobs/new/{folio?}','PagesController@crearTrabajo');
 		Route::get('/jobs','PagesController@showTrabajosList');
 
 	});

@@ -20,14 +20,14 @@
 					{{csrf_field()}}
 
 					<div class="form-group">
-						<label class="control-label col-md-2" for="rut">R.U.T:</label>
+						<label class="control-label col-md-2" for="rut">*R.U.T:</label>
 						<div class="col-md-10">
 							<input type="text" class="form-control" id="rut" name="rut">
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-md-2" for="name">Nombre:</label>
+						<label class="control-label col-md-2" for="name">*Nombre:</label>
 						<div class="col-md-10">
 							<input type="text" class="form-control" id="name" name="name">
 						</div>
@@ -35,21 +35,21 @@
 					
 					<div class="row"></div>
 					<div class="form-group">
-						<label class="control-label col-md-2" for="adress">Dirección:</label>
+						<label class="control-label col-md-2" for="adress">*Dirección:</label>
 						<div class="col-md-10">
 							<input type="text" class="form-control" id="adress" name="adress">
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-md-2" for="phone">Teléfono:</label>
+						<label class="control-label col-md-2" for="phone">*Teléfono:</label>
 						<div class="col-md-10">
 							<input type="phone" class="form-control" id="phone" name="phone">
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-md-2" for="giro">Giro:</label>
+						<label class="control-label col-md-2" for="giro">*Giro:</label>
 						<div class="col-md-10">
 							<input type="text" class="form-control" id="giro" name="giro">
 						</div>

@@ -57,6 +57,11 @@
 					</div>
 				</fieldset>
 					<div class="form-group">
+						<div class="alert alert-info">
+							Luego de crear una cotización, podrá posteriormente asignar trabajos a ella.		
+						</div>
+					</div>
+					<div class="form-group">
 						<a class="btn btn-warning" href="{{action('PagesController@showCotizacionesList')}}">Volver a lista de cotizaciones</a>
 						<button class="btn btn-success" type="submit">Crear cotización</button>
 					</div>

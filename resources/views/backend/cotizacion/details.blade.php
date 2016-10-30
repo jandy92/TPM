@@ -2,11 +2,13 @@
 @section('title','Detalles cotizacion')
 @section('content')
 <div class="container">
-	<div class="panel panel-info">
+	<div class="panel panel-info ">
 		<div class="panel-heading">
-			Detalles <span class="pull-right" style="font-weight: bold;">N° folio: {{sprintf("%015d",$cot->folio)}}</span>
+			<span id="info-panel-button " class="btn btn-default" data-toggle="collapse" data-target="#info-panel-body">Detalles</span>
+			<span class="pull-right" style="font-weight: bold;">N° folio: {{sprintf("%015d",$cot->folio)}}</span>
 		</div>
-		<div class="panel-body">
+		
+		<div class="panel-body collapse in" id="info-panel-body">
 			<div class="table-responsive">
 				<table class="table table-bordered ">
 					<thead>
@@ -31,9 +33,38 @@
 	</div>
 
 	<div class="panel panel-primary">
-		<div class="panel-heading">Trabajos asociados</div>
-		<div class="panel-body">
-			NOT_YET
+		<div class="panel-heading">
+			<span class="btn btn-default" data-toggle="collapse" data-target="#trabajos-panel-body" >Trabajos asociados</span>
+		</div>
+		<div class="panel-body collapse in" id="trabajos-panel-body">
+			@if($jobs->isEmpty())
+			No existen trabajos asociados a esta cotización.
+			@else
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<th>Título</th>
+							<th>Descripción</th>
+							<th>Estado</th>
+							<th></th>
+						</thead>
+						<tbody>
+							@foreach($jobs as $job)
+							<td>{{$job->titulo}}</td>
+							<td>{{$job->descripcion}}</td>
+							<td>NOT_YET</td>
+							<td><a class="btn btn-primary" href="#">Detalles...</a></td>
+							@endforeach
+						</tbody>
+					</table>
+				</div>
+			@endif
+			<div class="col col-lg-12">
+			<a class="btn btn-primary" 
+			href="{{action('PagesController@showFormularioNuevoTrabajo',['folio'=>'1'])}}"
+			>
+			Agregar un nuevo trabajo a esta cotización</a>
+			</div>
 		</div>
 	</div>
 

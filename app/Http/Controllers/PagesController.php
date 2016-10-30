@@ -6,10 +6,14 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\NewCotizacionRequest;
+use App\Http\Requests\NewTrabajoRequest;
 
 use App\Cliente;
 use App\Contacto;
 use App\Cotizacion;
+use App\Trabajo;
+
+
 class PagesController extends Controller{
     function index(){
     	return view('backend.common.index');
@@ -38,15 +42,41 @@ class PagesController extends Controller{
 
     function showCotizacionDetail($folio){
         $cot=Cotizacion::whereFolio($folio)->first();
-        return view('backend.cotizacion.details',compact('cot'));
+        $jobs=Trabajo::whereFolio_cotizacion($folio)->get();   
+        return view('backend.cotizacion.details',compact('cot','jobs'));
     }
 
-    function showFormularioNuevoTrabajo(){
-        return view('backend.jobs.new');
+    function crearTrabajo(NewTrabajoRequest $req){
+        $job=new Trabajo(array(
+            'titulo'=>$req->get('titulo'),
+            'descripcion'=>$req->get('descripcion'),
+            'orden_trabajo'=>$req->get('ot'),
+            'orden_compra'=>$req->get('oc'),
+            'utilidad'=>$req->get('utilidad'),
+            'num_factura'=>$req->get('numfac'),
+            'folio_cotizacion'=>$req->get('folio'),
+            //'fecha_emision_cobro'=>$req->get('fecha_emision'),
+            //'fecha_pago'=>$req->get('fecha_pago'),
+        ));
+        if($req->get('fecha_emision')!=''){
+            $job->fecha_emision_cobro=$req->get('fecha_emision');
+        }
+        if($req->get('fecha_pago')!=''){
+            $job->fecha_pago=$req->get('fecha_pago');
+        }
+        $job->save();
+        return redirect()->action('PagesController@showTrabajosList');
+    }
+
+    function showFormularioNuevoTrabajo($folio=-1){
+        $cot=Cotizacion::whereFolio($folio)->first();
+        if(!$cot){$folio=-1;}
+        return view('backend.jobs.new',compact('folio'));
     }
 
     function showTrabajosList(){
-        return view('backend.jobs.list');
+        $jobs=Trabajo::all();
+        return view('backend.jobs.list',compact('jobs'));
     }
 
 

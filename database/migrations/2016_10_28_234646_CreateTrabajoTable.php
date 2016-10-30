@@ -18,8 +18,8 @@ class CreateTrabajoTable extends Migration{
             $table->string('orden_trabajo');
             $table->string('orden_compra');
             $table->integer('utilidad');
-            $table->date('fecha_emision_cobro');
-            $table->date('fecha_pago');
+            $table->date('fecha_emision_cobro')->nullable();
+            $table->date('fecha_pago')->nullable();
             $table->string('num_factura');
             $table->integer('folio_cotizacion')->unsigned();
             $table->foreign('folio_cotizacion')->references('folio')->on('cotizacion');

@@ -27,7 +27,7 @@
 						<td>{{$con->telefono}}</td>
 						<td>NOT_YET</td>
 						<td>
-							<a class="btn btn-warning" href="#">informacion</a>
+							<a class="btn btn-warning" href="{{action('ContactsController@showDetails',$con->rut)}}">informacion</a>
 						</td>
 					</tr>
 					@endforeach

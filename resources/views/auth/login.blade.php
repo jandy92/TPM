@@ -19,7 +19,7 @@
 					 {{csrf_field()}}
 					<div class="form-group">
 						<label for="email">E-mail</label>
-						<input class="form-control" type="mail" name="email" required placeholder="admin@localhost.com">
+						<input class="form-control" type="email" name="email" required placeholder="admin@localhost.com">
 					</div>
 					<div class="form-group">
 						<label for="password">Contraseña</label>
