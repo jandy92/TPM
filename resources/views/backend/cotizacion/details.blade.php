@@ -40,23 +40,48 @@
 			@if($jobs->isEmpty())
 			No existen trabajos asociados a esta cotización.
 			@else
+				<?php 
+					$suma_total=0;
+				?>
 				<div class="table-responsive">
 					<table class="table">
 						<thead>
 							<th>Título</th>
 							<th>Descripción</th>
+							<th>Items asignados</th>
 							<th>Estado</th>
+							<th>Total pot item</th>
 							<th></th>
 						</thead>
 						<tbody>
 							@foreach($jobs as $job)
 							<tr>
+								<?php
+									$suma_parcial=0;
+									foreach($job->items as $i){
+										$suma_parcial+=$i->cantidad*$i->precio_unitario;
+									}
+									$suma_total+=$suma_parcial;
+								?>
 								<td>{{$job->titulo}}</td>
 								<td>{{$job->descripcion}}</td>
+								<td>{{$job->items->count()}}</td>
 								<td>NOT_YET</td>
-								<td><a class="btn btn-warning" href="{{action('PagesController@showTrabajoDetail',$job->id)}}">Detalles</a></td>
+								<td>${{$suma_parcial}}</td>
+								<td>
+									<a class="btn btn-warning" href="{{action('PagesController@showTrabajoDetail',$job->id)}}">Detalles
+									</a>
+									<a class="btn btn-danger" href="#">Eliminar</a>
+								</td>
 							</tr>
 							@endforeach
+							<tr>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th class="success">Total</th>
+								<th class="success">${{$suma_total}}</th>
+							</tr>
 						</tbody>
 					</table>
 				</div>
