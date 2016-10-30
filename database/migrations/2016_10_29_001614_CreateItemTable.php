@@ -18,7 +18,7 @@ class CreateItemTable extends Migration
             $t->integer('precio_unitario');
             $t->string('unidad_medida_material');
             $t->integer('id_trabajo')->unsigned();
-            $t->foreign('id_trabajo')->references('id')->on('trabajo');
+            $t->foreign('id_trabajo')->references('id')->on('trabajo')->onDelete('cascade');
             $t->timestamps();
         });
     }

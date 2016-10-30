@@ -9,6 +9,6 @@ class Estado extends Model{
     protected $guarded = ['id'];
 
     function trabajos(){
-    	return $this->belongsToMany('App\Trabajo');
+    	return $this->belongsToMany('App\trabajos');
     }
 }

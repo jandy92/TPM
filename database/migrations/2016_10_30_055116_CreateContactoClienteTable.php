@@ -15,8 +15,8 @@ class CreateContactoClienteTable extends Migration
         Schema::create('contacto_cliente',function(Blueprint $t){
             $t->string('contacto_rut');
             $t->string('cliente_rut');
-            $t->foreign('contacto_rut')->references('rut')->on('contacto');
-            $t->foreign('cliente_rut')->references('rut')->on('cliente');
+            $t->foreign('contacto_rut')->references('rut')->on('contacto')->onDelete('cascade');
+            $t->foreign('cliente_rut')->references('rut')->on('cliente')->onDelete('cascade');
             $t->primary(['contacto_rut','cliente_rut']);
         });
 

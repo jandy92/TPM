@@ -15,8 +15,8 @@ class CreateCotizacionTable extends Migration
         Schema::create('cotizacion', function (Blueprint $table) {  
             $table->increments('folio');
             $table->string('titulo');
-            $table->string('rut_contacto')->foreign()->references('rut')->on('contacto');
-            $table->string('rut_cliente')->foreign()->references('rut')->on('cliente');
+            $table->string('rut_contacto')->foreign()->references('rut')->on('contacto')->onDelete('cascade');
+            $table->string('rut_cliente')->foreign()->references('rut')->on('cliente')->onDelete('cascade');
             $table->timestamps();
         });
     }

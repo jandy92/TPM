@@ -22,7 +22,7 @@ class CreateTrabajoTable extends Migration{
             $table->date('fecha_pago')->nullable();
             $table->string('num_factura');
             $table->integer('folio_cotizacion')->unsigned()->default(0);
-            $table->foreign('folio_cotizacion')->references('folio')->on('cotizacion');
+            $table->foreign('folio_cotizacion')->references('folio')->on('cotizacion')->onDelete('cascade');
             $table->timestamps();
         });
     }
