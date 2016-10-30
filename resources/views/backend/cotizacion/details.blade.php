@@ -32,7 +32,7 @@
 		</div>
 	</div>
 
-	<div class="panel panel-primary">
+	<div class="panel panel-success">
 		<div class="panel-heading">
 			<span class="btn btn-default" data-toggle="collapse" data-target="#trabajos-panel-body" >Trabajos asociados</span>
 		</div>
@@ -62,13 +62,15 @@
 				</div>
 			@endif
 			<div class="col col-lg-12">
-			<a class="btn btn-primary" 
+			<a class="btn btn-success" 
 			href="{{action('PagesController@showFormularioNuevoTrabajo',['folio'=>$cot->folio])}}"
 			>
 			Agregar un nuevo trabajo a esta cotización</a>
 			</div>
 		</div>
 	</div>
-
+	<div class="form-group">
+		<a class="btn btn-primary" href="">Volver a lista de cotizaciones</a>
+	</div>
 </div>
 @endsection

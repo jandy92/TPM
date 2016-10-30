@@ -36,8 +36,12 @@ route::group(['middleware'=>'check_login'],function(){
 
 
 	Route::group(['middleware'=>['permission:admin_trab']],function(){
-		Route::get('/jobs/new/{folio?}','PagesController@showFormularioNuevoTrabajo');
-		Route::post('/jobs/new/{folio?}','PagesController@crearTrabajo');
+		//Route::get('/jobs/new/{folio?}','PagesController@showFormularioNuevoTrabajo');
+		//Route::post('/jobs/new/{folio?}','PagesController@crearTrabajo');
+		
+		Route::get('/jobs/new/{folio}','PagesController@showFormularioNuevoTrabajo');
+		Route::post('/jobs/new/{folio}','PagesController@crearTrabajo');
+		
 		Route::get('/jobs','PagesController@showTrabajosList');
 		Route::get('/jobs/{id}/details','PagesController@showTrabajoDetail');
 

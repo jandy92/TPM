@@ -81,9 +81,9 @@ class PagesController extends Controller{
         //return redirect()->action('PagesController@showTrabajosList');
     }
 
-    function showFormularioNuevoTrabajo($folio=-1){
+    function showFormularioNuevoTrabajo($folio){
         $cot=Cotizacion::whereFolio($folio)->first();
-        if(!$cot){$folio=-1;}
+        
         return view('backend.jobs.new',compact('folio'));
     }
 

@@ -10,6 +10,7 @@ class Cotizacion extends Model{
     protected $primaryKey='folio';
 
     function trabajos(){
-    	return $this->hasMany('App\Trabajo');
+    	//					este_modelo    ,clave _foranea_otro modelo,clave primaria este modelo
+    	return $this->hasMany('App\Trabajo','folio_cotizacion','folio');
     }
 }
