@@ -2,6 +2,7 @@
 @section('title','Detalles del trabajo')
 @section('content')
 <div class="container">
+<legend>Detalles de trabajo</legend>
 	<div class="col col-lg-12 col-lg-push-0">
 	<div class="col col-lg-12">
 		<div class="panel panel-info">
