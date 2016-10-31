@@ -13,4 +13,12 @@ class Cotizacion extends Model{
     	//					este_modelo    ,clave _foranea_otro modelo,clave primaria este modelo
     	return $this->hasMany('App\Trabajo','folio_cotizacion','folio');
     }
+    //devuelve total sumando los totales de todos sus trabajos
+    function total_pesos(){
+		$total=0;
+    	foreach ($this->trabajos as $job) {
+    		$total+=$job->total_pesos();
+    	}
+    	return $total;
+    }
 }

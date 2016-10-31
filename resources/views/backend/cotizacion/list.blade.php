@@ -23,6 +23,7 @@
 					<th>Cliente</th>
 					<th>Contacto</th>
 					<th>Trabajos asignados</th>
+					<th>Total</th>
 					<th>Creación</th>
 					<th>Última modificación</th>
 					<th></th>
@@ -43,6 +44,7 @@
 							</td>
 							<td><a  href="{{action('ContactsController@showDetails',$cot->rut_contacto)}}">{{App\Contacto::whereRut($cot->rut_contacto)->first()->nombre}}</a></td>
 							<td>{{$cot->trabajos->count()}}</td>
+							<td>${{$cot->total_pesos()}}</td>
 							<td>{{$cot->created_at}}</td>
 							<td>{{$cot->updated_at}}</td>
 							<td><a href="{{action('PagesController@showCotizacionDetail',$cot->folio)}}" class="btn btn-success item-btn">
