@@ -28,10 +28,10 @@
             @endpermission
             <li role="separator" class="divider"></li>
             @permission('admin_cot')
-            <li><a href="{{action('PagesController@showCotizacionesList')}}">Ver cotizaciones</a></li>
+            <li><a href="{{action('PagesController@showCotizacionesList')}}">Lista de cotizaciones</a></li>
             @endpermission
             @permission('admin_trab')
-            <li><a href="{{action('PagesController@showTrabajosList')}}">Ver trabajos</a></li>
+            <li><a href="{{action('PagesController@showTrabajosList')}}">Lista de trabajos</a></li>
             @endpermission
           </ul>
         </li>
@@ -43,8 +43,8 @@
             <li><a href="{{action('ClientsController@showNewClienteForm')}}">Nuevo Cliente</a></li>
             <li><a href="{{action('ContactsController@showNewContactoForm')}}">Nuevo Contacto</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="{{action('ClientsController@showClientesList')}}">Ver clientes</a></li>
-            <li><a href="{{action('ContactsController@showContactosList')}}">Ver contactos</a></li>
+            <li><a href="{{action('ClientsController@showClientesList')}}">Lista de  clientes</a></li>
+            <li><a href="{{action('ContactsController@showContactosList')}}">Lista de contactos</a></li>
           </ul>
         </li>
         @endpermission

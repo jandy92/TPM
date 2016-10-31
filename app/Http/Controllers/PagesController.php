@@ -73,12 +73,13 @@ class PagesController extends Controller{
         $job->cotizacion()->associate($cot);
         $job->save();
 
+        return redirect()->action('PagesController@showTrabajoDetail',$job->id);
+        /*
         if($req->get('returnTo')=='cot_list'){
             return redirect()->action('PagesController@showCotizacionDetail',$req->get('folio'));
         }else{
              return redirect()->action('PagesController@showTrabajosList');
-        }
-        //return redirect()->action('PagesController@showTrabajosList');
+        }*/
     }
 
     function showFormularioNuevoTrabajo($folio){

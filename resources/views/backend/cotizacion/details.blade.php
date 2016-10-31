@@ -102,7 +102,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<a class="btn btn-primary" href="">Volver a lista de cotizaciones</a>
+		<a class="btn btn-primary" href="{{action('PagesController@showCotizacionesList')}}">Volver a lista de cotizaciones</a>
 	</div>
 </div>
 <script type="text/javascript">

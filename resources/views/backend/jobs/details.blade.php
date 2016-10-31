@@ -2,7 +2,8 @@
 @section('title','Detalles del trabajo')
 @section('content')
 <div class="container">
-	<div class="col col-lg-10 col-lg-push-1">
+	<div class="col col-lg-12 col-lg-push-0">
+	<div class="col col-lg-12">
 		<div class="panel panel-info">
 			<div class="panel-heading">
 			<span id="info-panel-button " class="btn btn-default" data-toggle="collapse" data-target="#info-panel-body">Información</span>
@@ -28,7 +29,13 @@
 							<tr>
 								<td>{{$job->id}}</td>
 								<td>{{$job->titulo}}</td>
-								<td>{{$job->descripcion}}</td>
+								<td>
+									@if(strlen($job->descripcion)>30)
+								<span data-toggle="tooltip" title="descripción: {{$job->descripcion}}" >{{substr($job->descripcion,0,30)}}...<span>
+								@else
+								{{$job->descripcion}}
+								@endif
+								</td>
 								<td>{{$job->folio_cotizacion}}</td>
 								<td>{{$job->num_factura}}</td>
 								<td>{{$job->orden_trabajo}}</td>
@@ -44,12 +51,13 @@
 				</div>
 			</div>
 		</div>
-
+	</div>
+	<div class="col col-lg-8">	
 		<div class="panel panel-success">
 			<div class="panel-heading">Items</div>
 			<div class="panel-body">
-				<div class="table-responsive">
-				<table class="table">
+				<div class="table-responsive" style="max-height:150px">
+				<table class="table" >
 					<thead>
 						<th>Nombre</th>
 						<th>Unidad de medida</th>
@@ -73,15 +81,38 @@
 						<th>${{$total_item}}</th>
 					</tr>
 					@endforeach
-					<th>					<a class="btn btn-success" href="{{action('PagesController@showNewItemForm',$job->id)}}">Agregar nuevo item</a></th>
+					<!--th></th>
 					<th></th>
 					<th></th>
 					<th class="success">Total:</th>
-					<th class="success">${{$suma_total}}</th>
+					<th class="success">${{$suma_total}}</th-->
 				</table>
+				</div>
+				<div class="col col-lg-6">
+				<a class="btn btn-success" href="{{action('PagesController@showNewItemForm',$job->id)}}">Agregar nuevo item</a>
+				</div>
+				<div class="col col-lg-6">
+				<span class="pull-right"><b>Total: ${{$suma_total}}</b></span>
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="col col-lg-4">
+		<div class="panel panel-warning">
+			<div class="panel-heading">Opciones</div>
+			<div class="panel-body">
+			<!-- arreglar en el futuro! -->
+				<div class="col">
+					<a class="btn btn-warning " style="width: 100%;display: block;" href="#">Modificar trabajo</a>
+				</div> 
+				<div class="col">&nbsp;</div>
+				<div class="col">
+					<a class="btn btn-primary " style="width: 100%;display: block;" href="{{action('PagesController@showCotizacionDetail',$job->cotizacion->folio)}}">Volver a cotización</a>
+				</div>
+			</div>
+		</div>
+		
+	</div>
 	</div>
 </div>
 @endsection
