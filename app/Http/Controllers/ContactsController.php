@@ -29,10 +29,13 @@ class ContactsController extends Controller{
     		'email'=>$req->get('email'),
     	));
     	$cont->save();
+
         $clientes=$req->get('clientes');
-        foreach($clientes as $c){
-            $cliente=Cliente::whereRut($c)->first();
-            $cliente->contactos()->attach($cont->rut);
+        if($clientes){
+            foreach($clientes as $c){
+                $cliente=Cliente::whereRut($c)->first();
+                $cliente->contactos()->attach($cont->rut);
+            }
         }
     	return redirect()->action('ContactsController@showContactosList');
     }
