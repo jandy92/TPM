@@ -71,7 +71,7 @@
 				</div>
 
 			</fieldset>
-			<a href="{{action('UsersController@showUserInfo',$user->id)}}" class="btn btn-warning">Volver a informacion</a>
+			<a href="{{action('UsersController@showCurrentUserInfo')}}" class="btn btn-warning">Volver a informacion</a>
 			<button type="submit" class="btn btn-success">Guardar cambios</button>
 		</form>
 	@else
