@@ -31,11 +31,7 @@
 								<td>{{$job->id}}</td>
 								<td>{{$job->titulo}}</td>
 								<td>
-									@if(strlen($job->descripcion)>30)
-								<span data-toggle="tooltip" title="descripción: {{$job->descripcion}}" >{{substr($job->descripcion,0,30)}}...<span>
-								@else
 								{{$job->descripcion}}
-								@endif
 								</td>
 								<td>{{$job->folio_cotizacion}}</td>
 								<td>{{$job->num_factura}}</td>
@@ -53,7 +49,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col col-lg-8">	
+	<div class="col col-lg-9">	
 		<div class="panel panel-success">
 			<div class="panel-heading">Items</div>
 			<div class="panel-body">
@@ -65,6 +61,7 @@
 						<th>Precio unitario</th>
 						<th>Cantidad</th>
 						<th>Total por item</th>
+						<th></th>
 					</thead>
 					<?php
 						$suma_total=0;
@@ -75,11 +72,19 @@
 						$suma_total+=$total_item;
 					?>
 					<tr>
-						<th>{{$i->nombre}}</th>
-						<th>{{$i->unidad_medida}}</th>
-						<th>${{$i->precio_unitario}}</th>
-						<th>{{$i->cantidad}}</th>
-						<th>${{$total_item}}</th>
+						<td>{{$i->nombre}}</td>
+						<td>{{$i->unidad_medida}}</td>
+						<td>${{$i->precio_unitario}}</td>
+						<td>{{$i->cantidad}}</td>
+						<td>${{$total_item}}</td>
+						<td>
+								<div class="col-lg-6">
+									<a class="btn btn-warning" href="#">Modificar</a>
+								</div>
+								<div class="col-lg-6">
+									<a class="btn btn-danger" href="#">Eliminar</a>
+								</div>
+						</td>
 					</tr>
 					@endforeach
 					<!--th></th>
@@ -98,7 +103,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col col-lg-4">
+	<div class="col col-lg-3">
 		<div class="panel panel-warning">
 			<div class="panel-heading">Opciones</div>
 			<div class="panel-body">
