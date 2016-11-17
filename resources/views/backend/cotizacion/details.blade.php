@@ -72,7 +72,21 @@
 								@endif
 								</td>
 								<td>{{$job->items->count()}}</td>
-								<td>NOT_YET</td>
+								
+								
+									@if($job->estado)
+										@if($job->estado->color)
+											<td style="background-color:{{$job->estado->color}};">
+										@else
+											<td>
+										@endif
+									{{$job->estado->nombre}}
+									@else
+									<td>
+									Sin estado asignado
+									@endif
+								</td>
+
 								<td>${{$suma_parcial}}</td>
 								<td>
 									<a class="btn btn-warning" href="{{action('PagesController@showTrabajoDetail',$job->id)}}">Detalles

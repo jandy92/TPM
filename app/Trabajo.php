@@ -14,7 +14,7 @@ class Trabajo extends Model{
     }
     
     function estado(){
-    	return $this->hasOne('App\estado');
+    	return $this->belongsTo('App\Estado','estado_id');
     }
 
     function items(){

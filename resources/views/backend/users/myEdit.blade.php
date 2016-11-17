@@ -61,18 +61,20 @@
 							@endforeach
 						</select>
 					</div>
-
-				@endif
 				<div class="row">
 					<div class="col-lg-2"></div>
 					<div class="col-lg-10"><font color="black">
 					&nbsp;&nbsp;Puede seleccionar más de un rol presionando <kbd>Ctrl</kbd> y seleccionando.
 					</font></div>
 				</div>
+				@endif
 
 			</fieldset>
-			<a href="{{action('UsersController@showCurrentUserInfo')}}" class="btn btn-warning">Volver a informacion</a>
-			<button type="submit" class="btn btn-success">Guardar cambios</button>
+			<div class="col col-lg-12">
+			<br>
+				<a href="{{action('UsersController@showCurrentUserInfo')}}" class="btn btn-warning">Volver a informacion</a>
+				<button type="submit" class="btn btn-success">Guardar cambios</button>
+			</div>
 		</form>
 	@else
 	No se encuentra el usuario solicitado

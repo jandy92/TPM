@@ -10,6 +10,7 @@ use App\Http\Requests\NewTrabajoRequest;
 use App\Http\Requests\NewItemRequest;
 
 use App\Cliente;
+use App\Estado;
 use App\Contacto;
 use App\Cotizacion;
 use App\Trabajo;
@@ -72,6 +73,13 @@ class PagesController extends Controller{
         $cot=Cotizacion::whereFolio($req->get('folio'))->first();
         $job->cotizacion()->associate($cot);
         $job->save();
+
+        $estado_trabajo_nuevo=Estado::whereAlias('nuevo')->first();
+
+        if($estado_trabajo_nuevo){            
+            $job->estado()->associate($estado_trabajo_nuevo);
+            $job->save();
+        }
 
         return redirect()->action('PagesController@showTrabajoDetail',$job->id);
         /*

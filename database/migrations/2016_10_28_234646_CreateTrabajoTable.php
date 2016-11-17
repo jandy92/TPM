@@ -21,7 +21,11 @@ class CreateTrabajoTable extends Migration{
             $table->date('fecha_emision_cobro')->nullable();
             $table->date('fecha_pago')->nullable();
             $table->string('num_factura');
+            $table->integer("estado_id")->unsigned()->nullable();
             $table->integer('folio_cotizacion')->unsigned()->default(0);
+
+            $table->foreign("estado_id")->references("id")->on("estado")->onDelete("cascade");
+
             $table->foreign('folio_cotizacion')->references('folio')->on('cotizacion')->onDelete('cascade');
             $table->timestamps();
         });

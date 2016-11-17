@@ -5,7 +5,7 @@
 	<div class="well well-lg-8-push-2">
 		<legend>Lista de trabajos</legend>
 		@if(isset($jobs)&&!$jobs->isEmpty())
-			<div class="table-responsive">	
+			<div class="table-responsive">
 				<table class="table">
 					<thead>
 						<th>ID</th>
@@ -19,7 +19,19 @@
 							<td>{{$job->id}}</td>
 							<td>{{$job->titulo}}</td>
 							<td>{{$job->descripcion}}</td>
-							<td>NOT_YET</td>
+							<td>
+									@if($job->estado)
+										@if($job->estado->color)
+											<td style="background-color:{{$job->estado->color}};">
+										@else
+											<td>
+										@endif
+									{{$job->estado->nombre}}
+									@else
+									<td>
+									Sin estado asignado
+									@endif
+							</td>
 							<td><a class="btn btn-primary" href="{{action('PagesController@showTrabajoDetail',$job->id)}}">Detalles...</a></td>
 						</tr>
 					@endforeach

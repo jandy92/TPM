@@ -16,6 +16,7 @@
 							<th>ID</th>
 							<th>Título</th>
 							<th>Descripción</th>
+							<th>Estado</th>
 							<th>Cotización asociada</th>
 							<th>N° factura</th>
 							<th>OT</th>
@@ -32,6 +33,14 @@
 								<td>{{$job->titulo}}</td>
 								<td>
 								{{$job->descripcion}}
+								</td>
+								<td>
+									@if($job->estado)
+									{{$job->estado->nombre}}
+									@else
+									<td>
+									Sin estado asignado
+									@endif
 								</td>
 								<td>{{$job->folio_cotizacion}}</td>
 								<td>{{$job->num_factura}}</td>
