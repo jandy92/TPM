@@ -165,8 +165,6 @@ return [
 
         Klaravel\Ntrust\NtrustServiceProvider::class,
 
-        Spatie\Permission\PermissionServiceProvider::class,
-
 
         /*
          * Package Service Providers...
