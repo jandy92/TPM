@@ -69,6 +69,10 @@ class ComposerStaticInit5be1e53bff1bbe37e5731a20cbf7505f
         array (
             'League\\Flysystem\\' => 17,
         ),
+        'K' => 
+        array (
+            'Klaravel\\Ntrust\\' => 16,
+        ),
         'I' => 
         array (
             'Illuminate\\' => 11,
@@ -200,6 +204,10 @@ class ComposerStaticInit5be1e53bff1bbe37e5731a20cbf7505f
         'League\\Flysystem\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
+        ),
+        'Klaravel\\Ntrust\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/klaravel/ntrust/src/Ntrust',
         ),
         'Illuminate\\' => 
         array (
@@ -819,6 +827,7 @@ class ComposerStaticInit5be1e53bff1bbe37e5731a20cbf7505f
         'TablaTrabajo' => __DIR__ . '/../..' . '/database/migrations/2016_12_20_032230_tabla_trabajo.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'UserNtrustSetupTables' => __DIR__ . '/../..' . '/database/migrations/2016_12_20_040038_user_ntrust_setup_tables.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -547,4 +547,5 @@ return array(
     'TablaTrabajo' => $baseDir . '/database/migrations/2016_12_20_032230_tabla_trabajo.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'UserNtrustSetupTables' => $baseDir . '/database/migrations/2016_12_20_040038_user_ntrust_setup_tables.php',
 );
