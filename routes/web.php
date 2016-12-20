@@ -14,8 +14,5 @@
 //Route::get('/', function () {return view('welcome');});
 Route::get('/', 'ControladorPaginas@home');
 Route::get('/cliente/nuevo', 'ControladorCliente@nuevoClienteForm');
-<<<<<<< HEAD
 Route::get('/cotizacion/nueva', 'ControladorCotizacion@nuevaCotizacionForm');
-=======
 Route::get('/trabajo/nuevo', 'ControladorTrabajo@nuevoTrabajoForm');
->>>>>>> d0bbb970b84644afb744f4e3b96bb15923110ebe
