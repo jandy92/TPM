@@ -11,4 +11,4 @@ class Permission extends Model
      * Role profile to get value from ntrust config file.
      */
     protected static $roleProfile = 'user';
-}
+}	
