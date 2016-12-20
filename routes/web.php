@@ -14,3 +14,4 @@
 //Route::get('/', function () {return view('welcome');});
 Route::get('/', 'ControladorPaginas@home');
 Route::get('/cliente/nuevo', 'ControladorCliente@nuevoClienteForm');
+Route::get('/cotizacion/nueva', 'ControladorCotizacion@nuevaCotizacionForm');
