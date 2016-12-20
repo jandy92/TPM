@@ -830,6 +830,7 @@ class ComposerStaticInit5be1e53bff1bbe37e5731a20cbf7505f
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'UserNtrustSetupTables' => __DIR__ . '/../..' . '/database/migrations/2016_12_20_040038_user_ntrust_setup_tables.php',
+        'principal' => __DIR__ . '/../..' . '/database/seeds/principal.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
