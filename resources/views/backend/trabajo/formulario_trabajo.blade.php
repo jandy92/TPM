@@ -1,6 +1,15 @@
 @extends('master')
 @section('titulo','Nuevo Trabajo')
 @section('contenido')
+<head>
+<style>
+div.form-group {
+    padding-bottom: 25px;
+}
+
+
+</style>
+</head>
 <div class="container">
 	<div class="col col-md-8 col-md-push-2">
 		@if($errors->all())
@@ -13,7 +22,7 @@
 		  	</ul>
 		  </div>
 		@endif
-		<div class="well">
+		<div class="well" >
 			<legend>Formulario Trabajo</legend>
 			<form class="form" method="post" autocomplete="off">
 				<fieldset>
@@ -23,6 +32,7 @@
 						<label class="control-label col-md-3" for="titulo">Título:</label>
 						<div class="col-md-9">
 							<input type="text" class="form-control" id="titulo" name="titulo">
+
 						</div>
 					</div>
 
@@ -122,7 +132,6 @@
 					<div class="form-group">
 						<label class="control-label col-md-3" for="comentario">Comentario:</label>
 						<div class="col-md-9" h>
-							<input type="textarea" class="form-control" id="comentario" name="comentario">
 							<textarea cols=60 rows=10 name="comentario"></textarea>
 						</div>
 					</div>
