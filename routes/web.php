@@ -27,8 +27,10 @@ Auth::routes();
 //Route::get('/', function () {return view('welcome');});
 Route::get('/', 'ControladorPaginas@home');
 Route::get('/cliente/nuevo', 'ControladorCliente@nuevoClienteForm');
+Route::get('/cliente/lista', 'ControladorListaCliente@listaDeCliente');
 Route::get('/trabajo/nuevo', 'ControladorTrabajo@nuevoTrabajoForm');
 Route::get('/cotizacion/nueva', 'ControladorCotizacion@nuevaCotizacionForm');
+Route::get('/cotizacion/lista', 'ControladorListaCotizacion@listaCotizacion');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
