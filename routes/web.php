@@ -16,7 +16,7 @@
 Route::group(['middleware'=>['checklog','web']],function(){
 	Route::get('/', 'ControladorPaginas@home');
 	Route::get('/cliente/nuevo', 'ControladorCliente@nuevoClienteForm');
-	Route::get('/cliente/lista', 'ControladorListaCliente@listaDeCliente');
+	Route::get('/cliente/lista', 'ControladorCliente@listaDeCliente');
 	Route::get('/trabajo/nuevo', 'ControladorTrabajo@nuevoTrabajoForm');
 	Route::get('/cotizacion/nueva', 'ControladorCotizacion@nuevaCotizacionForm');
 	Route::get('/cotizacion/lista', 'ControladorListaCotizacion@listaCotizacion');

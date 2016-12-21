@@ -19,7 +19,7 @@
           <ul class="dropdown-menu">
             <li><a href="{{action('ControladorCliente@nuevoClienteForm')}}">Registrar cliente</a></li>                      
             <li role="separator" class="divider"></li>
-            <li><a href="{{action('ControladorListaCliente@listaDeCliente')}}">Lista de clientes</a></li>
+            <li><a href="{{action('ControladorCliente@listaDeCliente')}}">Lista de clientes</a></li>
           </ul>
         </li>
         <li class="dropdown">
