@@ -50,46 +50,88 @@
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-md-3" for="numeroorden">NºOT:</label>
+						<label class="control-label col-md-3" for="numeroOrden">NºOT:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="numeroorden" name="numeroorden">
+							<input type="text" class="form-control" id="numeroOrden" name="numeroOrden">
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-md-12">Persona de Contacto</label>
-						<div class="col-md-2">
-							<input type="text" class="form-control" id="nomCont" name="nomCont" placeholder="Nombre">
-						</div>
-						<div class="col-md-2">
-							<input type="text" class="form-control" id="apCont" name="apCont" placeholder="Apellido">
-						</div>
-						<div class="col-md-2">
-							<input type="text" class="form-control" id="telCont" name="telCont" placeholder="Teléfono">
-						</div>
-						<div class="col-md-3">
-							<input type="text" class="form-control" id="emailCont" name="emailCont" placeholder="E-mail">
-						</div>
-						<div class="col-md-2 col-md-push-1">
-							<button type="submit" class="btn btn-success">Agregar</button>
+						<label class="control-label col-md-3" for="montoNeto">Monto Neto:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="montoNeto" name="montoNeto">
 						</div>
 					</div>
 
-					<div class="form-group"><div class="col-md-2"><br></div>
-						<div class="col-md-12">
-							<select name="sometext" multiple="multiple" style="width: 500px;" size="5">
-							    <option>Contacto #1</option>
-						 	</select>
+					<div class="form-group">
+						<label class="control-label col-md-3" for="montoBruto">Monto Bruto:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="montoBruto" name="montoBruto">
+						</div>
 					</div>
-					</div>
-					
 
+					<div class="form-group">
+						<label class="control-label col-md-3" for="fechaCobro">Fecha de emision:</label>
+						<div class="col-md-9">
+							<input type="date" class="form-control" id="fechaCobro" name="fechaCobro">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-md-3" for="folio">Folio:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="folio" name="folio">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-md-3" for="ocnpnum">OC/NP numero:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="ocnpnum" name="ocnpnum">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-md-3" for="documento">Documento:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="documento" name="documento">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-md-3" for="fechaPago">Pagado en:</label>
+						<div class="col-md-9">
+							<input type="date" class="form-control" id="fechaPago" name="fechaPago">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-md-3" for="estadoActual">Estado:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="estadoActual" name="estadoActual">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-md-3" for="envioFactura">Enviar factura a:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="envioFactura" name="envioFactura">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-md-3" for="comentario">Comentario:</label>
+						<div class="col-md-9" h>
+							<input type="textarea" class="form-control" id="comentario" name="comentario">
+							<textarea cols=60 rows=10 name="comentario"></textarea>
+						</div>
+					</div>
 				
 
 				<div class="form-group">
-					<div class="col-md-12 col-md-push-8">
+					<div class="col-md-5 col-md-push-5">
 						<div class="row">&nbsp;</div>
-						<button type="submit" class="btn btn-success">Registrar</button>
+						<button type="submit" class="btn btn-success">Guardar</button>
 						&nbsp;
 						<a href="#" class="btn btn-warning">Cancelar</a>
 					</div>
