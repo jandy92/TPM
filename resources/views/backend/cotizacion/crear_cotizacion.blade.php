@@ -14,7 +14,7 @@
 		  </div>
 		@endif
 		<div class="well">
-			<legend>Crear cotización</legend>
+			<legend><h3>Crear cotización</h3></legend>
 			<form class="form" method="post" autocomplete="off">
 				<fieldset>
 					{{csrf_field()}}
@@ -70,7 +70,7 @@
 					</div>			
 
 					<div class="form-group">
-						<label class="control-label col-md-12">Agregar items</label>
+						<label class="control-label col-md-12"><h4>Agregar items</h4></label>
 						<div class="col-md-2">
 							<input type="text" class="form-control" id="nomMat" name="nomMat" placeholder="Nombre">
 						</div>
@@ -84,20 +84,20 @@
 							<input type="text" class="form-control" id="valorUn" name="valorUn" placeholder="Valor unitario">
 						</div>
 						<div class="col-md-2">
-							<select name="tiposMat" style="height: 33px">
+							<select id="tiposMat" name="tiposMat" style="height: 33px">
 								<option>Tipo</option>
 							    <option>Material</option>
 							    <option>Mano de obra</option>
 							</select>
 						</div>
 						<div class="col-md-2">
-							<button type="submit" class="btn btn-success">Agregar</button>
+							<button onclick="nuevoItem()" type="button" class="btn btn-success">Agregar</button>
 						</div>
 					</div>
 
 
 					<div class="form-group"><div class="col-md-2"><br></div>
-						<label class="control-label col-md-12" for="descTrab">Detalles</label>
+						<label class="control-label col-md-12" for="descTrab"><h4>Detalles</h4></label>
 						<div class="col-md-12">
 							<table class="table">
 								<thead>
@@ -120,7 +120,7 @@
 										<td></td>
 										<td></td>
 										<td>
-											<button class="btn btn-danger">x</button>
+											<button type="button" class="btn btn-danger">x</button>
 										</td>
 									</tr>
 								</tbody>
@@ -129,7 +129,21 @@
 					</div>
 
 					<div class="form-group"><div class="col-md-2"><br></div>
-						<label class="control-label col-md-12" for="descTrab">Monto final</label>
+						<label class="control-label col-md-12"><h4>Monto final</h4></label>
+						<div class="form-group">
+							<div class="col-md-4">
+								<label class="control-label col-md-6">Gastos fijos</label>
+								<input type="text" class="form-control col-md-6" id="gastoFijo" name="gastoFijo" style="width: 100px">
+							</div>
+							<div class="col-md-4">
+								<label class="control-label col-md-6">Utilidad (%)</label>
+								<input type="text" class="form-control col-md-6" id="utilidad" name="utilidad" style="width: 100px">
+							</div>
+							<div class="col-md-4">
+								<button onclick="nuevoItem()" type="button" class="btn btn-success">Agregar</button>
+							</div>
+						</div>
+
 						<div class="col-md-12">
 							<table class="table">
 								<thead>
@@ -137,11 +151,17 @@
 									<th>Mano de obra</th>
 									<th>SUBTOTAL</th>
 									<th>Gastos fijos</th>
-									<th>Utilidad</th>
+									<th>Utilidad (%)</th>
 									<th>TOTAL</th>
 								</thead>
 								<tbody>
 									<tr>
+										<td>$<span id="total_materiales">0</span></td>
+										<td>$<span id="total_mano">0</span></td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
 									</tr>
 								</tbody>
 							</table>
@@ -165,6 +185,22 @@
 	</div>
 </div>
 <script type="text/javascript">
+
+		function nuevoItem(){
+			var total_item=$('#cantidad').val()*$('#valorUn').val();
+			if($('#tiposMat').val()==='Material'){
+				var total=parseInt($('#total_materiales').html())+total_item;
+				$('#total_materiales').html(total);
+			}else if($('#tiposMat').val()==='Mano de obra'){
+				var total=parseInt($('#total_mano').html())+total_item;
+				$('#total_mano').html(total);
+			}
+			$('#cantidad').val('');
+			$('#valorUn').val('');
+		}
+
+		
+		/*
 		$('#rut').on('input',function(){
 			//quitar espacios y validar rut al ingresar valores
 			var r=$('#rut').val();
@@ -180,5 +216,6 @@
 		$('#rut').Rut({
 			format_on: 'keyup'
 		});
+		*/
 </script>
 @endsection
