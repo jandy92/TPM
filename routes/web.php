@@ -16,7 +16,6 @@
 Route::group(['middleware'=>['checklog','web']],function(){
 
 	Route::get('/', function () {
-		//Route::get('/', function () {return view('welcome');});
 	    return view('welcome');
 	});
 	
@@ -25,8 +24,11 @@ Route::group(['middleware'=>['checklog','web']],function(){
 
 Auth::routes();
 
+//Route::get('/', function () {return view('welcome');});
+Route::get('/', 'ControladorPaginas@home');
+Route::get('/cliente/nuevo', 'ControladorCliente@nuevoClienteForm');
+Route::get('/trabajo/nuevo', 'ControladorTrabajo@nuevoTrabajoForm');
+Route::get('/cotizacion/nueva', 'ControladorCotizacion@nuevaCotizacionForm');
+Auth::routes();
+
 Route::get('/home', 'HomeController@index');
-		Route::get('/', 'ControladorPaginas@home');
-		Route::get('/cliente/nuevo', 'ControladorCliente@nuevoClienteForm');
-		Route::get('/trabajo/nuevo', 'ControladorTrabajo@nuevoTrabajoForm');
-		Route::get('/home', 'HomeController@index');
