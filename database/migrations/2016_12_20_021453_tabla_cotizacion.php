@@ -20,12 +20,10 @@ class TablaCotizacion extends Migration
             $table->string('rut_cliente');
             $table->integer('id_contacto')->unsigned();
             $table->integer('id_tipo_trabajo')->unsigned();
-
             
-            
-            $table->foreign('rut_cliente')->references('rut_cliente')->on('cliente')->onDelete('cascade');
-            $table->foreign('id_contacto')->references('id_contacto')->on('contacto')->onDelete('cascade');
-            $table->foreign('id_tipo_trabajo')->references('id_tipo_trabajo')->on('tipo_trabajo')->onDelete('cascade');
+            $table->foreign('rut_cliente')->references('rut_cliente')->on('cliente')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_contacto')->references('id_contacto')->on('contacto')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_tipo_trabajo')->references('id_tipo_trabajo')->on('tipo_trabajo')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

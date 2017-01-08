@@ -11,8 +11,6 @@
 |
 */
 
-
-
 Route::group(['middleware'=>['checklog','web']],function(){
 	Route::get('/', 'ControladorPaginas@home');
 	Route::get('/cliente/nuevo', 'ControladorCliente@nuevoClienteForm');
@@ -24,7 +22,4 @@ Route::group(['middleware'=>['checklog','web']],function(){
 });
 
 Auth::routes();
-
-
-//Route::get('/', function () {return view('welcome');});
 

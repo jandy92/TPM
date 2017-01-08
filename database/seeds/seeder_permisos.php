@@ -9,8 +9,7 @@ class seeder_permisos extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        //
+    public function run(){
+        
     }
 }

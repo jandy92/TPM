@@ -18,7 +18,7 @@ class TablaItem extends Migration
             $table->string('unidad_medida_material');
             $table->integer('id_tipo_material')->unsigned();
 
-            $table->foreign('id_tipo_material')->references('id_tipo_material')->on('tipo_material')->onDelete('cascade');
+            $table->foreign('id_tipo_material')->references('id_tipo_material')->on('tipo_material')->onUpdate('cascade')->onDelete('cascade');
 
 
         });

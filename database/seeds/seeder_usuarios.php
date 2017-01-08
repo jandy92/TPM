@@ -9,8 +9,7 @@ class seeder_usuarios extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
+    public function run(){
         $u=new User(array(
         	'name'=>'admin',
         	'email'=>'admin@localhost.com',

@@ -21,7 +21,6 @@ class TablaCliente extends Migration
             $table->string('telefono');
             $table->timestamps();
             $table->primary('rut_cliente');
-
         });
     }
 

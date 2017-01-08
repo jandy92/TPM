@@ -23,7 +23,7 @@ class TablaTrabajo extends Migration
             $table->string('comentario');
             $table->integer('id_estado')->unsigned();
 
-            $table->foreign('id_estado')->references('id_estado')->on('estado')->onDelete('cascade');
+            $table->foreign('id_estado')->references('id_estado')->on('estado')->onUpdate('cascade')->onDelete('cascade');
 
 
         });
@@ -36,6 +36,6 @@ class TablaTrabajo extends Migration
      */
     public function down()
     {
-         Schema::dropIfExists('estado');
+         Schema::dropIfExists('trabajo');
     }
 }

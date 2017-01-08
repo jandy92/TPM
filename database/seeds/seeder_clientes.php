@@ -16,7 +16,7 @@ class seeder_clientes extends Seeder
         	'rut_cliente'=>'18008790-7',
         	'direccion'=>'Callefalsa#123',
         	'giro'=>'giro1',
-        	'telefono'=>'1234567890'
+        	'telefono'=>'1234567890',
         ));
         $c->save();
     }

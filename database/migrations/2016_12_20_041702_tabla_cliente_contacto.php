@@ -17,8 +17,8 @@ class TablaClienteContacto extends Migration
             $table->string('rut_cliente');
             $table->integer('id_contacto')->unsigned();
 
-            $table->foreign('rut_cliente')->references('rut_cliente')->on('cliente')->onDelete('cascade');
-            $table->foreign('id_contacto')->references('id_contacto')->on('contacto')->onDelete('cascade');
+            $table->foreign('rut_cliente')->references('rut_cliente')->on('cliente')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_contacto')->references('id_contacto')->on('contacto')->onUpdate('cascade')->onDelete('cascade');
             $table->primary(['rut_cliente','id_contacto']);
 
 
@@ -33,6 +33,7 @@ class TablaClienteContacto extends Migration
      */
     public function down()
     {
+        
         Schema::dropIfExists('cliente_contacto');
 
     }
