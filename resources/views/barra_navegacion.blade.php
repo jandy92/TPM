@@ -46,14 +46,9 @@
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="{{ url('/logout') }}"
-                onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">
+            <li><a href="/logout">
                 Logout
                 </a></li>
-                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
           </ul>
         </li>
       </ul>

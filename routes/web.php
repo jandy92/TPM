@@ -12,14 +12,28 @@
 */
 
 Route::group(['middleware'=>['checklog','web']],function(){
+
+	Route::group(['prefix' => 'cliente'],function(){
+		Route::get('/nuevo', 'ControladorCliente@nuevoClienteForm');
+		Route::get('/lista', 'ControladorCliente@listaDeCliente');
+	});
+
+	Route::group(['prefix' => 'trabajo'],function(){
+		Route::get('/nuevo', 'ControladorTrabajo@nuevoTrabajoForm');	
+	});
+	
+	Route::group(['prefix' => 'cotizacion'],function(){
+		Route::get('/nueva', 'ControladorCotizacion@nuevaCotizacionForm');
+		Route::get('/lista', 'ControladorListaCotizacion@listaCotizacion');	
+	});
+
 	Route::get('/', 'ControladorPaginas@home');
-	Route::get('/cliente/nuevo', 'ControladorCliente@nuevoClienteForm');
-	Route::get('/cliente/lista', 'ControladorCliente@listaDeCliente');
-	Route::get('/trabajo/nuevo', 'ControladorTrabajo@nuevoTrabajoForm');
-	Route::get('/cotizacion/nueva', 'ControladorCotizacion@nuevaCotizacionForm');
-	Route::get('/cotizacion/lista', 'ControladorListaCotizacion@listaCotizacion');
-	Route::get('/home', 'HomeController@index');	
+	Route::get('/home', 'HomeController@index');
+
+	$this->get('/logout', 'Auth\LoginController@logout');
 });
 
-Auth::routes();
+$this->get('/login', 'Auth\LoginController@showLoginForm');
+$this->post('/login', 'Auth\LoginController@login');
+//Auth::routes();
 
