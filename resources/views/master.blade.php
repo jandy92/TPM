@@ -9,5 +9,6 @@
 		<script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
 		@yield('contenido')		
 		<script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
+		@include('layouts.widgets')
 	</body>
 </html>

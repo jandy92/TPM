@@ -13,16 +13,16 @@
 
 Route::group(['middleware'=>['checklog','web']],function(){
 
-	Route::group(['prefix' => 'cliente'],function(){
+	Route::group(['prefix' => 'cliente','middleware'=>['filtro_user']],function(){
 		Route::get('/nuevo', 'ControladorCliente@nuevoClienteForm');
 		Route::get('/lista', 'ControladorCliente@listaDeCliente');
 	});
 
-	Route::group(['prefix' => 'trabajo'],function(){
+	Route::group(['prefix' => 'trabajo','middleware'=>['filtro_user']],function(){
 		Route::get('/nuevo', 'ControladorTrabajo@nuevoTrabajoForm');	
 	});
 	
-	Route::group(['prefix' => 'cotizacion'],function(){
+	Route::group(['prefix' => 'cotizacion','middleware'=>['filtro_user']],function(){
 		Route::get('/nueva', 'ControladorCotizacion@nuevaCotizacionForm');
 		Route::get('/lista', 'ControladorListaCotizacion@listaCotizacion');	
 	});

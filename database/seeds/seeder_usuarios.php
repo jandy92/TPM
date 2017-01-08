@@ -17,13 +17,32 @@ class seeder_usuarios extends Seeder
         $cont =Role::whereName('cont') ->first();
 
         $u=new User(array(
-        	'name'=>'admin',
-        	'email'=>'admin@localhost.com',
-        	'password'=>bcrypt('admin')
+            'name'=>'admin',
+            'email'=>'admin@localhost.com',
+            'password'=>bcrypt('admin')
         ));
         $u->save();
 
         $u->attachRole($admin);
+
+        $u=new User(array(
+            'name'=>'user',
+            'email'=>'user@localhost.com',
+            'password'=>bcrypt('user')
+        ));
+        $u->save();
+
+        $u->attachRole($user);
+
+        $u=new User(array(
+            'name'=>'contador',
+            'email'=>'cont@localhost.com',
+            'password'=>bcrypt('cont')
+        ));
+        $u->save();
+
+        $u->attachRole($cont);
+
        // echo $user->name . PHP_EOL;
     }
 }

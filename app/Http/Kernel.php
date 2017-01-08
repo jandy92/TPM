@@ -57,5 +57,8 @@ class Kernel extends HttpKernel
         'permission' => \Klaravel\Ntrust\Middleware\NtrustPermission::class,
         'ability' => \Klaravel\Ntrust\Middleware\NtrustAbility::class,
         'checklog'=>\App\Http\Middleware\checklog::class,
+        'filtro_user'=>\App\Http\Middleware\filter_user::class,
+        'filtro_admin'=>\App\Http\Middleware\filter_admin::class,
+        'filtro_cont'=>\App\Http\Middleware\filter_cont::class,
     ];
 }
