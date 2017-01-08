@@ -23,9 +23,7 @@ class seeder_usuarios extends Seeder
         ));
         $u->save();
 
-
-        //$u->roles()->attach($user->id);
-        //$u->attachRole($admin);
-        echo $user->name . PHP_EOL;
+        $u->attachRole($admin);
+       // echo $user->name . PHP_EOL;
     }
 }

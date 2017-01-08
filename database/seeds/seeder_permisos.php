@@ -42,9 +42,9 @@ class seeder_permisos extends Seeder{
     	$man_contacts->save();
 
     	//ASIGNAR PERMISOS A ROLES
-    	/*
+    	
     	$admin->attachPermission($man_users);
     	$user->attachPermissions(array($man_cots,$man_clients,$man_contacts));
-		*/
+		
     }
 }

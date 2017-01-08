@@ -3561,17 +3561,17 @@
     },
     {
         "name": "klaravel/ntrust",
-        "version": "v1.0.5",
-        "version_normalized": "1.0.5.0",
+        "version": "v1.1.0",
+        "version_normalized": "1.1.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/klaravel/ntrust.git",
-            "reference": "620ff60be7826dadc0c92b065c1e39db9db2ca1c"
+            "reference": "8f801ece52943792ebe7ac34b6b6458d14a5c522"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/klaravel/ntrust/zipball/620ff60be7826dadc0c92b065c1e39db9db2ca1c",
-            "reference": "620ff60be7826dadc0c92b065c1e39db9db2ca1c",
+            "url": "https://api.github.com/repos/klaravel/ntrust/zipball/8f801ece52943792ebe7ac34b6b6458d14a5c522",
+            "reference": "8f801ece52943792ebe7ac34b6b6458d14a5c522",
             "shasum": ""
         },
         "require": {
@@ -3579,7 +3579,7 @@
             "illuminate/console": "5.*",
             "illuminate/support": "5.*"
         },
-        "time": "2016-10-22 03:16:25",
+        "time": "2016-10-22 06:19:09",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

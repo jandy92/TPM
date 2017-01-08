@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0177b4427b5613d04aaedb7614b0605a",
-    "content-hash": "254f34e1950e15b7ef6dfa4e4eefa646",
+    "hash": "f7aa87315c452a308a6e62ed5f8b3cf8",
+    "content-hash": "48ec1294af28e50786df7de4fed12c19",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -308,16 +308,16 @@
         },
         {
             "name": "klaravel/ntrust",
-            "version": "v1.0.5",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/klaravel/ntrust.git",
-                "reference": "620ff60be7826dadc0c92b065c1e39db9db2ca1c"
+                "reference": "8f801ece52943792ebe7ac34b6b6458d14a5c522"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/klaravel/ntrust/zipball/620ff60be7826dadc0c92b065c1e39db9db2ca1c",
-                "reference": "620ff60be7826dadc0c92b065c1e39db9db2ca1c",
+                "url": "https://api.github.com/repos/klaravel/ntrust/zipball/8f801ece52943792ebe7ac34b6b6458d14a5c522",
+                "reference": "8f801ece52943792ebe7ac34b6b6458d14a5c522",
                 "shasum": ""
             },
             "require": {
@@ -352,7 +352,7 @@
                 "user",
                 "user role permissions"
             ],
-            "time": "2016-10-22 03:16:25"
+            "time": "2016-10-22 06:19:09"
         },
         {
             "name": "laravel/framework",
