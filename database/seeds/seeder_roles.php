@@ -11,10 +11,24 @@ class seeder_roles extends Seeder
      */
     public function run(){
         $admin=new Role(array(
-        	'name'=>'admin',
-        	'display_name'=>'Administrador',
-        	'description'=>'Encargado del mantenimiento del sistema a nivel funcional',
+            'name'=>'admin',
+            'display_name'=>'Administrador',
+            'description'=>'Encargado del mantenimiento del sistema a nivel estructural',
         ));
         $admin->save();
+
+        $usuario=new Role(array(
+            'name'=>'user',
+            'display_name'=>'Usuario',
+            'description'=>'Usuario estandar.',
+        ));
+        $usuario->save();
+
+        $usuario=new Role(array(
+            'name'=>'cont',
+            'display_name'=>'Contador',
+            'description'=>'Contador.',
+        ));
+        $usuario->save();
     }
 }
