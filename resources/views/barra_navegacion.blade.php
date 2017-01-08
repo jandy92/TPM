@@ -27,13 +27,14 @@
           <ul class="dropdown-menu">
             <li><a href="{{action('ControladorCotizacion@nuevaCotizacionForm')}}">Crear cotización</a></li>                   
             <li role="separator" class="divider"></li>
-            <li><a href="{{action('ControladorListaCotizacion@listaCotizacion')}}">Lista de cotizaciones</a></li>
+            <li><a href="{{action('ControladorCotizacion@listaCotizacion')}}">Lista de cotizaciones</a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administración <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Roles</a></li>
+            <li><a href="{{action('ControladorUsuario@listaUsuario')}}">Usuarios</a></li>
+            <li><a href="#">Roles y permisos</a></li>
           </ul>
         </li>
       </ul>

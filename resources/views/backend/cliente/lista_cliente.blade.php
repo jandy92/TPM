@@ -4,7 +4,7 @@
 
 <div class="container">
 	<div class="col">
-		<a href="{{action('ControladorCliente@nuevoClienteForm')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span>Registrar nuevo cliente</a>
+		<a href="{{action('ControladorCliente@nuevoClienteForm')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Registrar nuevo cliente</a>
 	</div>
 	<div class="well">
 		<legend>Lista de clientes</legend>	
