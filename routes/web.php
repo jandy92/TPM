@@ -27,7 +27,7 @@ Route::group(['middleware'=>['checklog','web']],function(){
 		Route::get('/lista', 'ControladorListaCotizacion@listaCotizacion');	
 	});
 
-	Route::get('/', 'ControladorPaginas@home');
+	Route::get('/', 'ControladorPaginas@home' );
 	Route::get('/home', 'HomeController@index');
 
 	$this->get('/logout', 'Auth\LoginController@logout');
