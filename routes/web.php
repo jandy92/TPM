@@ -31,7 +31,8 @@ Route::group(['middleware'=>['checklog','web']],function(){
 		Route::get('/lista','ControladorUsuario@listaUsuario');
 		Route::get('/nuevo','ControladorUsuario@nuevoUsuarioForm');
 		Route::post('/nuevo','ControladorUsuario@crearNuevoUsuario');
-
+		Route::get('/activar/{id}','ControladorUsuario@activarUsuario');		
+		Route::get('/borrar/{id}','ControladorUsuario@borrarUsuario');
 	});
 
 	Route::get('/', 'ControladorPaginas@home');

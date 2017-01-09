@@ -23,7 +23,8 @@ class NuevoUsuarioRequest extends FormRequest
     public function rules(){
         return [
             'nombre'=>'required',
-            'email'=>'required|email',
+            'email'=>'required|email|unique:users,email',
+            'pwd'=>'required'
         ];
     }
 }

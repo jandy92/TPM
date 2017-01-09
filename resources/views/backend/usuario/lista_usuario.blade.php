@@ -13,6 +13,7 @@
 				<thead>
 					<th>ID</th>
 					<th>Nombre</th>
+					<th>Rol</th>
 					<th>E-mail</th>
 					<th>Estado</th>
 					<th>Acciones</th>
@@ -22,6 +23,11 @@
 					<tr>
 						<th>{{$u->id}}</th>
 						<th>{{$u->name}}</th>
+						<th>
+							@foreach($u->roles as $rol)
+								{{$rol->display_name}}
+							@endforeach
+						</th>
 						<th>{{$u->email}}</th>
 						<th>
 							@if($u->activado==1)
@@ -32,12 +38,12 @@
 						</th>
 						<th>
 							@if($u->activado==0)
-							<a href="#" style="color:green;">Activar</a>
+							<a href="{{action('ControladorUsuario@activarUsuario',$u->id)}}" style="color:green;">Activar</a>
 							@endif
 							<a href="#" style="color:blue;">Detalles</a>
 							<a href="#" style="color:orange;">Editar</a>
 							
-							<a href="#" style="color:red;">Borrar</a>
+							<a href="{{action('ControladorUsuario@borrarUsuario',$u->id)}}" style="color:red;">Borrar</a>
 						</th>
 					</tr>
 				@endforeach
