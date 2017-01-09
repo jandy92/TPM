@@ -40,7 +40,7 @@
 							@if($u->activado==0)
 							<a href="{{action('ControladorUsuario@activarUsuario',$u->id)}}" style="color:green;">Activar</a>
 							@endif
-							<a href="#" style="color:blue;">Detalles</a>
+							<!--a href="#" style="color:blue;">Detalles</a-->
 							<a href="#" style="color:orange;">Editar</a>
 							
 							<a href="{{action('ControladorUsuario@borrarUsuario',$u->id)}}" style="color:red;">Borrar</a>
