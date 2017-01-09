@@ -3,7 +3,7 @@
 @section('contenido')
 <div class="container">
 	<div class="col">
-		<a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Registrar nuevo usuario</a>
+		<a href="{{action('ControladorUsuario@nuevoUsuarioForm')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Registrar nuevo usuario</a>
 	</div>
 	<div class="well">
 		<legend>Lista de usuarios registrados</legend>
@@ -14,6 +14,7 @@
 					<th>ID</th>
 					<th>Nombre</th>
 					<th>E-mail</th>
+					<th>Estado</th>
 					<th>Acciones</th>
 				</thead>
 				<tbody>
@@ -23,8 +24,17 @@
 						<th>{{$u->name}}</th>
 						<th>{{$u->email}}</th>
 						<th>
-							<a href="#" style="color:green;">Detalles</a>
-							
+							@if($u->activado==1)
+							<span style="color:green">activado</span>
+							@else
+							<span style="color:red">desactivado</span>
+							@endif
+						</th>
+						<th>
+							@if($u->activado==0)
+							<a href="#" style="color:green;">Activar</a>
+							@endif
+							<a href="#" style="color:blue;">Detalles</a>
 							<a href="#" style="color:orange;">Editar</a>
 							
 							<a href="#" style="color:red;">Borrar</a>

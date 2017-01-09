@@ -18,6 +18,7 @@ class seeder_usuarios extends Seeder
 
         $u=new User(array(
             'name'=>'admin',
+            'activado'=>1,
             'email'=>'admin@localhost.com',
             'password'=>bcrypt('admin')
         ));
@@ -27,6 +28,7 @@ class seeder_usuarios extends Seeder
 
         $u=new User(array(
             'name'=>'user',
+            'activado'=>1,
             'email'=>'user@localhost.com',
             'password'=>bcrypt('user')
         ));
@@ -36,6 +38,7 @@ class seeder_usuarios extends Seeder
 
         $u=new User(array(
             'name'=>'contador',
+            'activado'=>1,
             'email'=>'cont@localhost.com',
             'password'=>bcrypt('cont')
         ));

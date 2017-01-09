@@ -29,6 +29,9 @@ Route::group(['middleware'=>['checklog','web']],function(){
 
 	Route::group(['prefix' => 'usuario','middleware'=>['filtro_admin']],function(){
 		Route::get('/lista','ControladorUsuario@listaUsuario');
+		Route::get('/nuevo','ControladorUsuario@nuevoUsuarioForm');
+		Route::post('/nuevo','ControladorUsuario@crearNuevoUsuario');
+
 	});
 
 	Route::get('/', 'ControladorPaginas@home');

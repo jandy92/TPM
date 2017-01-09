@@ -14,6 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+      @if(Auth::user()->hasRole('user'))
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clientes <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -30,6 +31,8 @@
             <li><a href="{{action('ControladorCotizacion@listaCotizacion')}}">Lista de cotizaciones</a></li>
           </ul>
         </li>
+        @endif
+        @if(Auth::user()->hasRole('admin'))
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administración <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -37,18 +40,18 @@
             <li><a href="#">Roles y permisos</a></li>
           </ul>
         </li>
+        @endif
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
+            <!--li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
+            <li role="separator" class="divider"></li-->
             <li><a href="/logout">
-                Logout
+                Cerrar sesión
                 </a></li>
           </ul>
         </li>
