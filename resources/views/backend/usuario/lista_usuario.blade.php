@@ -25,7 +25,7 @@
 						<th>{{$u->name}}</th>
 						<th>
 							@foreach($u->roles as $rol)
-								{{$rol->display_name}}
+							{{$rol->display_name}}
 							@endforeach
 						</th>
 						<th>{{$u->email}}</th>
@@ -41,9 +41,8 @@
 							<a href="{{action('ControladorUsuario@activarUsuario',$u->id)}}" style="color:green;">Activar</a>
 							@endif
 							<!--a href="#" style="color:blue;">Detalles</a-->
-							<a href="#" style="color:orange;">Editar</a>
-							
-							<a href="{{action('ControladorUsuario@borrarUsuario',$u->id)}}" style="color:red;">Borrar</a>
+							<a href="{{action('ControladorUsuario@editarUsuario',$u->id)}}" style="color:orange;">Editar</a>
+							<a href="{{action('ControladorUsuario@borrarUsuario',$u->id)}}" style="color:red;">Eliminar</a>
 						</th>
 					</tr>
 				@endforeach

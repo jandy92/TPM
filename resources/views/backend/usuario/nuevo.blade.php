@@ -34,7 +34,7 @@
 					</div>
 					<label class="col-lg-1" for="pwd">Contraseña</label>
 					<div class="col-lg-5">
-						<input type="text" class="form-control" name="pwd" value="{{bin2hex(openssl_random_pseudo_bytes(16))}}" readonly>
+						<input type="text" class="form-control" name="pwd" value="{{bin2hex(openssl_random_pseudo_bytes(12))}}" readonly>
 					</div>
 				</div>
 				<div class="row"></div>
