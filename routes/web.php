@@ -43,6 +43,9 @@ Route::group(['middleware'=>['checklog','web']],function(){
 	$this->get('/logout', 'Auth\LoginController@logout');
 });
 
+Route::get('/activar/{token}','ControladorUsuario@activarUsuarioToken');
+Route::post('/activar/{token}','ControladorUsuario@activarUsuarioTokenFinal');
+
 $this->get('/login', 'Auth\LoginController@showLoginForm');
 $this->post('/login', 'Auth\LoginController@login');
 //Auth::routes();

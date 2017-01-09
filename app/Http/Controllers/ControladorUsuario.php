@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\NuevoUsuarioRequest;
 use App\Http\Requests\EditarUsuarioRequest;
+use App\Http\Requests\ActivarUsuarioRequest;
+
+use App\Mail\LinkActivacion;
 
 use App\User;
 use App\Role;
+use Mail;
 class ControladorUsuario extends Controller{
 
     function listaUsuario(){
@@ -26,14 +30,21 @@ class ControladorUsuario extends Controller{
             'email'=>$req->get('email'),
             'password'=>bcrypt($req->get('pwd')),
         ));
+        $u->save();
         if($req->get('activado')){
             $u->activado=1;
+            $u->save();
+        }else{
+            //enviar mail de activación
+            $u->activation_token=bin2hex(openssl_random_pseudo_bytes(32));
+            $u->save();
+            Mail::to($u->email)->send(new LinkActivacion($u->id));
         }
-        $u->save();
         if($req->get('rol')>0){
             $r=Role::find(intval($req->get('rol')));
             $u->attachRole($r);
         }
+
     	return redirect()->action('ControladorUsuario@listaUsuario')->with('mensaje',['title'=>'Usuario creado con éxito!','text'=>'
     		Usuario creado con éxito!']);
     }
@@ -42,6 +53,7 @@ class ControladorUsuario extends Controller{
         $u=User::whereId($id)->first();
         if($u->activado==0){
             $u->activado=1;
+            $u->activation_token="";
             $u->save();
             return redirect()->action('ControladorUsuario@listaUsuario')->with('mensaje',['title'=>'Usuario activado con éxito!','text'=>'
             Usuario ['.$u->name.'] ha sido activado con éxito!']);
@@ -49,6 +61,33 @@ class ControladorUsuario extends Controller{
             return redirect()->action('ControladorUsuario@listaUsuario')->with('mensaje',['title'=>'Usuario prevamente activado','text'=>'
             Usuario ['.$u->name.'] estaba activado antes de la solicitud']);
         }
+    }
+
+    function activarUsuarioToken($token){
+        if($token!=""){
+            $usuario=User::whereActivation_token($token)->first();
+            if($usuario){
+                if($usuario->activado==0){
+                    //$usuario->activado=1;
+                    //$usuario->activation_token="";
+                    //$usuario->save();
+                    return view('public.activacion_usuario',compact('usuario'));
+                }
+            }
+        }
+    }
+
+    function activarUsuarioTokenFinal(ActivarUsuarioRequest $r){
+        $id=intval($r->get('user_id'));
+        $user=User::find($id);
+        if($user && $user->activado==0){
+            $pass=$r->get('password');
+            $user->activado=1;
+            $user->activation_token="";
+            $user->password=bcrypt($pass);
+            $user->save();
+        }
+        return redirect('/login')->with('mensaje',['title'=>'Inicie sesión por primera vez','text'=>'Introduzca su correo electrónico y contraseña ingresada anteriormente para entrar al sistema.']);
     }
 
     function borrarUsuario($id){

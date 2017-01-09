@@ -52,7 +52,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
-
+    //'url' => env('APP_URL', 'http://201.186.28.234'),
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

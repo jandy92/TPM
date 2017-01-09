@@ -14,8 +14,8 @@
             <div class="panel-body">
                 <form method="post">
                 @foreach ($errors->all() as $error)
-<p class="alert alert-danger">{{ $error }}</p>
-@endforeach 
+                <p class="alert alert-danger">{{ $error }}</p>
+                @endforeach 
                      {{csrf_field()}}
                     <div class="form-group">
                         <label for="email">E-mail</label>
