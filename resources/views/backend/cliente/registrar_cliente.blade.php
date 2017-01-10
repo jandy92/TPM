@@ -154,6 +154,7 @@
 		      	event.preventDefault();
 				if($('#new_nombre').is(":focus")||$('#new_apellido').is(":focus")||$('#new_email').is(":focus")||$('#new_telefono').is(":focus")){
 		      	addContacto();
+		      	$('#new_nombre').focus();
 				}else{
 					if($('#rut').is(":focus")){
 						$('#nombre').focus();	
