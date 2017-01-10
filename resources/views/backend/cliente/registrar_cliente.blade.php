@@ -56,36 +56,35 @@
 						</div>
 					</div>
 
-					<div class="form-group">
-						<label class="control-label col-md-12">Persona de Contacto</label>
-						<div class="col-md-2">
-							<input type="text" class="form-control" id="nomCont" name="nomCont" placeholder="Nombre">
-						</div>
-						<div class="col-md-2">
-							<input type="text" class="form-control" id="apCont" name="apCont" placeholder="Apellido">
-						</div>
-						<div class="col-md-2">
-							<input type="text" class="form-control" id="telCont" name="telCont" placeholder="Teléfono">
-						</div>
-						<div class="col-md-3">
-							<input type="text" class="form-control" id="emailCont" name="emailCont" placeholder="E-mail">
-						</div>
-						<div class="col-md-2 col-md-push-1">
-							<button type="submit" class="btn btn-success">Agregar</button>
+					<div class="row">&nbsp;</div>
+					<div class="col">
+						<label>Personas de contacto</label>
+						<div class="panel panel-default">
+							
+	  						<div class="panel-body">
+	  							<div class="table-responsive">
+	  								<table class="table" id="tabla_contactos">
+  										<thead>
+  											<th>Nombre</th>
+  											<th>Apellido</th>
+  											<th>Email</th>
+  											<th>Teléfono</th>
+  											<th></th>
+  										</thead>
+  										<tbody>
+  											<tr>
+	  											<td><input class="form-control" type="text" id="new_nombre" name="new_nombre"></td>
+	  											<td><input class="form-control" type="text" id="new_apellido" name="new_apellido"></td>
+	  											<td><input class="form-control" type="text" id="new_email" name="new_email"></td>
+	  											<td><input class="form-control" type="text" id="new_telefono" name="new_telefono"></td>
+	  											<td><button type="button" onclick="addContacto()" class="btn btn-primary">+</button></td>
+  											</tr>
+  										</tbody>
+	  								</table>
+	  							</div>
+							</div>
 						</div>
 					</div>
-
-					<div class="form-group"><div class="col-md-2"><br></div>
-						<div class="col-md-12">
-							<select name="sometext" multiple="multiple" style="width: 500px;" size="5">
-							    <option>Contacto #1</option>
-						 	</select>
-					</div>
-					</div>
-					
-
-				
-
 				<div class="form-group">
 					<div class="col-md-12 col-md-push-8">
 						<div class="row">&nbsp;</div>
@@ -102,20 +101,72 @@
 	</div>
 </div>
 <script type="text/javascript">
-		$('#rut').on('input',function(){
-			//quitar espacios y validar rut al ingresar valores
-			var r=$('#rut').val();
-			r = r.replace(/\s+/g, '');
-			$('#rut').val(r);
-			var v=$.Rut.validar($('#rut').val());
-			if(!v){
-				$('#rut').css('color','red');
-			}else{
-				$('#rut').css('color','green');
+		$('#rut').focus();
+		var id=0;
+		var contactos={};
+
+
+
+
+		function addContacto(){
+			var nombre=$('#new_nombre').val();
+			var apellido=$('#new_apellido').val();
+			var email=$('#new_email').val();
+			var telefono=$('#new_telefono').val();
+
+
+			if(nombre.trim()!='' && apellido.trim()!=''){
+				$('#new_nombre').val('');
+				$('#new_apellido').val('');
+				$('#new_email').val('');
+				$('#new_telefono').val('');
+				contactos[id]={'nombre':nombre,'apellido':apellido,'email':email,'telefono':telefono};
+				renderTable();
+				id++;
 			}
-		});
-		$('#rut').Rut({
-			format_on: 'keyup'
-		});
+		}
+
+		function renderTable(){
+			//$('#tabla_contactos').after('<tr><td><input class="form-control" type="text" id="new_nombre" name="new_nombre"></td><td><input class="form-control" type="text" id="new_apellido" name="new_apellido"></td><td><input class="form-control" type="text" id="new_email" name="new_email"></td><td><input class="form-control" type="text" id="new_telefono" name="new_telefono"></td><td><button type="button" onclick="addContacto()" class="btn btn-primary">+</button></td></tr>');
+			//$('#tabla_contactos ').children( 'tr:not(:first)' ).empty();
+			$('#tabla_contactos').find("tr:gt(1)").remove();  
+			for(var c in contactos){
+				var row='';
+				row+='<td>'+contactos[c].nombre+'</td>';
+				row+='<td>'+contactos[c].apellido+'</td>';
+				row+='<td>'+contactos[c].email+'</td>';
+				row+='<td>'+contactos[c].telefono+'</td>';
+				row+='<td><button type="button" onclick="remContacto('+parseInt(c)+')" class="btn btn-danger">-</button</td>';
+				$('#tabla_contactos tr:last').after('<tr id="'+c+'">'+row+'</tr>');
+				//console.log(contactos[c].nombre);
+			}
+		}
+
+		function remContacto(id){
+			if (confirm('Seguro de eliminar persona de contacto seleccionada?')) {
+				delete contactos[id]
+				renderTable();
+			}
+		}
+
+		$(window).keydown(function(event){
+		    if(event.keyCode == 13) {
+		      	event.preventDefault();
+				if($('#new_nombre').is(":focus")||$('#new_apellido').is(":focus")||$('#new_email').is(":focus")||$('#new_telefono').is(":focus")){
+		      	addContacto();
+				}else{
+					if($('#rut').is(":focus")){
+						$('#nombre').focus();	
+					}else if($('#nombre').is(":focus")){
+						$('#giro').focus();
+					}else if($('#giro').is(":focus")){
+						$('#direccion').focus();
+					}else if($('#direccion').is(":focus")){
+						$('#telefono').focus();
+					}
+				}
+		      	return false;
+		    }
+  });
 </script>
 @endsection

@@ -9,5 +9,8 @@ class Cliente extends Model{
     protected $guarded = [];
     public $incrementing = false;
     protected $primaryKey='rut_cliente';
-    
+ 
+ 	public function contactos(){
+ 		return $this->hasMany('App\Contacto','rut_cliente','rut_cliente');
+ 	}   
 }
