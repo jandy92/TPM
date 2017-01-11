@@ -15,10 +15,9 @@
 		@endif
 		<div class="well">
 			<legend>Registrar cliente</legend>
-			<form class="form" method="post" autocomplete="off">
+			<form class="form" id="form" method="post" autocomplete="off" onsubmit="return submit_form()">
 				<fieldset>
 					{{csrf_field()}}
-
 					<div class="form-group">
 						<label class="control-label col-md-3" for="rut">R.U.T:</label>
 						<div class="col-md-9">
@@ -73,10 +72,10 @@
   										</thead>
   										<tbody>
   											<tr>
-	  											<td><input class="form-control" type="text" id="new_nombre" name="new_nombre"></td>
-	  											<td><input class="form-control" type="text" id="new_apellido" name="new_apellido"></td>
-	  											<td><input class="form-control" type="text" id="new_email" name="new_email"></td>
-	  											<td><input class="form-control" type="text" id="new_telefono" name="new_telefono"></td>
+	  											<td><input class="form-control" type="text" id="new_nombre" ></td>
+	  											<td><input class="form-control" type="text" id="new_apellido" ></td>
+	  											<td><input class="form-control" type="text" id="new_email" ></td>
+	  											<td><input class="form-control" type="text" id="new_telefono" ></td>
 	  											<td><button type="button" onclick="addContacto()" class="btn btn-primary">+</button></td>
   											</tr>
   										</tbody>
@@ -104,16 +103,11 @@
 		$('#rut').focus();
 		var id=0;
 		var contactos={};
-
-
-
-
 		function addContacto(){
 			var nombre=$('#new_nombre').val();
 			var apellido=$('#new_apellido').val();
 			var email=$('#new_email').val();
 			var telefono=$('#new_telefono').val();
-
 
 			if(nombre.trim()!='' && apellido.trim()!=''){
 				$('#new_nombre').val('');
@@ -127,8 +121,6 @@
 		}
 
 		function renderTable(){
-			//$('#tabla_contactos').after('<tr><td><input class="form-control" type="text" id="new_nombre" name="new_nombre"></td><td><input class="form-control" type="text" id="new_apellido" name="new_apellido"></td><td><input class="form-control" type="text" id="new_email" name="new_email"></td><td><input class="form-control" type="text" id="new_telefono" name="new_telefono"></td><td><button type="button" onclick="addContacto()" class="btn btn-primary">+</button></td></tr>');
-			//$('#tabla_contactos ').children( 'tr:not(:first)' ).empty();
 			$('#tabla_contactos').find("tr:gt(1)").remove();  
 			for(var c in contactos){
 				var row='';
@@ -168,6 +160,28 @@
 				}
 		      	return false;
 		    }
-  });
+  		});
+
+  		function submit_form(){
+  			var input = $("<input>")
+               .attr("type", "hidden")
+               .attr("name", "hola").val("xd");
+			$('#form').append($(input));
+  			for(i in contactos){
+  				c=contactos[i];
+  				$('#form').append("<input type='hidden' name='contactos["+i+"]' value='"+objectJoin(c,',')+"'></input>");
+  			}
+
+  			//return false;
+
+  		}
+  		function objectJoin(obj, sep) {
+		    var arr = [], p, i = 0;
+		    for (p in obj){
+		        arr[i] = obj[p];
+		    	i++;
+		    }
+		    return arr.join(sep);
+		}
 </script>
 @endsection
