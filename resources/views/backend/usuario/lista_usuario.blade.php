@@ -6,6 +6,7 @@
 		<a href="{{action('ControladorUsuario@nuevoUsuarioForm')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Registrar nuevo usuario</a>
 	</div>
 	<div class="well">
+				{{url()->current()}}
 		<legend>Lista de usuarios registrados</legend>
 		<div class="table-responsive">
 			@if(isset($usuarios))

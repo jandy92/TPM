@@ -1,13 +1,12 @@
 @extends('master')
 @section('titulo','Lista de clientes')
 @section('contenido')
-
 <div class="container">
 	<div class="col">
 		<a href="{{action('ControladorCliente@nuevoClienteForm')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Registrar nuevo cliente</a>
 	</div>
 	<div class="well">
-		<legend>Lista de clientes</legend>	
+		<legend>Lista de clientes</legend>
 		@if(isset($cliente)&&!$cliente->isEmpty())
 			<table class="table table-hover table-striped table-condensed table-responsive  ">
 				<thead>

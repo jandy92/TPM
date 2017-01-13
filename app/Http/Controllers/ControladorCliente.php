@@ -16,7 +16,6 @@ class ControladorCliente extends Controller
 
     function nuevoCliente(NuevoClienteRequest $r){
     	$contactos=[];
-
         $cliente=new Cliente(array(
             'rut_cliente'=>$r->get('rut'),
             'nombre'=>$r->get('nombre'),
@@ -42,7 +41,8 @@ class ControladorCliente extends Controller
                 $cliente->contactos()->save($contacto);
             }
         }
-    	return $cliente;
+        $msg =['title'=>'Operación exitosa','text'=>'Se ha registrado un nuevo cliente.'];
+    	return redirect()->action('ControladorCliente@listaDeCliente')->with('mensaje',$msg);
     }
 
     function listaDeCliente(){
