@@ -25,7 +25,8 @@ Route::group(['middleware'=>['checklog','web']],function(){
 	
 	Route::group(['prefix' => 'cotizacion','middleware'=>['filtro_user']],function(){
 		Route::get('/nueva', 'ControladorCotizacion@nuevaCotizacionForm');
-		Route::get('/lista', 'ControladorCotizacion@listaCotizacion');	
+		Route::get('/lista', 'ControladorCotizacion@listaCotizacion');
+		Route::post('/nueva','ControladorCotizacion@nuevaCotizacion');	
 	});
 
 	Route::group(['prefix' => 'administracion/usuario','middleware'=>['filtro_admin']],function(){

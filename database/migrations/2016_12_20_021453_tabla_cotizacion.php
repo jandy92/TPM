@@ -20,6 +20,7 @@ class TablaCotizacion extends Migration
             $table->integer('id_cliente')->unsigned();
             $table->integer('id_contacto')->unsigned();
             $table->integer('id_tipo_trabajo')->unsigned();
+            $table->timestamps();
             
             $table->foreign('id_cliente')->references('id_cliente')->on('cliente')->onUpdate('cascade')->onDelete('cascade');
             

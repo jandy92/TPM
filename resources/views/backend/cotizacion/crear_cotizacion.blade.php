@@ -29,11 +29,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-3">Cliente</label>
 						<div class="col-md-9">
-							<select name="clientes" style="width: 300px">
-							    <option>Cliente #1</option>
-							    <option>Cliente #2</option>
-							    <option>Cliente #3</option>
-							</select>
+							<input type="text" class="form-control" id="cliente" name="cliente">
 						</div>
 					</div>
 
@@ -43,9 +39,7 @@
 						<label class="control-label col-md-3">Persona de contacto</label>
 						<div class="col-md-9">
 							<select name="contactos" style="width: 300px">
-							    <option>Contacto #1</option>
-							    <option>Contacto #2</option>
-							    <option>Contacto #3</option>
+							    <option>Seleccionar...</option>
 							</select>
 						</div>
 					</div>
@@ -55,8 +49,7 @@
 						<label class="control-label col-md-3">Tipo de trabajo</label>
 						<div class="col-md-9">
 							<select name="tiposTrab" style="width: 300px">
-							    <option>Instrumentación</option>
-							    <option>Eléctrico</option>
+							    <option>Seleccionar...</option>
 							</select>
 						</div>
 					</div>
@@ -69,67 +62,68 @@
 						</div>
 					</div>			
 
-					<div class="form-group">
-						<label class="control-label col-md-12"><h4>Agregar items</h4></label>
-						<div class="col-md-2">
-							<input type="text" class="form-control" id="nomMat" name="nomMat" placeholder="Nombre">
-						</div>
-						<div class="col-md-2">
-							<input type="text" class="form-control" id="unidMed" name="unidMed" placeholder="Unidad">
-						</div>
-						<div class="col-md-2">
-							<input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad">
-						</div>
-						<div class="col-md-2">
-							<input type="text" class="form-control" id="valorUn" name="valorUn" placeholder="Valor unitario">
-						</div>
-						<div class="col-md-2">
-							<select id="tiposMat" name="tiposMat" style="height: 33px">
-								<option>Tipo</option>
-							    <option>Material</option>
-							    <option>Mano de obra</option>
-							</select>
-						</div>
-						<div class="col-md-2">
-							<button onclick="nuevoItem()" type="button" class="btn btn-success">Agregar</button>
+					<div class="row">&nbsp;</div>
+					<div class="col">
+						<label><h4>Agregar items</h4></label>
+						<div class="panel panel-default">
+							<div class="panel-body">
+		  						<div class="table-responsive">
+		  							<table class="table" id="tabla_items">
+	  									<thead>
+	  										<th>Nombre</th>
+	  										<th>Unidad</th>
+	  										<th>Cantidad</th>
+	  										<th>Valor Unitario</th>
+	  										<th>Tipo</th>
+	  										<th></th>
+	  									</thead>
+			  							<tbody>
+		  									<tr>
+			  									<td><input class="form-control" type="text" id="nombreMat" ></td>
+			  									<td><input class="form-control" type="text" id="unidMed" ></td>
+			  									<td><input class="form-control" type="text" id="cantidad" ></td>
+			  									<td><input class="form-control" type="text" id="valorUn" ></td>
+			  									<td>
+			  										<select id="tiposMat" name="tiposMat" style="height: 33px">
+			  											<option>Seleccionar...</option>
+													</select>
+												</td>
+			  									<td><button type="button" onclick="nuevoItem()" class="btn btn-primary">+</button></td>
+		  									</tr>
+		  								</tbody>
+		  							</table>
+		  						</div>
+		  					</div>
+		  				</div>
+		  			</div>
+
+
+					<div class="row">&nbsp;</div>
+					<div class="col">
+						<label><h4>Detalles</h4></label>
+						<div class="panel panel-default">
+							<div class="panel-body">
+		  						<div class="table-responsive">
+		  							<table class="table" id="tabla_items">
+	  									<thead>
+											<th>Item</th>
+											<th>Nombre</th>
+											<th>Tipo</th>
+											<th>Unidad de medida</th>
+											<th>Cantidad</th>
+											<th>Valor unitario</th>
+											<th>Total</th>
+											<th></th>
+										</thead>
+									</table>
+								</div>
+							</div>
 						</div>
 					</div>
 
-
-					<div class="form-group"><div class="col-md-2"><br></div>
-						<label class="control-label col-md-12" for="descTrab"><h4>Detalles</h4></label>
-						<div class="col-md-12">
-							<table class="table">
-								<thead>
-									<th>Item</th>
-									<th>Nombre</th>
-									<th>Tipo</th>
-									<th>Unidad de medida</th>
-									<th>Cantidad</th>
-									<th>Valor unitario</th>
-									<th>Total</th>
-									<th> </th>
-								</thead>
-								<tbody>
-									<tr>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td>
-											<button type="button" class="btn btn-danger">x</button>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-
-					<div class="form-group"><div class="col-md-2"><br></div>
-						<label class="control-label col-md-12"><h4>Monto final</h4></label>
+					<div class="row">&nbsp;</div>
+					<div class="col">
+						<label><h4>Monto final</h4></label>
 						<div class="form-group">
 							<div class="col-md-4">
 								<label class="control-label col-md-6">Gastos fijos</label>
@@ -144,29 +138,34 @@
 							</div>
 						</div>
 
-						<div class="col-md-12">
-							<table class="table">
-								<thead>
-									<th>Materiales</th>
-									<th>Mano de obra</th>
-									<th>SUBTOTAL</th>
-									<th>Gastos fijos</th>
-									<th>Utilidad (%)</th>
-									<th>TOTAL</th>
-								</thead>
-								<tbody>
-									<tr>
-										<td>$<span id="total_materiales">0</span></td>
-										<td>$<span id="total_mano">0</span></td>
-										<td>$0</td>
-										<td>$0</td>
-										<td>$0</td>
-										<td>$0</td>
-									</tr>
-								</tbody>
-							</table>
+					<div class="row">&nbsp;</div>
+					<div class="col">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<table class="table">
+									<thead>
+										<th>Materiales</th>
+										<th>Mano de obra</th>
+										<th>SUBTOTAL</th>
+										<th>Gastos fijos</th>
+										<th>Utilidad (%)</th>
+										<th>TOTAL</th>
+									</thead>
+									<tbody>
+										<tr>
+											<td>$<span id="total_materiales">0</span></td>
+											<td>$<span id="total_mano">0</span></td>
+											<td>$0</td>
+											<td>$0</td>
+											<td>$0</td>
+											<td>$0</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
-					</div>					
+					</div>
+
 
 
 				<div class="form-group">
@@ -184,6 +183,8 @@
 		</div>
 	</div>
 </div>
+
+
 <script type="text/javascript">
 
 		function nuevoItem(){

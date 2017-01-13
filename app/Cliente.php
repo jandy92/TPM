@@ -12,6 +12,5 @@ class Cliente extends Model{
  
  	public function contactos(){
  		return $this->hasMany('App\Contacto','id_cliente','id_cliente');
- 		//return $this->hasMany('App\Contacto');
  	}   
 }
