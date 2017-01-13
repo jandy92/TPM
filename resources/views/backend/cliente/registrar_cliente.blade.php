@@ -15,7 +15,7 @@
 		@endif
 		<div class="well">
 			<legend>Registrar cliente</legend>
-			<form class="form" id="form" method="post" autocomplete="off" onsubmit="return submit_form()">
+			<form class="form" id="form" method="post" autocomplete="on" onsubmit="return submit_form()">
 				<fieldset>
 					{{csrf_field()}}
 					<div class="form-group">
