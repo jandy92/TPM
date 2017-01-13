@@ -12,5 +12,9 @@ class Cliente extends Model{
  
  	public function contactos(){
  		return $this->hasMany('App\Contacto','rut_cliente','rut_cliente');
- 	}   
+ 	}
+
+ 	public function cotizacion(){
+    	return $this->hasMany('App\Cotizacion','rut_cliente');
+    }   
 }
