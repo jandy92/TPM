@@ -21,7 +21,11 @@ class Cotizacion extends Model
  	}
 
  	public function tipo_trabajo(){
- 		return $this->hasOne('App\Id_trabajo','id_tipo_trabajo','id_tipo_trabajo');
+ 		return $this->hasMany('App\Id_trabajo','id_tipo_item','id_tipo_item');
+ 	}
+
+ 	public function item(){
+ 		return $this->belongsToMany('App\Item','cotizacion_item','id_item','folio_cotizacion')
  	}
 
 

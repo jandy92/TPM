@@ -10,7 +10,7 @@ class Cliente extends Model{
     //public $incrementing = false;
     protected $primaryKey='id_cliente';
  
- 	public function contactos(){
- 		return $this->hasMany('App\Contacto','id_cliente','id_cliente');
+ 	public function contacto(){
+ 		return $this->belongsToMany('App\Contacto','cliente_contacto','id_cliente','id_contacto');
  	}   
 }

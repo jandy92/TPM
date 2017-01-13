@@ -14,11 +14,11 @@ class TablaCotizacionItem extends Migration
     public function up()
     {
        Schema::create('cotizacion_item', function (Blueprint $table){
-            $table->integer('cantidad');
-            $table->integer('precio_unitario');
-
             $table->integer('id_item')->unsigned();
             $table->integer('folio_cotizacion')->unsigned();
+            
+            $table->integer('cantidad');
+            $table->integer('precio_unitario');
 
             $table->foreign('id_item')->references('id_item')->on('item')->onDelete('cascade');
             $table->foreign('folio_cotizacion')->references('folio_cotizacion')->on('cotizacion')->onDelete('cascade');

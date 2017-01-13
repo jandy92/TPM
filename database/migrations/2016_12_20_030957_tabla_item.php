@@ -15,10 +15,11 @@ class TablaItem extends Migration
     {
        Schema::create('item', function (Blueprint $table){
             $table->increments('id_item');
-            $table->string('unidad_medida_material');
-            $table->integer('id_tipo_material')->unsigned();
+            $table->string('nombre');
+            $table->string('unidad_medida');
+            $table->integer('id_tipo_item')->unsigned();
 
-            $table->foreign('id_tipo_material')->references('id_tipo_material')->on('tipo_material')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_tipo_item')->references('id_tipo_item')->on('tipo_item')->onUpdate('cascade')->onDelete('cascade');
 
 
         });
