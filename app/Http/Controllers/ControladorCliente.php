@@ -42,6 +42,11 @@ class ControladorCliente extends Controller
         $msg =['title'=>'Operación exitosa','text'=>'Se ha registrado un nuevo cliente.'];
     	return redirect()->action('ControladorCliente@listaDeCliente')->with('mensaje',$msg);
     }
+    function editarClienteForm($idCliente){
+        $cliente = Cliente::find($idCliente);
+        return view("backend.cliente.editar_cliente", compact("cliente"));
+    }
+
 
     function listaDeCliente(){
     	$cliente=Cliente::all();
