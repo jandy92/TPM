@@ -5,7 +5,7 @@
 		<div class = "col col-md-8 col-md-push-2">
 			sdsadsadsa arroz
 			<div class = "well">
-				<legend>Chancha Flaca</legend>
+				<legend>Pate La Piara</legend>
 				<form class="form" id="form" method="post" autocomplete="on">
 					<fieldset>
 						
