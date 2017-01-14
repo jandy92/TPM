@@ -5,13 +5,17 @@
 		<div class = "col col-md-8 col-md-push-2">
 			<div class = "well">
 				<legend>Pate La Piara</legend>
-				<form class="form" id="form" method="post" autocomplete="on">
+				@foreach ($errors->all() as $error)
+                <p class="alert alert-danger">{{ $error }}</p>
+                @endforeach 
+				<form class="form" id="form" method="post" autocomplete="on" onsubmit="return submit_form()">
 					<fieldset>
 						{{csrf_field()}}
+						<input type="hidden" name="id_cliente" value="{{$cliente->id_cliente}}">
 					<div class="form-group">
 						<label class="control-label col-md-3" for="rut">R.U.T:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="rut" name="rut" value="{{$cliente->rut_cliente}}"> 
+							<input type="text" class="form-control" id="rut" name="rut" value="" placeholder="Mantener {{$cliente->rut_cliente}}"> 
 						</div>
 					</div>
 
@@ -88,7 +92,6 @@
 		</div>
 		<script type="text/javascript">
 			var contactosId= [];
-			var contador = 0;
 			@foreach($cliente->contactos as $cont)
 				var temp={
 					'nombre': "{{$cont->nombre}}",
@@ -134,6 +137,19 @@
 					cambiarTabla();
 				}
 			}
+			function submit_form(){
+	  			var input = $("<input>")
+	               .attr("type", "hidden")
+	               .attr("name", "hola").val("xd");
+				$('#form').append($(input));
+	  			for(i in contactosId){
+	  				c=contactosId[i];
+	  				$('#form').append("<input type='hidden' name='contactos["+i+"]' value='"+objectJoin(c,',')+"'></input>");
+	  			}
+
+  			//return false;
+
+  			}
 
 		</script>
 	</div>

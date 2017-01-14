@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\NuevoClienteRequest;
+use App\Http\Requests\EditarClienteRequest;
 
 use App\Cliente;
 use App\Contacto;
@@ -45,6 +46,9 @@ class ControladorCliente extends Controller
     function editarClienteForm($idCliente){
         $cliente = Cliente::find($idCliente);
         return view("backend.cliente.editar_cliente", compact("cliente"));
+    }
+    function editarCliente(EditarClienteRequest $r){
+        return $r->get('id_cliente');
     }
 
 
