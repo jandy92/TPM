@@ -9,6 +9,8 @@ use App\Http\Requests\EditarClienteRequest;
 use App\Cliente;
 use App\Contacto;
 
+use DB;
+
 class ControladorCliente extends Controller
 {
     function nuevoClienteForm(){
@@ -68,5 +70,10 @@ class ControladorCliente extends Controller
         }else{
             return response()->json([]);
         }
+    }
+
+    function AJAX_busquedaClientes($texto){
+        $clientes=DB::table('cliente')->where('nombre','LIKE','%'.$texto.'%')->orWhere('rut_cliente','LIKE','%'.$texto.'%')->get();
+        return response()->json($clientes);
     }
 }

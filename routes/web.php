@@ -49,6 +49,7 @@ Route::group(['middleware'=>['checklog','web']],function(){
 
 
 Route::get('API/clientesdecontacto/{id}','ControladorCliente@AJAX_contactosDeCliente');
+Route::get('API/buscarclientes/{texto}','ControladorCliente@AJAX_busquedaClientes');
 
 Route::get('/activar/{token}','ControladorUsuario@activarUsuarioToken');
 Route::post('/activar/{token}','ControladorUsuario@activarUsuarioTokenFinal');
