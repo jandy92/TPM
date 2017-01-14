@@ -58,13 +58,15 @@ class ControladorCliente extends Controller
     }
 
     function AJAX_contactosDeCliente($id_cliente){
-        $c=new Contacto(array(
-            'nombre'=>'Juan',
-            'apellido'=>'Perez',
-        ));
-        
-        $clientes=[$c];
-
-        return response()->json($clientes);
+        $c=Cliente::find($id_cliente);
+        if($c){
+            if($c->contactos){
+                return response()->json($c->contactos);
+            }else{
+                return response()->json([]);
+            }
+        }else{
+            return response()->json([]);
+        }
     }
 }
