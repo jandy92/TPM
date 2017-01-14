@@ -22,7 +22,7 @@ class NuevoClienteRequest extends FormRequest
      */
     public function rules(){
         return [
-            //
+            'rut'=>'required',
         ];
     }
 }

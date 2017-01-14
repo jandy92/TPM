@@ -36,7 +36,7 @@ class ControladorCliente extends Controller
                 $contacto->email=$tmp_array[2];
                 $contacto->telefono=$tmp_array[3];
                 //return $cliente;
-                $cliente->contactos()->save($contacto);
+                //$cliente->contactos()->save($contacto);
             }
         }
         $msg =['title'=>'Operación exitosa','text'=>'Se ha registrado un nuevo cliente.'];
