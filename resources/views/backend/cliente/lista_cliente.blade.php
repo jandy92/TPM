@@ -19,12 +19,7 @@
 				</thead>
 				<tbody>
 				<form >
-				<input type="search" name="palabra" result="8">
-				<button typer="submit">
-				Buscar CLiente
-					
-				</button>
-
+				<input class="form-control" placeholder="filtrar por nombre" onkeyup="filtrarClientes()" type="search" name="filtro" id="filtro">
 				</form>
 					@foreach($cliente as $cli)
 					<tr>
@@ -46,4 +41,27 @@
 		@endif
 	</div>
 </div>
+<script type="text/javascript">
+	var clientes_filtrados=[];
+	function filtrarClientes(){
+		if($('#filtro').val()!=''){
+			console.log($('#filtro').val());
+		}
+		var url_="{{action('ControladorCliente@AJAX_contactosDeCliente','#VALUE')}}".replace('#VALUE',$('#filtro').val());
+		console.log(url_);
+		$.ajax(
+			{
+				url: url_,
+				async: false,//importante
+				success: function(result){
+        		clientes_filtrados=JSON.parse(JSON.stringify(result));
+    		},error:function (xhr, ajaxOptions, thrownError) {
+	        console.log(xhr.status);
+	        console.log(thrownError);
+      		}
+    	});
+
+    	console.log(clientes_filtrados);
+	}
+</script>
 @endsection
