@@ -86,9 +86,11 @@
 			  									<td>
 			  										<select id="tiposMat" name="tiposMat" style="height: 33px">
 			  											<option>Seleccionar...</option>
+			  											<option>Material</option>
+			  											<option>Mano de obra</option>
 													</select>
 												</td>
-			  									<td><button type="button" onclick="nuevoItem()" class="btn btn-primary">+</button></td>
+			  									<td><button type="button" onclick="agregarItem()" class="btn btn-primary">+</button></td>
 		  									</tr>
 		  								</tbody>
 		  							</table>
@@ -97,14 +99,13 @@
 		  				</div>
 		  			</div>
 
-
 					<div class="row">&nbsp;</div>
 					<div class="col">
 						<label><h4>Detalles</h4></label>
 						<div class="panel panel-default">
 							<div class="panel-body">
 		  						<div class="table-responsive">
-		  							<table class="table" id="tabla_items">
+		  							<table class="table" id="tabla_detalles">
 	  									<thead>
 											<th>Item</th>
 											<th>Nombre</th>
@@ -134,7 +135,7 @@
 								<input type="text" class="form-control col-md-6" id="utilidad" name="utilidad" style="width: 100px">
 							</div>
 							<div class="col-md-4">
-								<button onclick="nuevoItem()" type="button" class="btn btn-success">Agregar</button>
+								<button onclick="agregaMonto()" type="button" class="btn btn-success">Agregar</button>
 							</div>
 						</div>
 
@@ -149,16 +150,18 @@
 										<th>SUBTOTAL</th>
 										<th>Gastos fijos</th>
 										<th>Utilidad (%)</th>
+										<th>Utilidad</th>
 										<th>TOTAL</th>
 									</thead>
 									<tbody>
 										<tr>
 											<td>$<span id="total_materiales">0</span></td>
 											<td>$<span id="total_mano">0</span></td>
-											<td>$0</td>
-											<td>$0</td>
-											<td>$0</td>
-											<td>$0</td>
+											<td>$<span id="subtotal">0</span></td>
+											<td>$<span id="gastosFijos">0</span></td>
+											<td><span id="porce_util">0</span></td>
+											<td>$<span id="pesos_util"></span>
+											<td>$<span id="total">0</span></td>
 										</tr>
 									</tbody>
 								</table>
@@ -184,8 +187,10 @@
 	</div>
 </div>
 <script type="text/javascript">
-
-		function nuevoItem(){
+		var id=0;
+		var items={};
+		var subtotal=0;
+		function agregarItem(){
 			var total_item=$('#cantidad').val()*$('#valorUn').val();
 			if($('#tiposMat').val()==='Material'){
 				var total=parseInt($('#total_materiales').html())+total_item;
@@ -194,11 +199,69 @@
 				var total=parseInt($('#total_mano').html())+total_item;
 				$('#total_mano').html(total);
 			}
-			$('#cantidad').val('');
-			$('#valorUn').val('');
+			subtotal=subtotal+total_item;
+			$('#subtotal').html(subtotal);
+
+			var nombre=$('#nombreMat').val();
+			var tipo=$('#tiposMat').val();
+			var unidad=$('#unidMed').val();
+			var cantidad=$('#cantidad').val();
+			var valorUn=$('#valorUn').val();
+			if(nombre.trim()!=''){
+				$('#nombreMat').val('');
+				$('#tiposMat').val('');
+				$('#unidMed').val('');
+				$('#cantidad').val('');
+				$('#valorUn').val('');
+				items[id]={'id':id,'nombre':nombre,'tipo':tipo,'unidad':unidad,'cantidad':cantidad,'valorUn':valorUn,'total':total_item};
+				renderTable();
+				id++;
+			}
 		}
 
-		
+		function renderTable(){
+			$('#tabla_detalles').find("tr:gt(0)").remove();  
+			for(var c in items){
+				var row='';
+				row+='<td>'+items[c].id+'</td>';
+				row+='<td>'+items[c].nombre+'</td>';
+				row+='<td>'+items[c].tipo+'</td>';
+				row+='<td>'+items[c].unidad+'</td>';
+				row+='<td>'+items[c].cantidad+'</td>';
+				row+='<td>'+items[c].valorUn+'</td>';
+				row+='<td>'+items[c].total+'</td>';
+				row+='<td><button type="button" onclick="remItem('+parseInt(c)+')" class="btn btn-danger">-</button</td>';
+				$('#tabla_detalles tr:last').after('<tr id="'+c+'">'+row+'</tr>');
+			}
+		}
+
+		function remItem(id){
+			if (confirm('Seguro de eliminar item seleccionado?')) {
+				if(items[id].tipo==='Material'){
+				var total=parseInt($('#total_materiales').html())-items[id].total;
+				$('#total_materiales').html(total);
+				}else if(items[id].tipo==='Mano de obra'){
+					var total=parseInt($('#total_mano').html())-items[id].total;
+					$('#total_mano').html(total);
+				}
+				subtotal=subtotal-items[id].total;
+				$('#subtotal').html(subtotal);
+				delete items[id];
+				renderTable();
+			}
+		}
+
+		function agregaMonto(){
+			var gastosF=$('#gastoFijo').val();
+			var utilidad=$('#utilidad').val();
+			$('#gastosFijos').html(gastosF);
+			$('#porce_util').html(utilidad);
+			var totalSU=parseInt($('#subtotal').html())+parseInt(gastosF);
+			var utilidades=totalSU*(parseInt(utilidad)/100);
+			var totalCU=totalSU+utilidades;
+			$('#pesos_util').html(utilidades);
+			$('#total').html(totalCU);
+		}
 		/*
 		$('#rut').on('input',function(){
 			//quitar espacios y validar rut al ingresar valores
