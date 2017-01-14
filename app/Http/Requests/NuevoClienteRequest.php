@@ -23,6 +23,10 @@ class NuevoClienteRequest extends FormRequest
     public function rules(){
         return [
             'rut'=>'required',
+            'nombre'=>'required',
+            'giro'=>'required',
+            'direccion'=>'required',
+            'telefono'=>'required',
         ];
     }
 }
