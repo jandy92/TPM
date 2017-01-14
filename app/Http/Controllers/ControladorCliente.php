@@ -15,7 +15,7 @@ class ControladorCliente extends Controller
     }
 
     function nuevoCliente(NuevoClienteRequest $r){
-    	$contactos=[];
+    	//$contactos=[];
         $cliente=new Cliente(array(
             'rut_cliente'=>$r->get('rut'),
             'nombre'=>$r->get('nombre'),
@@ -24,26 +24,29 @@ class ControladorCliente extends Controller
             'direccion'=>$r->get('direccion')
         ));
         $cliente->save();
+
         if($r->get('contactos')){
         	foreach($r->get('contactos') as $c){
                 $tmp_array=explode(',',$c);
-        		array_push($contactos,$tmp_array);
+        		//array_push($contactos,$tmp_array);
                 $contacto=new Contacto(array(
                     'nombre'=>$tmp_array[0],
                     'apellido'=>$tmp_array[1],
                 ));
-                if($tmp_array[2]!=''){
-                    $contacto->email=$tmp_array[2];
-                }
-                if($tmp_array[3]!=''){
-                    $contacto->telefono=$tmp_array[3];   
-                }
+                $contacto->email=$tmp_array[2];
+                $contacto->telefono=$tmp_array[3];
+                //return $cliente;
                 $cliente->contactos()->save($contacto);
             }
         }
         $msg =['title'=>'Operación exitosa','text'=>'Se ha registrado un nuevo cliente.'];
     	return redirect()->action('ControladorCliente@listaDeCliente')->with('mensaje',$msg);
     }
+    function editarClienteForm($idCliente){
+        $cliente = Cliente::find($idCliente);
+        return view("backend.cliente.editar_cliente", compact("cliente"));
+    }
+
 
     function listaDeCliente(){
     	$cliente=Cliente::all();
