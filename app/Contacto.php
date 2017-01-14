@@ -10,7 +10,8 @@ class Contacto extends Model{
     //public $incrementing = false;
     protected $primaryKey='id_contacto';
     
-    public function cliente(){
- 		return $this->belongsToMany('App\Cliente','cliente_contacto','id_contacto','id_cliente');
+    public function clientes(){
+ 		return $this->belongsToMany('App\Cliente');
+ 		//return $this->belongsToMany('App\Cliente','cliente_contacto','id_contacto','id_cliente');
  	} 
 }

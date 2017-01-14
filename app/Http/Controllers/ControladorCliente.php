@@ -52,4 +52,15 @@ class ControladorCliente extends Controller
     	$cliente=Cliente::all();
     	return view('backend.cliente.lista_cliente',compact('cliente'));
     }
+
+    function AJAX_contactosDeCliente($id_cliente){
+        $c=new Contacto(array(
+            'nombre'=>'Juan',
+            'apellido'=>'Perez',
+        ));
+        
+        $clientes=[$c];
+
+        return response()->json($clientes);
+    }
 }

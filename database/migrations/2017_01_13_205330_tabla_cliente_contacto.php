@@ -18,8 +18,8 @@ class TablaClienteContacto extends Migration
             $table->integer('id_contacto')->unsigned();
 
 
-            $table->foreign('id_cliente')->references('id_cliente')->on('cliente')->onDelete('cascade');
-            $table->foreign('id_contacto')->references('id_contacto')->on('contacto')->onDelete('cascade');
+            $table->foreign('id_cliente')->references('id_cliente')->on('cliente')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_contacto')->references('id_contacto')->on('contacto')->onDelete('cascade')->onUpdate('cascade');
             $table->primary(['id_cliente','id_contacto']);
 
 
@@ -34,6 +34,6 @@ class TablaClienteContacto extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cotizacion_item');
+        Schema::dropIfExists('cliente_contacto');
     }
 }

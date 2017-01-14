@@ -46,6 +46,9 @@ Route::group(['middleware'=>['checklog','web']],function(){
 	$this->get('/logout', 'Auth\LoginController@logout');
 });
 
+
+Route::get('API/clientesdecontacto/{id}','ControladorCliente@AJAX_contactosDeCliente');
+
 Route::get('/activar/{token}','ControladorUsuario@activarUsuarioToken');
 Route::post('/activar/{token}','ControladorUsuario@activarUsuarioTokenFinal');
 
