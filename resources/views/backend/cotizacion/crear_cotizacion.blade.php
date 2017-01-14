@@ -201,8 +201,6 @@
 			var cli =$('#cliente').val();
 			var url = window.location.pathname;
 			var X ="{{action('ControladorCliente@buscaContactos','#VALUE')}}".replace('#VALUE',cli);
-			alert(X);
-
 
 			$.ajax(
 			{

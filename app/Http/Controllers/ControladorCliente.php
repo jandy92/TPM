@@ -87,4 +87,12 @@ class ControladorCliente extends Controller
         $clientes=DB::table('cliente')->where('nombre','LIKE','%'.$texto.'%')->orWhere('rut_cliente','LIKE','%'.$texto.'%')->get();
         return response()->json($clientes);
     }
+
+    function buscaContactos($rut_cliente){
+        //$cliente = DB::table('cliente')->where('rut_cliente','=', $rut_cliente)->first();
+        $cliente=Cliente::whereRut_cliente($rut_cliente)->first();
+        if ($cliente){
+            return response()->json(['cliente'=>$cliente,'contactos'=>$cliente->contactos]);
+        }
+    }
 }
