@@ -26,7 +26,8 @@
 						<td>{{$cli->telefono}}</td>
 						<td>{{$cli->giro}}</td>
 						<td>
-							<a class="btn btn-warning" href="#">informacion</a>
+							<a class="btn btn-link" style="color:green" href="{{action('ControladorCliente@editarClienteForm',$cli->id_cliente)}}">Editar</a>
+							<a class="btn btn-link" style="color:blue" href="#">informacion</a>
 						</td>
 					</tr>
 					@endforeach
