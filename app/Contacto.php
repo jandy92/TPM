@@ -13,5 +13,6 @@ class Contacto extends Model{
     public function clientes(){
  		return $this->belongsToMany('App\Cliente');
  		//return $this->belongsToMany('App\Cliente','cliente_contacto','id_contacto','id_cliente');
+ 		
  	} 
 }

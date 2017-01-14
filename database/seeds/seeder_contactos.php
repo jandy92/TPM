@@ -21,8 +21,8 @@ class seeder_contactos extends Seeder
         	'telefono'=>'232323'
 
         ));
-        
-        $cli->attach($c->cliente_id);
+        $c->save();
+        $cli->contactos()->attach($c->id_contacto);
 
         $cli=Cliente::find(2);
         $c=new Contacto(array(
@@ -32,8 +32,8 @@ class seeder_contactos extends Seeder
         	'telefono'=>'232323',
 
         ));
-
-        $cli->attach($c->cliente_id);
+        $c->save();
+        $cli->contactos()->attach($c->id_contacto);
 
         $cli=Cliente::find(2);
         $c=new Contacto(array(
@@ -43,7 +43,8 @@ class seeder_contactos extends Seeder
         	'telefono'=>'232323',
 
         ));
-       // $cli->attach($c->cliente_id);
+        $c->save();
+        $cli->contactos()->attach($c->id_contacto);
 
         $cli=Cliente::find(3);
         $c=new Contacto(array(
@@ -53,6 +54,7 @@ class seeder_contactos extends Seeder
         	'telefono'=>'232323',
 
         ));
-        $cli->attach($c->cliente_id);
+        $c->save();
+        $cli->contactos()->attach($c->id_contacto);
     }
 }
