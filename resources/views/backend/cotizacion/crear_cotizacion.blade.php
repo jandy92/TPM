@@ -28,8 +28,11 @@
 
 					<div class="form-group">
 						<label class="control-label col-md-3">Cliente</label>
-						<div class="col-md-9">
+						<div class="col-md-7">
 							<input type="text" class="form-control" id="cliente" name="cliente">
+						</div>
+						<div class="col-md-2">
+							<button type="button" onclick="verificar()" class="btn btn-primary">Verificar</button>
 						</div>
 					</div>
 
@@ -192,6 +195,41 @@
 		var id=0;
 		var items={};
 		var subtotal=0;
+		var Y;
+
+		function verificar(){
+			var cli =$('#cliente').val();
+			var url = window.location.pathname;
+			var X ="{{action('ControladorCliente@buscaContactos','#VALUE')}}".replace('#VALUE',cli);
+			alert(X);
+
+
+			$.ajax(
+			{
+				url: X,
+				type: "GET", 
+				async: false,//importante
+				success: function(result){
+					Y=JSON.parse(JSON.stringify(result));
+					if(Y!=""){
+						alert("Cliente encontrado");
+					}
+					else{
+						alert("Cliente no encontrado");
+					}
+					console.log(Y.cliente.nombre);
+					console.log(Y.contactos[0].nombre);
+
+        		
+        		},
+    			error: function (xhr, ajaxOptions, thrownError) {
+        			//alert("cliente no está en la base de datos");
+      			}
+  			}); 
+
+		}
+
+
 		function agregarItem(){
 			var total_item=$('#cantidad').val()*$('#valorUn').val();
 			if($('#tiposMat').val()==='Material'){

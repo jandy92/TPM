@@ -48,6 +48,7 @@ Route::group(['middleware'=>['checklog','web']],function(){
 });
 
 
+Route::get('buscador/{rut_cliente}','ControladorCliente@buscaContactos');
 Route::get('API/clientesdecontacto/{id}','ControladorCliente@AJAX_contactosDeCliente');
 Route::get('API/buscarclientes/{texto}','ControladorCliente@AJAX_busquedaClientes');
 
