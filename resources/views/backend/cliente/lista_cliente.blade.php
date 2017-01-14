@@ -18,6 +18,14 @@
 					<th></th>
 				</thead>
 				<tbody>
+				<form >
+				<input type="search" name="palabra" result="8">
+				<button typer="submit">
+				Buscar CLiente
+					
+				</button>
+
+				</form>
 					@foreach($cliente as $cli)
 					<tr>
 						<td>{{$cli->rut_cliente}}</td>
