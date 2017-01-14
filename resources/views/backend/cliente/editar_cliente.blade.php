@@ -134,6 +134,7 @@
 					cambiarTabla();
 				}
 			}
+
 		</script>
 	</div>
 @endsection
