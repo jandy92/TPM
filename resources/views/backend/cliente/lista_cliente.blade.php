@@ -11,13 +11,8 @@
 	</div>
 	<div class="well">
 		<legend>Lista de clientes</legend>
-<<<<<<< HEAD
 		@if(isset($clientes)&&!$clientes->isEmpty())
-			<table class="table table-hover table-striped table-condensed table-responsive  ">
-=======
-		@if(isset($cliente)&&!$cliente->isEmpty())
 			<table id="table" class="table table-hover table-striped table-condensed table-responsive  ">
->>>>>>> 949516e51e6f4b06e09057729bdf5747c34fc323
 				<thead>
 					<th>R.U.T</th>
 					<th>Razón Social</th>
@@ -30,10 +25,8 @@
 				<form >
 				<input class="form-control" placeholder="filtrar por nombre o rut" onkeyup="filtrarClientes()" type="search" name="filtro" id="filtro">
 				</form>
-<<<<<<< HEAD
+
 					@foreach($clientes as $cli)
-=======
-					@foreach($cliente as $cli)
 					<script type="text/javascript">
 						tmp_c={
 							rut_cliente:"{{$cli->rut_cliente}}",
@@ -44,7 +37,6 @@
 						};
 						clientes.push(tmp_c);
 					</script>
->>>>>>> 949516e51e6f4b06e09057729bdf5747c34fc323
 					<tr>
 						<td>{{$cli->rut_cliente}}</td>
 						<td>{{$cli->nombre}}</td>
