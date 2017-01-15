@@ -1,7 +1,6 @@
 @extends('master')
 @section('titulo','Crear cotización')
 @section('contenido')
-{{$tipoTrab[0]->nombre}}
 <div class="container">
 	<div class="col col-md-8 col-md-push-2">
 		@if($errors->all())
