@@ -11,7 +11,7 @@ class ControladorCotizacion extends Controller
 {
     function nuevaCotizacionForm(){
         $tipoTrab = Tipo_trabajo::all();
-    	return view('backend.cotizacion.crear_cotizacion', compact('tipoTrab'));
+    	return view('backend.cotizacion.crear_cotizacion', compact("tipoTrab"));
     }
 
     function nuevaCotizacion(Request $r){
