@@ -55,11 +55,13 @@ class ControladorCliente extends Controller
         if (strlen (  $rutTemp ) > 1){
             $cliente->rut_cliente = $r->get('rut');
         }
-        $cliente->telefono = $r->get('telefono');
-        $cliente->telefono = $r->get('telefono');
+        $cliente->nombre = $r->get('nombre');
+        $cliente->direccion = $r->get('direccion');
+        $cliente->giro = $r->get('giro');
         $cliente->telefono = $r->get('telefono');
         $cliente->save();
-        return $cliente;
+        $msj=["title" => "Registro", "text" => "Te registraste"];
+        return redirect()->action('ControladorCliente@listaDeCliente')->with("mensaje", $msj);
     }
 
 
