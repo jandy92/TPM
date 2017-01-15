@@ -23,6 +23,7 @@ Route::group(['middleware'=>['checklog','web']],function(){
 
 	Route::group(['prefix' => 'contacto','middleware'=>['filtro_user']],function(){
 		Route::get('/nuevo', 'ControladorCliente@nuevoContactoForm');
+		Route::post('nuevo', 'ControladorCliente@nuevoContacto');
 		Route::get('/lista', 'ControladorCliente@listaDeContacto');	
 	});
 

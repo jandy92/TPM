@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\NuevoClienteRequest;
 use App\Http\Requests\EditarClienteRequest;
-
+use App\Http\Requests\NuevoContactoRequest;
 use App\Cliente;
 use App\Contacto;
 
@@ -19,6 +19,16 @@ class ControladorCliente extends Controller
 
     function nuevoContactoForm(){
         return view('backend.cliente.registrar_contacto');
+    }
+
+    function nuevoContacto(NuevoContactoRequest $r){
+        $contacto=new Contacto();
+        $contacto->nombre=$r->get('nombre');
+        $contacto->apellido=$r->get('apellido');
+        $contacto->email=$r->get('email');
+        $contacto->telefono=$r->get('telefono');
+        //$contacto->save();
+        return $contacto;
     }
 
     function nuevoCliente(NuevoClienteRequest $r){

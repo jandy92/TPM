@@ -16,7 +16,7 @@
 		@endif
 		<div class="well">
 			<legend>Registrar Persona de Contacto</legend>
-			<form class="form" id="form" method="post" autocomplete="on">
+			<form class="form" id="form" method="post" autocomplete="off">
 				<fieldset>
 					{{csrf_field()}}
 					<div class="form-group">
@@ -34,7 +34,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-3" for="email">Email:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="email" name="email">
+							<input type="email" class="form-control" id="email" name="email">
 						</div>
 					</div>
 					<div class="form-group">
