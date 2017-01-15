@@ -1,14 +1,23 @@
 @extends('master')
 @section('titulo','Lista de clientes')
 @section('contenido')
+<script type="text/javascript">
+	var clientes_filtrados=[];
+	var clientes=[];
+</script>
 <div class="container">
 	<div class="col">
 		<a href="{{action('ControladorCliente@nuevoClienteForm')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Registrar nuevo cliente</a>
 	</div>
 	<div class="well">
 		<legend>Lista de clientes</legend>
+<<<<<<< HEAD
 		@if(isset($clientes)&&!$clientes->isEmpty())
 			<table class="table table-hover table-striped table-condensed table-responsive  ">
+=======
+		@if(isset($cliente)&&!$cliente->isEmpty())
+			<table id="table" class="table table-hover table-striped table-condensed table-responsive  ">
+>>>>>>> 949516e51e6f4b06e09057729bdf5747c34fc323
 				<thead>
 					<th>R.U.T</th>
 					<th>Razón Social</th>
@@ -17,11 +26,25 @@
 					<th>Giro</th>
 					<th></th>
 				</thead>
-				<tbody>
+				<tbody id="tbody">
 				<form >
-				<input class="form-control" placeholder="filtrar por nombre" onkeyup="filtrarClientes()" type="search" name="filtro" id="filtro">
+				<input class="form-control" placeholder="filtrar por nombre o rut" onkeyup="filtrarClientes()" type="search" name="filtro" id="filtro">
 				</form>
+<<<<<<< HEAD
 					@foreach($clientes as $cli)
+=======
+					@foreach($cliente as $cli)
+					<script type="text/javascript">
+						tmp_c={
+							rut_cliente:"{{$cli->rut_cliente}}",
+							nombre:"{{$cli->nombre}}",
+							direccion:"{{$cli->direccion}}",
+							telefono:"{{$cli->telefono}}",
+							giro:"{{$cli->giro}}",
+						};
+						clientes.push(tmp_c);
+					</script>
+>>>>>>> 949516e51e6f4b06e09057729bdf5747c34fc323
 					<tr>
 						<td>{{$cli->rut_cliente}}</td>
 						<td>{{$cli->nombre}}</td>
@@ -30,7 +53,7 @@
 						<td>{{$cli->giro}}</td>
 						<td>
 							<a class="btn btn-link" style="color:green" href="{{action('ControladorCliente@editarClienteForm',$cli->id_cliente)}}">Editar</a>
-							<a class="btn btn-link" style="color:blue" href="#">informacion</a>
+							<a class="btn btn-link" style="color:blue" href="#">Informacion</a>
 						</td>
 					</tr>
 					@endforeach
@@ -42,26 +65,63 @@
 	</div>
 </div>
 <script type="text/javascript">
-	var clientes_filtrados=[];
 	function filtrarClientes(){
 		if($('#filtro').val()!=''){
 			console.log($('#filtro').val());
+			var url_="{{action('ControladorCliente@AJAX_busquedaClientes','#VALUE')}}".replace('#VALUE',$('#filtro').val());
+			console.log(url_);
+			$.ajax(
+				{
+					url: url_,
+					async: false,//importante
+					success: function(result){
+	        		clientes_filtrados=JSON.parse(JSON.stringify(result));
+	    		},error:function (xhr, ajaxOptions, thrownError) {
+		        console.log(xhr.status);
+		        console.log(thrownError);
+	      		}
+	    	});
+	    	//console.log(clientes_filtrados);
+	    	$("#table > tbody").empty();
+	    	for(i in clientes_filtrados){
+	    		c=clientes_filtrados[i];
+	    		edit="{{action('ControladorCliente@editarClienteForm','#ID_CLIENTE')}}".replace("#ID_CLIENTE",c.id_cliente);
+	    		info="#";
+	    		//info="{{action('ControladorCliente@editarClienteForm','#ID_CLIENTE')}}".replace("#ID_CLIENTE",c.id_cliente);
+	    		row="<tr>";
+	    		row+="<td>"+c.rut_cliente+"</td>";
+	    		row+="<td>"+c.nombre+"</td>";
+	    		row+="<td>"+c.direccion+"</td>";
+	    		row+="<td>"+c.telefono+"</td>";
+	    		row+="<td>"+c.giro+"</td>";
+				row+="<td>";
+				row+='<a class="btn btn-link" style="color:green" href="#LINK">Editar</a>'.replace("#LINK",edit);
+				row+='<a class="btn btn-link" style="color:blue" href="#LINK">Informacion</a>'.replace("#LINK",info);
+				row+="</td>";
+	    		row+="</tr>";
+	    		$("#table > tbody").append(row);
+	    	}
+		}else{
+			$("#table > tbody").empty();
+	    	for(i in clientes){
+	    		c=clientes[i];
+				edit="{{action('ControladorCliente@editarClienteForm','#ID_CLIENTE')}}".replace("#ID_CLIENTE",c.id_cliente);
+	    		info="#";
+	    		//info="{{action('ControladorCliente@editarClienteForm','#ID_CLIENTE')}}".replace("#ID_CLIENTE",c.id_cliente);
+	    		row="<tr>";
+	    		row+="<td>"+c.rut_cliente+"</td>";
+	    		row+="<td>"+c.nombre+"</td>";
+	    		row+="<td>"+c.direccion+"</td>";
+	    		row+="<td>"+c.telefono+"</td>";
+	    		row+="<td>"+c.giro+"</td>";
+				row+="<td>";
+				row+='<a class="btn btn-link" style="color:green" href="#LINK">Editar</a>'.replace("#LINK",edit);
+				row+='<a class="btn btn-link" style="color:blue" href="#LINK">Informacion</a>'.replace("#LINK",info);
+				row+="</td>";
+	    		row+="</tr>";
+	    		$("#table > tbody").append(row);
+	    	}
 		}
-		var url_="{{action('ControladorCliente@AJAX_contactosDeCliente','#VALUE')}}".replace('#VALUE',$('#filtro').val());
-		console.log(url_);
-		$.ajax(
-			{
-				url: url_,
-				async: false,//importante
-				success: function(result){
-        		clientes_filtrados=JSON.parse(JSON.stringify(result));
-    		},error:function (xhr, ajaxOptions, thrownError) {
-	        console.log(xhr.status);
-	        console.log(thrownError);
-      		}
-    	});
-
-    	console.log(clientes_filtrados);
 	}
 </script>
 @endsection
