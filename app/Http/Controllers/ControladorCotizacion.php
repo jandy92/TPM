@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cotizacion;
+use DB;
+use App\Tipo_trabajo;
 
 class ControladorCotizacion extends Controller
 {
     function nuevaCotizacionForm(){
-    	return view('backend.cotizacion.crear_cotizacion', compact('H'));
+        $tipoTrab = Tipo_trabajo::all();
+    	return view('backend.cotizacion.crear_cotizacion', compact('tipoTrab'));
     }
 
     function nuevaCotizacion(Request $r){
