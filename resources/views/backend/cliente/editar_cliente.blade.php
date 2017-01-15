@@ -144,7 +144,7 @@
 				$('#form').append($(input));
 	  			for(i in contactosId){
 	  				c=contactosId[i];
-	  				$('#form').append("<input type='hidden' name='contactos["+i+"]' value='"+objectJoin(c,',')+"'></input>");
+	  				$('#form').append("<input type='hidden' name='contactosId["+i+"]' value='"+objectJoin(c,',')+"'></input>");
 	  			}
 
   			//return false;

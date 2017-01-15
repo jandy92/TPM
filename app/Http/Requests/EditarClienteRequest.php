@@ -25,6 +25,10 @@ class EditarClienteRequest extends FormRequest
     {
         return [
             'rut'=>'required|unique:cliente,rut_cliente',
+            'nombre'=>'required',
+            'giro'=>'required',
+            'direccion'=>'required',
         ];
+        //'rut'=>'required|unique:cliente,rut_cliente',
     }
 }

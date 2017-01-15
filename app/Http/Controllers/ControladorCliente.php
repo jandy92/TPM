@@ -50,7 +50,12 @@ class ControladorCliente extends Controller
         return view("backend.cliente.editar_cliente", compact("cliente"));
     }
     function editarCliente(EditarClienteRequest $r){
-        return $r->get('id_cliente');
+        $cliente = Cliente::find($r->get('id_cliente'));
+        $cliente->rut_cliente = $r->get('rut');
+        $cliente->telefono = $r->get('telefono');
+        //$cliente->telefono = $r->get('telefono');
+        $cliente->save();
+        return $cliente;
     }
 
 
