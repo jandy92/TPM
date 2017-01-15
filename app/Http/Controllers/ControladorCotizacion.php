@@ -17,17 +17,7 @@ class ControladorCotizacion extends Controller
     }
 
     function nuevaCotizacion(Request $r){
-    	/*echo "TITULO COTIZACION= ".$r->get('titulo');
-    	echo "<br/>";
-    	echo "CLIENTE= ".$r->get('cliente');
-    	echo "<br/>";
-    	echo "CONTACTO= ".$r->get('contactos');
-    	echo "<br/>";
-    	echo "TIPO DE TRABAJO= ".$r->get('tiposTrab');
-    	echo "<br/>";
-    	echo "DESCRIPCION= ".$r->get('descTrab');
-    	echo "<br/>";
-*/
+
     	/*echo "NOMBR MATERIAL= ".$r->get('nomMat');
     	echo "<br/>";
     	echo "UNIDAD MEDIDA= ".$r->get('unidMed');
@@ -43,11 +33,8 @@ class ControladorCotizacion extends Controller
     	echo "UTILIDAD (%)= ".$r->get('utilidad');
     	echo "<br/>";
 */      $cliente=Cliente::whereRut_cliente($r->get('cliente'))->first();
-        //dd($cliente);
         $contacto = Contacto::find($r->get('contactos'));
-        //dd($contacto);
         $tipo= Tipo_trabajo::find($r->get('tiposTrab'));
-        //dd($tipo);
 
         $cotizacion = new Cotizacion(array('nombre'=>$r->get('titulo'),
             'descripcion_trabajo'=>$r->get('descTrab')
@@ -57,18 +44,8 @@ class ControladorCotizacion extends Controller
         $cotizacion->tipo_trabajo()->associate($tipo);
 
         $cotizacion->save();
-
-
-
-    	/*$cotizacion = new Cotizacion(array('nombre' => $r->get('titulo'),
-    		'descripcion_trabajo'=> $r->get('descTrab'),
-    		'rut_cliente'=> '18.008.790-7', //$r->get('descTrab'),
-    		'id_contacto'=> 2,//$r->get('descTrab'),
-    		'id_tipo_trabajo'=> 2,//$r->get('descTrab')
-    		));
-
-    	$cotizacion->save();
-    	return "cotizacion creada!";*/
+        $msj=["title" => "Cotizacion", "text" => "Cotizacion registrada con éxito"];
+        return redirect()->action('ControladorCotizacion@listaCotizacion')->with("mensaje", $msj);
     }
 
 
