@@ -27,13 +27,13 @@
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-md-3">Cliente</label>
+						<label class="control-label col-md-3">Rut cliente</label>
 						
-						<div class="col-md-5">
+						<div class="col-md-4">
 							<input type="text" class="form-control" id="cliente" name="cliente">
 						</div>
 
-						<label class="control-label col-md-2"><span id="nombre_cliente"></span>
+						<label class="control-label col-md-3"><span id="nombre_cliente"></span>
 
 						</label>
 						<div class="col-md-1">
@@ -206,7 +206,7 @@
 			var cli =$('#cliente').val();
 			var url = window.location.pathname;
 			var X ="{{action('ControladorCliente@buscaContactos','#VALUE')}}".replace('#VALUE',cli);
-
+			$('#contactos > option').remove();
 			$.ajax(
 			{
 				url: X,
@@ -215,27 +215,35 @@
 				success: function(result){
 					Y=JSON.parse(JSON.stringify(result));
 					if(Y!=""){
+						$('#nombre_cliente').css("color","blue");
 						$('#nombre_cliente').html(Y.cliente.nombre);
 						/*
 						var x = document.getElementById("mySelect");
 						var option = document.createElement("option");
 						*/
-						$('#contactos > option').remove();
-						for(i in Y.contactos){
-							var c= Y.contactos[i];
-							console.log(c.nombre);
-							$('#contactos').append('<option value="'+c.id_contacto+'" >'+c.nombre+'</option>');
 
+						$('#contactos > option').remove();
+						if(Y.contactos.length>0){
+							for(i in Y.contactos){
+								var c= Y.contactos[i];
+								console.log(c.nombre);
+								$('#contactos').append('<option value="'+c.id_contacto+'" >'+c.nombre+'</option>');
+							}
+							$('#submit_button').attr('disabled',false);
+						}else{
+							$('#contactos').append('<option value="-1" >No hay contactos asociados</option>');
 						}
-						$('#submit_button').attr('disabled',false);
 						
 					}
 					else{
-						alert("Cliente no encontrado");
+						$('#contactos').append('<option value="-1" >--</option>');
+						//alert("Cliente no encontrado");
+						$('#nombre_cliente').css("color","red");
+						$('#nombre_cliente').html("Cliente no encontrado");
 						$('#submit_button').attr('disabled',true);
 					}
-					console.log(Y.cliente.nombre);
-					console.log(Y.contactos[0].nombre);
+					//console.log(Y.cliente.nombre);
+					//console.log(Y.contactos[0].nombre);
 
         		
         		},
