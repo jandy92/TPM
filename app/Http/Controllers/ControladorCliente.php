@@ -53,7 +53,8 @@ class ControladorCliente extends Controller
         $cliente = Cliente::find($r->get('id_cliente'));
         $cliente->rut_cliente = $r->get('rut');
         $cliente->telefono = $r->get('telefono');
-        //$cliente->telefono = $r->get('telefono');
+        $cliente->telefono = $r->get('telefono');
+        $cliente->telefono = $r->get('telefono');
         $cliente->save();
         return $cliente;
     }

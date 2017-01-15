@@ -86,7 +86,7 @@
 						<a href="#" class="btn btn-warning">Cancelar</a>
 					</div>
 				</div>
-					</fieldset>
+					</fieldset> 
 				</form>
 			</div>
 		</div>

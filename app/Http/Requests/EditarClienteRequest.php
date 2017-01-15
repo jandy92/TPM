@@ -21,7 +21,7 @@ class EditarClienteRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules() 
     {
         return [
             'rut'=>'required|unique:cliente,rut_cliente',
