@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Cotizacion;
 use DB;
 use App\Tipo_trabajo;
+use App\Cliente;
+use App\Contacto;
 
 class ControladorCotizacion extends Controller
 {
@@ -17,7 +19,7 @@ class ControladorCotizacion extends Controller
     function nuevaCotizacion(Request $r){
     	/*echo "TITULO COTIZACION= ".$r->get('titulo');
     	echo "<br/>";
-    	echo "CLIENTE= ".$r->get('clientes');
+    	echo "CLIENTE= ".$r->get('cliente');
     	echo "<br/>";
     	echo "CONTACTO= ".$r->get('contactos');
     	echo "<br/>";
@@ -25,7 +27,8 @@ class ControladorCotizacion extends Controller
     	echo "<br/>";
     	echo "DESCRIPCION= ".$r->get('descTrab');
     	echo "<br/>";
-    	echo "NOMBR MATERIAL= ".$r->get('nomMat');
+*/
+    	/*echo "NOMBR MATERIAL= ".$r->get('nomMat');
     	echo "<br/>";
     	echo "UNIDAD MEDIDA= ".$r->get('unidMed');
     	echo "<br/>";
@@ -38,9 +41,26 @@ class ControladorCotizacion extends Controller
     	echo "GASTO FIJO= ".$r->get('gastoFijo');
     	echo "<br/>";
     	echo "UTILIDAD (%)= ".$r->get('utilidad');
-    	echo "<br/>";*/
+    	echo "<br/>";
+*/      $cliente=Cliente::whereRut_cliente($r->get('cliente'))->first();
+        //dd($cliente);
+        $contacto = Contacto::find($r->get('contactos'));
+        //dd($contacto);
+        $tipo= Tipo_trabajo::find($r->get('tiposTrab'));
+        //dd($tipo);
 
-    	$cotizacion = new Cotizacion(array('nombre' => $r->get('titulo'),
+        $cotizacion = new Cotizacion(array('nombre'=>$r->get('titulo'),
+            'descripcion_trabajo'=>$r->get('descTrab')
+            ));
+        $cotizacion->cliente()->associate($cliente);
+        $cotizacion->contacto()->associate($contacto);
+        $cotizacion->tipo_trabajo()->associate($tipo);
+
+        $cotizacion->save();
+
+
+
+    	/*$cotizacion = new Cotizacion(array('nombre' => $r->get('titulo'),
     		'descripcion_trabajo'=> $r->get('descTrab'),
     		'rut_cliente'=> '18.008.790-7', //$r->get('descTrab'),
     		'id_contacto'=> 2,//$r->get('descTrab'),
@@ -48,7 +68,7 @@ class ControladorCotizacion extends Controller
     		));
 
     	$cotizacion->save();
-    	return "cotizacion creada!";
+    	return "cotizacion creada!";*/
     }
 
 
