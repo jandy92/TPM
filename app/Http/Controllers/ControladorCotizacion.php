@@ -50,6 +50,7 @@ class ControladorCotizacion extends Controller
 
 
     function listaCotizacion(){
-    	return view('backend.cotizacion.lista_cotizacion');
+        $cotizacion=Cotizacion::all();
+    	return view('backend.cotizacion.lista_cotizacion',compact("cotizacion"));
     }
 }
