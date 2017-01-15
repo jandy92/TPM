@@ -41,7 +41,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-3">Persona de contacto</label>
 						<div class="col-md-9">
-							<select name="contactos" style="width: 300px">
+							<select name="contactos" id="contactos" style="width: 300px">
 							    <option>Seleccionar...</option>
 							</select>
 						</div>
@@ -210,7 +210,17 @@
 				success: function(result){
 					Y=JSON.parse(JSON.stringify(result));
 					if(Y!=""){
-						alert("Cliente encontrado");
+						var x = document.getElementById("mySelect");
+						var option = document.createElement("option");
+						$('#contactos > option').remove();
+						for(i in Y.contactos){
+							var c= Y.contactos[i];
+							console.log(c.nombre);
+							$('#contactos').append('<option value="'+c.id_contacto+'" >'+c.nombre+'</option>');
+
+						}
+						
+						
 					}
 					else{
 						alert("Cliente no encontrado");
