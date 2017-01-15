@@ -1,7 +1,7 @@
 @extends('master')
 @section('titulo','Crear cotización')
 @section('contenido')
-{{$tipoTrab}}
+{{$tipoTrab[0]->nombre}}
 <div class="container">
 	<div class="col col-md-8 col-md-push-2">
 		@if($errors->all())
@@ -58,7 +58,9 @@
 						<label class="control-label col-md-3">Tipo de trabajo</label>
 						<div class="col-md-9">
 							<select name="tiposTrab" style="width: 300px">
-							    <option>Seleccionar...</option>
+								@foreach($tipoTrab as $c)
+									<option value="{{$c->id_tipo_trabajo}}">{{$c->nombre}}</option>
+								@endforeach
 							</select>
 						</div>
 					</div>
