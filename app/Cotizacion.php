@@ -11,21 +11,22 @@ class Cotizacion extends Model
    protected $primaryKey='folio_cotizacion';
 
 
-   public function contactos(){
+	public function contacto(){
  		return $this->belongsTo('App\Contacto','id_contacto','id_contacto');
  	}
 
- 	public function clientes(){
+ 	public function cliente(){
 
- 		return $this->belongsTo('App\Cliente','rut_cliente','rut_cliente');
+ 		return $this->belongsTo('App\Cliente','id_cliente','id_cliente');
  	}
 
  	public function tipo_trabajo(){
- 		return $this->hasMany('App\Id_trabajo','id_tipo_item','id_tipo_item');
+ 		return $this->belongsTo('App\Tipo_trabajo','id_tipo_trabajo','id_tipo_trabajo');
+ 		//return $this->hasMany('App\Id_trabajo','id_tipo_item','id_tipo_item');
  	}
 
  	public function item(){
- 		return $this->belongsToMany('App\Item','cotizacion_item','id_item','folio_cotizacion')
+ 		return $this->belongsToMany('App\Item','cotizacion_item','id_item','folio_cotizacion');
  	}
 
 

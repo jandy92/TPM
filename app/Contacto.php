@@ -11,8 +11,10 @@ class Contacto extends Model{
     protected $primaryKey='id_contacto';
     
     public function clientes(){
- 		return $this->belongsToMany('App\Cliente');
- 		//return $this->belongsToMany('App\Cliente','cliente_contacto','id_contacto','id_cliente');
- 		
+ 		return $this->belongsToMany('App\Cliente');	
  	} 
+
+	public function cotizaciones(){
+		return $this->hasMany('App\Cotizacion','id_contacto','id_contacto');
+ 	}
 }

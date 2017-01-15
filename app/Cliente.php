@@ -12,5 +12,9 @@ class Cliente extends Model{
  
  	public function contactos(){
  		return $this->belongsToMany('App\Contacto','cliente_contacto','id_cliente','id_contacto');
- 	}   
+ 	}
+
+ 	public function cotizaciones(){
+ 		return $this->hasMany('App\Cotizacion','id_cliente','id_cliente');
+ 	}
 }

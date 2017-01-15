@@ -11,6 +11,7 @@ class Tipo_trabajo extends Model
    protected $primaryKey='id_tipo_trabajo';
 
    public function cotizacion(){
-   	return $this->belongsTo('App\Cotizacion','id_tipo_trabajo','id_tipo_trabajo');
+		return $this->hasMany('App\Cotizacion','id_tipo_trabajo','id_tipo_trabajo');
+		//return $this->belongsTo('App\Cotizacion','id_tipo_trabajo','id_tipo_trabajo');
    }
 }
