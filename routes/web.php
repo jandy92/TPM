@@ -48,8 +48,8 @@ Route::group(['middleware'=>['checklog','web']],function(){
 });
 
 
-Route::get('buscador/{rut_cliente}','ControladorCliente@buscaContactos');
-Route::get('API/clientesdecontacto/{id}','ControladorCliente@AJAX_contactosDeCliente');
+Route::get('API/buscarCliente/{rut_cliente}','ControladorCliente@buscaContactos');
+Route::get('API/contactosDeCliente/{id}','ControladorCliente@AJAX_contactosDeCliente');
 Route::get('API/buscarclientes/{texto}','ControladorCliente@AJAX_busquedaClientes');
 
 Route::get('/activar/{token}','ControladorUsuario@activarUsuarioToken');
