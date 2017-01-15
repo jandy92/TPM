@@ -51,7 +51,10 @@ class ControladorCliente extends Controller
     }
     function editarCliente(EditarClienteRequest $r){
         $cliente = Cliente::find($r->get('id_cliente'));
-        $cliente->rut_cliente = $r->get('rut');
+        $rutTemp = $r->get('rut');
+        if (strlen (  $rutTemp ) > 1){
+            $cliente->rut_cliente = $r->get('rut');
+        }
         $cliente->telefono = $r->get('telefono');
         $cliente->telefono = $r->get('telefono');
         $cliente->telefono = $r->get('telefono');

@@ -24,7 +24,7 @@ class EditarClienteRequest extends FormRequest
     public function rules() 
     {
         return [
-            'rut'=>'required|unique:cliente,rut_cliente',
+            'rut'=>'unique:cliente,rut_cliente',
             'nombre'=>'required',
             'giro'=>'required',
             'direccion'=>'required',
