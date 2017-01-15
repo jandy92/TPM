@@ -4,7 +4,7 @@
 	<div class = "container">
 		<div class = "col col-md-8 col-md-push-2">
 			<div class = "well">
-				<legend>Pate La Piara</legend>
+				<legend>Editar Cliente</legend>
 				@foreach ($errors->all() as $error)
                 <p class="alert alert-danger">{{ $error }}</p>
                 @endforeach 
@@ -81,7 +81,7 @@
 				<div class="form-group">
 					<div class="col-md-12 col-md-push-8">
 						<div class="row">&nbsp;</div>
-						<button type="submit" class="btn btn-success">Registrar</button>
+						<button type="submit" class="btn btn-success">Editar</button>
 						&nbsp;
 						<a href="{{action('ControladorCliente@listaDeCliente')}}" class="btn btn-warning">Cancelar</a>
 					</div>
