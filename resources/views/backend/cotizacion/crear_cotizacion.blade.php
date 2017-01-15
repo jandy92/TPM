@@ -28,10 +28,15 @@
 
 					<div class="form-group">
 						<label class="control-label col-md-3">Cliente</label>
-						<div class="col-md-7">
+						
+						<div class="col-md-5">
 							<input type="text" class="form-control" id="cliente" name="cliente">
 						</div>
-						<div class="col-md-2">
+
+						<label class="control-label col-md-2"><span id="nombre_cliente"></span>
+
+						</label>
+						<div class="col-md-1">
 							<button type="button" onclick="verificar()" class="btn btn-primary">Verificar</button>
 						</div>
 					</div>
@@ -177,7 +182,7 @@
 				<div class="form-group">
 					<div class="col-md-12 col-md-push-8">
 						<div class="row">&nbsp;</div>
-						<button type="submit" class="btn btn-success">Guardar</button>
+						<button id="submit_button" type="submit" class="btn btn-success" disabled>Guardar</button>
 						&nbsp;
 						<a href="#" class="btn btn-warning">Cancelar</a>
 					</div>
@@ -210,8 +215,11 @@
 				success: function(result){
 					Y=JSON.parse(JSON.stringify(result));
 					if(Y!=""){
+						$('#nombre_cliente').html(Y.cliente.nombre);
+						/*
 						var x = document.getElementById("mySelect");
 						var option = document.createElement("option");
+						*/
 						$('#contactos > option').remove();
 						for(i in Y.contactos){
 							var c= Y.contactos[i];
@@ -219,11 +227,12 @@
 							$('#contactos').append('<option value="'+c.id_contacto+'" >'+c.nombre+'</option>');
 
 						}
-						
+						$('#submit_button').attr('disabled',false);
 						
 					}
 					else{
 						alert("Cliente no encontrado");
+						$('#submit_button').attr('disabled',true);
 					}
 					console.log(Y.cliente.nombre);
 					console.log(Y.contactos[0].nombre);
