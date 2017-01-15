@@ -23,7 +23,7 @@
 				</thead>
 				<tbody id="tbody">
 				<form >
-				<input class="form-control" placeholder="filtrar por nombre" onkeyup="filtrarClientes()" type="search" name="filtro" id="filtro">
+				<input class="form-control" placeholder="filtrar por nombre o rut" onkeyup="filtrarClientes()" type="search" name="filtro" id="filtro">
 				</form>
 					@foreach($cliente as $cli)
 					<script type="text/javascript">
