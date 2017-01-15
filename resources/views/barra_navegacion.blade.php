@@ -23,6 +23,16 @@
             <li><a href="{{action('ControladorCliente@listaDeCliente')}}">Lista de clientes</a></li>
           </ul>
         </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contactos <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{action('ControladorCliente@nuevoContactoForm')}}">Registrar contacto</a></li>                      
+            <li role="separator" class="divider"></li>
+            <li><a href="{{action('ControladorCliente@listaDeContacto')}}">Lista de contactos</a></li>
+          </ul>
+        </li>
+
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cotizaciones <span class="caret"></span></a>
           <ul class="dropdown-menu">

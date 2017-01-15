@@ -17,6 +17,10 @@ class ControladorCliente extends Controller
     	return view('backend.cliente.registrar_cliente');
     }
 
+    function nuevoContactoForm(){
+        return view('backend.cliente.registrar_contacto');
+    }
+
     function nuevoCliente(NuevoClienteRequest $r){
     	//$contactos=[];
         $cliente=new Cliente(array(
@@ -66,8 +70,13 @@ class ControladorCliente extends Controller
 
 
     function listaDeCliente(){
-    	$cliente=Cliente::all();
-    	return view('backend.cliente.lista_cliente',compact('cliente'));
+    	$clientes=Cliente::all();
+    	return view('backend.cliente.lista_cliente',compact('clientes'));
+    }
+
+    function listaDeContacto(){
+        $contactos=Contacto::all();
+        return view('backend.cliente.lista_contacto',compact('contactos'));
     }
 
     function AJAX_contactosDeCliente($id_cliente){
@@ -95,4 +104,6 @@ class ControladorCliente extends Controller
             return response()->json(['cliente'=>$cliente,'contactos'=>$cliente->contactos]);
         }
     }
+
+
 }

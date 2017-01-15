@@ -7,11 +7,11 @@
 	</div>
 	<div class="well">
 		<legend>Lista de clientes</legend>
-		@if(isset($cliente)&&!$cliente->isEmpty())
+		@if(isset($clientes)&&!$clientes->isEmpty())
 			<table class="table table-hover table-striped table-condensed table-responsive  ">
 				<thead>
 					<th>R.U.T</th>
-					<th>Nombre</th>
+					<th>Razón Social</th>
 					<th>Dirección</th>
 					<th>Teléfono</th>
 					<th>Giro</th>
@@ -21,7 +21,7 @@
 				<form >
 				<input class="form-control" placeholder="filtrar por nombre" onkeyup="filtrarClientes()" type="search" name="filtro" id="filtro">
 				</form>
-					@foreach($cliente as $cli)
+					@foreach($clientes as $cli)
 					<tr>
 						<td>{{$cli->rut_cliente}}</td>
 						<td>{{$cli->nombre}}</td>
