@@ -51,12 +51,6 @@ class ControladorCotizacion extends Controller
 
     function listaCotizacion(){
         $cotizacion=Cotizacion::all();
-        foreach ($cotizacion as $key =>$cot) {
-            $aux = Cliente::where('id_cliente','=',$cot->id_cliente)->first();
-            $cot['rut_cliente']= $aux->rut_cliente;
-            $aux2=Tipo_trabajo::where('id_tipo_trabajo','=',$cot->id_tipo_trabajo)->first();
-            $cot['tipo_trabajo'] = $aux2->nombre;
-        }
     	return view('backend.cotizacion.lista_cotizacion',compact("cotizacion"));
     }
 

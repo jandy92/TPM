@@ -20,6 +20,7 @@
 					<th>N° Folio</th>
 					<th>Título</th>
 					<th>Cliente</th>
+					<th>Contacto</th>
 					<th>Tipo de trabajo</th>
 					<th>Detalle</th>
 					<th>PDF</th>
@@ -49,6 +50,7 @@
 						<td>{{$cot->nombre}}</td>
 
 						<td>{{$cot->cliente->nombre}}</td>
+						<td>{{$cot->contacto->nombre}}</td>
 						<td>{{$cot->tipo_trabajo->nombre}}</td>
 						
 						<td>{{$cot->descripcion_trabajo}}</td>
