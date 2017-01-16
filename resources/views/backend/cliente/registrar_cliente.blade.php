@@ -54,7 +54,7 @@
 							<input type="phone" class="form-control" id="telefono" name="telefono">
 						</div>
 					</div>
-					<button type="button" class="btn btn-primary">Agregar Contacto</button>
+					<button type="button" class="btn btn-primary">Asociar contacto Contacto</button>
 
 
 
