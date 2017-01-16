@@ -54,6 +54,9 @@
 							<input type="phone" class="form-control" id="telefono" name="telefono">
 						</div>
 					</div>
+					<button type="button" class="btn btn-primary">Agregar Contacto</button>
+
+
 
 					<div class="row">&nbsp;</div>
 					<div class="col">
@@ -70,6 +73,7 @@
   											<th>Teléfono</th>
   											<th></th>
   										</thead>
+  									<!--
   										<tbody>
   											<tr>
 	  											<td><input class="form-control" type="text" id="new_nombre" ></td>
@@ -79,11 +83,13 @@
 	  											<td><button type="button" onclick="addContacto()" class="btn btn-primary">+</button></td>
   											</tr>
   										</tbody>
+  									-->	
 	  								</table>
 	  							</div>
 							</div>
 						</div>
 					</div>
+		
 				<div class="form-group">
 					<div class="col-md-12 col-md-push-8">
 						<div class="row">&nbsp;</div>
@@ -92,7 +98,7 @@
 						<a href="#" class="btn btn-warning">Cancelar</a>
 					</div>
 				</div>
-
+<!--
 				</fieldset>
 
 			</form>
@@ -183,5 +189,6 @@
 		    }
 		    return arr.join(sep);
 		}
+-->		
 </script>
 @endsection
