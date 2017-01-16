@@ -76,3 +76,6 @@ $this->get('/login', 'Auth\LoginController@showLoginForm');
 $this->post('/login', 'Auth\LoginController@login');
 //Auth::routes();
 
+Route::get('/test',function(){
+	return view('test');
+});

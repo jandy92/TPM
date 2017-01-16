@@ -8,8 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Cotizacion;
 use App\Tipo_trabajo;
 
-class ControladorTrabajo extends Controller
-{
+class ControladorTrabajo extends Controller{
 	function nuevoTrabajoForm($folio_cotizacion){
 		$cotizacion = Cotizacion::find($folio_cotizacion);
 		$tipo_trabajo = Tipo_trabajo::all();
@@ -23,7 +22,8 @@ class ControladorTrabajo extends Controller
             	'fecha_pago'=>$r->get('fecha_pago'),
             	'receptor_factura'=>$r->get('receptor_factura'),
             	'orden_trabajo'=>$r->get('orden_trabajo'),
-            	'comentario'=>$r->get('comentario')
+            	'comentario'=>$r->get('comentario'),
+            	'orden_compra'=>$r->get('orden_compra')
         	));
         	//$trabajo->save();
 
