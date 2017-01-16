@@ -103,91 +103,43 @@
 		</div>
 	</div>
 </div>
-<!--
+
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to save changes you made to document before closing?</p>
+                <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
+            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <h3>Modal Body</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+    </div>
+  </div>
+</div>
 <script type="text/javascript">
-		$('#rut').focus();
-		var id=0;
-		var contactos={};
-		function addContacto(){
-			var nombre=$('#new_nombre').val();
-			var apellido=$('#new_apellido').val();
-			var email=$('#new_email').val();
-			var telefono=$('#new_telefono').val();
-
-			if(nombre.trim()!='' && apellido.trim()!=''){
-				$('#new_nombre').val('');
-				$('#new_apellido').val('');
-				$('#new_email').val('');
-				$('#new_telefono').val('');
-				contactos[id]={'nombre':nombre,'apellido':apellido,'email':email,'telefono':telefono};
-				renderTable();
-				id++;
-			}
-		}
-
-		function renderTable(){
-			$('#tabla_contactos').find("tr:gt(1)").remove();  
-			for(var c in contactos){
-				var row='';
-				row+='<td>'+contactos[c].nombre+'</td>';
-				row+='<td>'+contactos[c].apellido+'</td>';
-				row+='<td>'+contactos[c].email+'</td>';
-				row+='<td>'+contactos[c].telefono+'</td>';
-				row+='<td><button type="button" onclick="remContacto('+parseInt(c)+')" class="btn btn-danger">-</button</td>';
-				$('#tabla_contactos tr:last').after('<tr id="'+c+'">'+row+'</tr>');
-				//console.log(contactos[c].nombre);
-			}
-		}
-
-		function remContacto(id){
-			if (confirm('Seguro de eliminar persona de contacto seleccionada?')) {
-				delete contactos[id]
-				renderTable();
-			}
-		}
-
-		$(window).keydown(function(event){
-		    if(event.keyCode == 13) {
-		      	event.preventDefault();
-				if($('#new_nombre').is(":focus")||$('#new_apellido').is(":focus")||$('#new_email').is(":focus")||$('#new_telefono').is(":focus")){
-		      	addContacto();
-		      	$('#new_nombre').focus();
-				}else{
-					if($('#rut').is(":focus")){
-						$('#nombre').focus();	
-					}else if($('#nombre').is(":focus")){
-						$('#giro').focus();
-					}else if($('#giro').is(":focus")){
-						$('#direccion').focus();
-					}else if($('#direccion').is(":focus")){
-						$('#telefono').focus();
-					}
-				}
-		      	return false;
-		    }
-  		});
-
-  		function submit_form(){
-  			var input = $("<input>")
-               .attr("type", "hidden")
-               .attr("name", "hola").val("xd");
-			$('#form').append($(input));
-  			for(i in contactos){
-  				c=contactos[i];
-  				$('#form').append("<input type='hidden' name='contactos["+i+"]' value='"+objectJoin(c,',')+"'></input>");
-  			}
-
-  			//return false;
-
-  		}
-  		function objectJoin(obj, sep) {
-		    var arr = [], p, i = 0;
-		    for (p in obj){
-		        arr[i] = obj[p];
-		    	i++;
-		    }
-		    return arr.join(sep);
-		}
--->		
+	$('#modal').modal('toggle');
 </script>
 @endsection
