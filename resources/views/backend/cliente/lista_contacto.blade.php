@@ -24,7 +24,7 @@
 						<td>{{$cont->email}}</td>
 						<td>{{$cont->telefono}}</td>
 						<td>
-							<a class="btn btn-link" style="color:green" href="#">Editar</a>
+							<a class="btn btn-link" style="color:green" href="{{action('ControladorContacto@editarContactoForm',$cont->id_contacto)}}">Editar</a>
 						</td>
 					</tr>
 					@endforeach

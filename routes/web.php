@@ -24,7 +24,9 @@ Route::group(['middleware'=>['checklog','web']],function(){
 	Route::group(['prefix' => 'contacto','middleware'=>['filtro_user']],function(){
 		Route::get('/nuevo', 'ControladorCliente@nuevoContactoForm');
 		Route::post('nuevo', 'ControladorCliente@nuevoContacto');
-		Route::get('/lista', 'ControladorCliente@listaDeContacto');	
+		Route::get('/lista', 'ControladorCliente@listaDeContacto');
+		Route::get('/{id}/editar', 'ControladorContacto@editarContactoForm');
+		Route::post('/{id}/editar', 'ControladorContacto@editarContacto');	
 	});
 
 	Route::group(['prefix' => 'trabajo','middleware'=>['filtro_user']],function(){
