@@ -25,6 +25,7 @@ class ControladorTrabajo extends Controller
             	'orden_trabajo'=>$r->get('orden_trabajo'),
             	'comentario'=>$r->get('comentario')
         	));
+        	//$trabajo->save();
 
 	}
 }
