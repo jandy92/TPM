@@ -57,13 +57,21 @@ class ControladorCotizacion extends Controller
 
     function busquedaCotizacion($texto){
 
-        $cotizacion=DB::table('cotizacion')->where('folio_cotizacion','LIKE','%'.$texto.'%')->orWhere('nombre','LIKE','%'.$texto.'%')->get();
+        $cotizacion=Cotizacion::whereHas('contacto',function($q) use($texto){
+            $q->where('nombre','like','%'.$texto.'%');
+        })->orWhereHas('cliente',function($q) use($texto){
+            $q->where('nombre','like','%'.$texto.'%');}
+        )->orWhere('nombre','like','%'.$texto.'%')->orWhere('folio_cotizacion','like','%'.$texto.'%')->get();
 
-        foreach ($cotizacion as $key =>$cot) {
+
+        foreach ($cotizacion as $key => $cot) {
             $aux = Cliente::where('id_cliente','=',$cot->id_cliente)->first();
-            $cot['rut_cliente']= $aux->rut_cliente;
-            $aux2=Tipo_trabajo::where('id_tipo_trabajo','=',$cot->id_tipo_trabajo)->first();
-            $cot['tipo_trabajo'] = $aux2->nombre;
+            $cot['nombre_cliente'] = $aux->nombre;
+            $aux2 = Contacto::where('id_contacto','=',$cot->id_contacto)->first();
+            $cot['nombre_contacto']=$aux2->nombre;
+            $cot['apellido_contacto']=$aux2->apellido;
+            $aux3= Tipo_trabajo::where('id_tipo_trabajo','=',$cot->id_tipo_trabajo)->first();
+            $cot['nombre_tipo_trabajo']=$aux3->nombre;
         }
 
         return response()->json($cotizacion);
