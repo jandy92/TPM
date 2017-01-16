@@ -30,7 +30,8 @@ Route::group(['middleware'=>['checklog','web']],function(){
 	});
 
 	Route::group(['prefix' => 'trabajo','middleware'=>['filtro_user']],function(){
-		Route::get('/nuevo', 'ControladorTrabajo@nuevoTrabajoForm');	
+		Route::get('/{id}/nuevo', 'ControladorTrabajo@nuevoTrabajoForm');
+		Route::post('/{id}/nuevo', 'ControladorTrabajo@nuevoTrabajo');	
 	});
 	
 	Route::group(['prefix' => 'cotizacion','middleware'=>['filtro_user']],function(){
