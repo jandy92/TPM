@@ -1,6 +1,7 @@
 @extends('master')
 @section('titulo','Lista de Cotizaciones')
 @section('contenido')
+<script type="text/javascript" src="{{asset('js/jspdf.min.js')}}"></script>
 <script type="text/javascript">
 	var cotizaciones_filtradas=[];
 	var cotizaciones=[];
@@ -51,7 +52,7 @@
 						<td>{{$cot->tipo_trabajo->nombre}}</td>
 						
 						<td>{{$cot->descripcion_trabajo}}</td>
-						<td><a class="btn btn-link" style="color:red" href="#">PDF</a></td>
+						<td><a class="btn btn-link" style="color:red" href="javascript:genPDF()">PDF</a></td>
 						<td><a class="btn btn-primary" href="{{action('ControladorTrabajo@nuevoTrabajoForm',$cot->folio_cotizacion)}}">Aceptar Cotizacón</a></td>
 						<td>
 							<a class="btn btn-link" style="color:green" href="#">Editar</a>
@@ -144,5 +145,17 @@
 	    	}
 		}
 	}
+
+	function genPDF() {
+		console.log("generando pdf");
+	
+		var doc = new jsPDF();
+		
+		doc.text(20,20,'TEST Message!!');
+		doc.addPage();
+		doc.text(20,20,'TEST Page 2!');
+		doc.save('Test.pdf');
+	}
+
 </script>
 @endsection
