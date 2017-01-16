@@ -18,6 +18,7 @@ class TablaCliente extends Migration{
             $table->string('direccion');
             $table->string('giro');
             $table->string('telefono');
+            $table->softDeletes();
             $table->timestamps();
             //$table->primary('rut_cliente');
         });
