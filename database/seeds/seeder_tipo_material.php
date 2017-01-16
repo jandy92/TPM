@@ -13,8 +13,14 @@ class seeder_tipo_material extends Seeder
     public function run()
     {
     	$c=new Tipo_material(array(
-            'nombre'=>'CCU',
-            'rut_cliente'=>'18008790-7'
+            'id_tipo_item'=>1,
+            'nombre'=>'Material'
+        ));
+        $c->save();
+
+        $c=new Tipo_material(array(
+            'id_tipo_item'=>2,
+            'nombre'=>'Mano de Obra'
         ));
         $c->save();
     }

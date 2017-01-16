@@ -14,6 +14,7 @@ class TablaEstado extends Migration{
         Schema::create('estado', function (Blueprint $table){
             $table->increments('id_estado');
             $table->string('nombre');
+            $table->softDeletes();
         });
     }
 

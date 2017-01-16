@@ -16,6 +16,7 @@ class TablaClienteContacto extends Migration
         Schema::create('cliente_contacto', function (Blueprint $table){
             $table->integer('id_cliente')->unsigned();
             $table->integer('id_contacto')->unsigned();
+            $table->softDeletes();
 
 
             $table->foreign('id_cliente')->references('id_cliente')->on('cliente')->onDelete('cascade')->onUpdate('cascade');

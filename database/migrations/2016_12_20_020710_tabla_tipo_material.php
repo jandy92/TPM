@@ -16,6 +16,8 @@ class TablaTipoMaterial extends Migration
         Schema::create('tipo_item', function (Blueprint $table){
             $table->increments('id_tipo_item');
             $table->string('nombre');
+            $table->softDeletes();
+            $table->timestamps();
         });
            
     }

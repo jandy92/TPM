@@ -16,6 +16,7 @@ class TablaTipoTrabajo extends Migration
         Schema::create('tipo_trabajo', function (Blueprint $table){
             $table->increments('id_tipo_trabajo');
             $table->string('nombre');
+            $table->softDeletes();
             $table->timestamps();
         });
 

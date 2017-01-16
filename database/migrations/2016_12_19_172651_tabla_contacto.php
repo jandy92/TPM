@@ -19,6 +19,7 @@ class TablaContacto extends Migration
             $table->string('apellido');
             $table->string('email');
             $table->string('telefono');
+            $table->softDeletes();
             $table->timestamps();
             //$table->foreign('rut_cliente')->references('rut_cliente')->on('cliente')->onUpdate('cascade')->onDelete('cascade');
         });
