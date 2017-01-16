@@ -6,8 +6,6 @@
 div.form-group {
     padding-bottom: 25px;
 }
-
-
 </style>
 </head>
 <div class="container">
@@ -163,7 +161,26 @@ div.form-group {
 		</div>
 	</div>
 </div>
+
+<div id="modal_contactos" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				Header
+			</div>
+			 <div class="modal-body">
+			 	Body
+			 </div>
+			  <div class="modal-footer">
+				  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			  </div>
+		</div>
+	</div>
+</div>
+
 <script type="text/javascript">
+		$("#modal_contactos").modal()
+		/*
 		$('#rut').on('input',function(){
 			//quitar espacios y validar rut al ingresar valores
 			var r=$('#rut').val();
@@ -179,5 +196,6 @@ div.form-group {
 		$('#rut').Rut({
 			format_on: 'keyup'
 		});
+		*/
 </script>
 @endsection

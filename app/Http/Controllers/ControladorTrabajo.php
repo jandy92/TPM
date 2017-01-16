@@ -8,8 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Cotizacion;
 use App\Tipo_trabajo;
 
-class ControladorTrabajo extends Controller
-{
+class ControladorTrabajo extends Controller{
 	function nuevoTrabajoForm($folio_cotizacion){
 		$cotizacion = Cotizacion::find($folio_cotizacion);
 		$tipo_trabajo = Tipo_trabajo::all();

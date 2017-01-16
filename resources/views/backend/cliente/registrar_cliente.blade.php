@@ -47,7 +47,6 @@
 							<input type="text" class="form-control" id="direccion" name="direccion">
 						</div>
 					</div>
-
 					<div class="form-group">
 						<label class="control-label col-md-3" for="telefono">Teléfono:</label>
 						<div class="col-md-9">
@@ -98,13 +97,13 @@
 						<a href="#" class="btn btn-warning">Cancelar</a>
 					</div>
 				</div>
-<!--
 				</fieldset>
 
 			</form>
 		</div>
 	</div>
 </div>
+<!--
 <script type="text/javascript">
 		$('#rut').focus();
 		var id=0;
