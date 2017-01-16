@@ -39,7 +39,9 @@ Route::group(['middleware'=>['checklog','web']],function(){
 
 	Route::group(['prefix' => 'tipoTrabajo','middleware'=>['filtro_user']],function(){
 		Route::get('/', 'ControladorTipoTrabajo@tipoTrabajoForm');
-		Route::post('', 'ControladorTipoTrabajo@nuevoTipoTrabajo');	
+		Route::post('', 'ControladorTipoTrabajo@nuevoTipoTrabajo');
+		Route::get('/{id}/editar', 'ControladorTipoTrabajo@editarTipoTrabajoForm');
+		Route::post('/{id}/editar', 'ControladorTipoTrabajo@editarTipoTrabajo');
 	});
 
 	Route::group(['prefix' => 'administracion/usuario','middleware'=>['filtro_admin']],function(){
