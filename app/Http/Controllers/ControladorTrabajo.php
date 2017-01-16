@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Requests\NuevoTrabajoRequest;
 use App\Http\Controllers\Controller;
 use App\Cotizacion;
+use App\Tipo_trabajo;
 
 class ControladorTrabajo extends Controller
 {
 	function nuevoTrabajoForm($folio_cotizacion){
 		$cotizacion = Cotizacion::find($folio_cotizacion);
-    	return view('backend.trabajo.formulario_trabajo', compact("cotizacion"));
+		$tipo_trabajo = Tipo_trabajo::all();
+    	return view('backend.trabajo.formulario_trabajo', compact("cotizacion"), compact("tipo_trabajo"));
     }
     //
     function nuevoTrabajo(NuevoTrabajoRequest $r){

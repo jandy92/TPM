@@ -31,7 +31,7 @@ div.form-group {
 					<div class="form-group">
 						<label class="control-label col-md-3" for="titulo">Título:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="titulo" name="titulo">
+							<input type="text" class="form-control" id="titulo" name="titulo" value={{$cotizacion->nombre}} readonly>
 
 						</div>
 					</div>
@@ -39,7 +39,7 @@ div.form-group {
 					<div class="form-group">
 						<label class="control-label col-md-3" for="cliente">Cliente:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="cliente" name="cliente">
+							<input type="text" class="form-control" id="cliente" name="cliente" value={{$cotizacion->cliente->nombre}} readonly>
 						</div>
 					</div>
 
@@ -48,21 +48,32 @@ div.form-group {
 					<div class="form-group">
 						<label class="control-label col-md-3" for="contacto">Persona Contacto:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="contacto" name="contacto" readonly>
+							<input type="text" class="form-control" id="contacto" name="contacto" value={{$cotizacion->contacto->nombre}}  readonly>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="control-label col-md-3" for="tipo">Tipo de trabajo:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="tipo" name="tipo">
+							<select name="tipo_trabajo" style="width: 487px">
+								@foreach($tipo_trabajo as $c)
+									<option value="{{$c->id_tipo_trabajo}}">{{$c->nombre}}</option>
+								@endforeach
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3" for="numero_factura">Nº factura:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="numero_factura" name="numero_factura">
+
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-md-3" for="numeroOrden">NºOT:</label>
+						<label class="control-label col-md-3" for="orden_trabajo">NºOT:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="numeroOrden" name="numeroOrden">
+							<input type="text" class="form-control" id="orden_trabajo" name="orden_trabajo">
 						</div>
 					</div>
 
@@ -81,16 +92,16 @@ div.form-group {
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-md-3" for="fechaCobro">Fecha de emision:</label>
+						<label class="control-label col-md-3" for="fecha_emision">Fecha de emision:</label>
 						<div class="col-md-9">
-							<input type="date" class="form-control" id="fechaCobro" name="fechaCobro">
+							<input type="date" class="form-control" id="fecha_emision" name="fecha_emision">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="control-label col-md-3" for="folio">Folio:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="folio" name="folio">
+							<input type="text" class="form-control" id="folio" name="folio" value={{$cotizacion->folio_cotizacion}}>
 						</div>
 					</div>
 
@@ -109,9 +120,9 @@ div.form-group {
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-md-3" for="fechaPago">Pagado en:</label>
+						<label class="control-label col-md-3" for="fecha_pago">Pagado en:</label>
 						<div class="col-md-9">
-							<input type="date" class="form-control" id="fechaPago" name="fechaPago">
+							<input type="date" class="form-control" id="fecha_pago" name="fecha_pago">
 						</div>
 					</div>
 
@@ -123,9 +134,9 @@ div.form-group {
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-md-3" for="envioFactura">Enviar factura a:</label>
+						<label class="control-label col-md-3" for="receptor_factura">Enviar factura a:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="envioFactura" name="envioFactura">
+							<input type="text" class="form-control" id="receptor_factura" name="receptor_factura">
 						</div>
 					</div>
 
