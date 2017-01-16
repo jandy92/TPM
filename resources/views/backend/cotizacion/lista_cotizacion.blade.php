@@ -1,6 +1,7 @@
 @extends('master')
 @section('titulo','Lista de Cotizaciones')
 @section('contenido')
+
 <script type="text/javascript">
 	var cotizaciones_filtradas=[];
 	var cotizaciones=[];
@@ -27,7 +28,7 @@
 				</thead>
 				<tbody id="tbody">
 				<form >
-				<input class="form-control" placeholder="filtrar por nombre o rut" type="search" name="filtro" id="filtro">
+				<input class="form-control" placeholder="filtrar por titulo o numero de folio" onkeyup="filtrarCotizacion()" type="search" name="filtro" id="filtro">
 				</form>
 
 					@foreach($cotizacion as $cot)
@@ -46,14 +47,16 @@
 					<tr>
 						<td>{{$cot->folio_cotizacion}}</td>
 						<td>{{$cot->nombre}}</td>
-						<td>{{$cot->id_cliente}}</td>
-						<td>{{$cot->id_tipo_trabajo}}</td>
+
+						<td>{{$cot->cliente->nombre}}</td>
+						<td>{{$cot->tipo_trabajo->nombre}}</td>
+						
 						<td>{{$cot->descripcion_trabajo}}</td>
-						<td> PDF</td>>
+						<td><a class="btn btn-link" style="color:red" href="#">PDF</a></td>
 						<td> ACEPTAR </td>
 						<td>
 							<a class="btn btn-link" style="color:green" href="#">Editar</a>
-							<a class="btn btn-link" style="color:blue" href="#">Informacion</a>
+							<a class="btn btn-link" style="color:blue" href="#">Información</a>
 						</td>
 					</tr>
 					@endforeach
@@ -65,4 +68,65 @@
 		@endif
 	</div>
 </div>
+<script type="text/javascript">
+	function filtrarCotizacion(){
+		if($('#filtro').val()!=''){
+			var url_="{{action('ControladorCotizacion@busquedaCotizacion','#VALUE')}}".replace('#VALUE',$('#filtro').val());
+			$.ajax(
+				{
+					url: url_,
+					async: false,//importante
+					success: function(result){
+	        		cotizaciones_filtradas=JSON.parse(JSON.stringify(result));
+	    		},error:function (xhr, ajaxOptions, thrownError) {
+		        console.log(xhr.status);
+		        console.log(thrownError);
+	      		}
+	    	});
+
+	    	$("#table > tbody").empty();
+
+	    	for(i in cotizaciones_filtradas){
+	    		c=cotizaciones_filtradas[i];
+	    		//funcion para generar boton editar
+	    		edit="#";
+	    		//funcion para generar boton informacion
+	    		info="#";
+
+	    		row="<tr>";
+	    		row+="<td>"+c.folio_cotizacion+"</td>";
+	    		row+="<td>"+c.nombre+"</td>";
+	    		row+="<td>"+c.rut_cliente+"</td>";
+	    		row+="<td>"+c.tipo_trabajo+"</td>";
+	    		row+="<td>"+c.descripcion_trabajo+"</td>";
+				row+="<td>";
+				row+='<a class="btn btn-link" style="color:green" href="#LINK">Editar</a>'.replace("#LINK",edit);
+				row+='<a class="btn btn-link" style="color:blue" href="#LINK">Informacion</a>'.replace("#LINK",info);
+				row+="</td>";
+	    		row+="</tr>";
+	    		$("#table > tbody").append(row);
+	    	}
+		}else{
+			$("#table > tbody").empty();
+	    	for(i in cotizaciones){
+	    		c=cotizaciones[i];
+				edit="#";
+	    		info="#";
+	    		//info="{{action('ControladorCliente@editarClienteForm','#ID_CLIENTE')}}".replace("#ID_CLIENTE",c.id_cliente);
+	    		row="<tr>";
+	    		row+="<td>"+c.folio_cotizacion+"</td>";
+	    		row+="<td>"+c.nombre+"</td>";
+	    		row+="<td>"+c.rut_cliente+"</td>";
+	    		row+="<td>"+c.tipo_trabajo+"</td>";
+	    		row+="<td>"+c.descripcion_trabajo+"</td>";
+				row+="<td>";
+				row+='<a class="btn btn-link" style="color:green" href="#LINK">Editar</a>'.replace("#LINK",edit);
+				row+='<a class="btn btn-link" style="color:blue" href="#LINK">Informacion</a>'.replace("#LINK",info);
+				row+="</td>";
+	    		row+="</tr>";
+	    		$("#table > tbody").append(row);
+	    	}
+		}
+	}
+</script>
 @endsection
