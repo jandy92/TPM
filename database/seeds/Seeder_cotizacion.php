@@ -15,6 +15,8 @@ class Seeder_cotizacion extends Seeder{
         $cot=new Cotizacion(array(
         	'nombre'=>'cot_de_pruebas',
         	'descripcion_trabajo'=>'descripcion de la cot',
+            'gasto_fijo' => 15000,
+            'utilidad' => 15,
         ));
 
         //$cot->save();

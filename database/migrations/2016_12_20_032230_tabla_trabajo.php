@@ -22,6 +22,8 @@ class TablaTrabajo extends Migration
             $table->integer('orden_trabajo');
             $table->string('comentario');
             $table->integer('id_estado')->unsigned();
+            $table->integer('orden_compra');
+            $table->softDeletes();
 
             $table->foreign('id_estado')->references('id_estado')->on('estado')->onUpdate('cascade')->onDelete('cascade');
 

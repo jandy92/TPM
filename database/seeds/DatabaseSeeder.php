@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(seeder_usuarios::class);
         $this->call(seeder_id_trabajo::class);
         $this->call(seeder_contactos::class);
+        $this->call(Seeder_cotizacion::class);
+        $this->call(seeder_tipo_material::class);
 
     }
 }

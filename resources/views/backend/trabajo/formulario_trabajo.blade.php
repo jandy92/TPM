@@ -29,7 +29,7 @@ div.form-group {
 					<div class="form-group">
 						<label class="control-label col-md-3" for="titulo">Título:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="titulo" name="titulo" value={{$cotizacion->nombre}} readonly>
+							<input type="text" class="form-control" id="titulo" name="titulo" value="{{$cotizacion->nombre}}" readonly>
 
 						</div>
 					</div>
@@ -37,7 +37,14 @@ div.form-group {
 					<div class="form-group">
 						<label class="control-label col-md-3" for="cliente">Cliente:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="cliente" name="cliente" value={{$cotizacion->cliente->nombre}} readonly>
+							<input type="text" class="form-control" id="cliente" name="cliente" value="{{$cotizacion->cliente->nombre}}" readonly>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-md-3" for="folio">Nº Folio:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="folio" name="folio" value="{{$cotizacion->folio_cotizacion}}" readonly>
 						</div>
 					</div>
 
@@ -46,11 +53,32 @@ div.form-group {
 					<div class="form-group">
 						<label class="control-label col-md-3" for="contacto">Persona Contacto:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="contacto" name="contacto" value={{$cotizacion->contacto->nombre}}  readonly>
+							<input type="text" class="form-control" id="contacto" name="contacto" value="{{$cotizacion->contacto->nombre}}"  readonly>
 						</div>
 					</div>
 
 					<div class="form-group">
+						<label class="control-label col-md-3" for="tipo_trabajo">Persona Contacto:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="tipo_trabajo" name="tipo_trabajo" value="{{$cotizacion->tipo_trabajo->nombre}}"  readonly>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-md-3" for="gastofijo">Monto Neto:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="gastofijo" name="gastofijo" value="{{$cotizacion->gasto_fijo}}" readonly>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-md-3" for="montoBruto">Monto Bruto:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="montoBruto" name="montoBruto" readonly>
+						</div>
+					</div>
+
+					<!--<div class="form-group">
 						<label class="control-label col-md-3" for="tipo">Tipo de trabajo:</label>
 						<div class="col-md-9">
 							<select name="tipo_trabajo" style="width: 487px">
@@ -59,9 +87,9 @@ div.form-group {
 								@endforeach
 							</select>
 						</div>
-					</div>
+					</div> -->
 					<div class="form-group">
-						<label class="control-label col-md-3" for="numero_factura">Nº factura:</label>
+						<label class="control-label col-md-3" for="numero_factura">Documento:</label>
 						<div class="col-md-9">
 							<input type="text" class="form-control" id="numero_factura" name="numero_factura">
 
@@ -76,44 +104,16 @@ div.form-group {
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-md-3" for="montoNeto">Monto Neto:</label>
-						<div class="col-md-9">
-							<input type="text" class="form-control" id="montoNeto" name="montoNeto">
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="control-label col-md-3" for="montoBruto">Monto Bruto:</label>
-						<div class="col-md-9">
-							<input type="text" class="form-control" id="montoBruto" name="montoBruto">
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="control-label col-md-3" for="fecha_emision">Fecha de emision:</label>
+						<label class="control-label col-md-3" for="fecha_emision">Emisión cobro:</label>
 						<div class="col-md-9">
 							<input type="date" class="form-control" id="fecha_emision" name="fecha_emision">
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-md-3" for="folio">Folio:</label>
+						<label class="control-label col-md-3" for="orden_compra">OC/NP numero:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="folio" name="folio" value={{$cotizacion->folio_cotizacion}}>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="control-label col-md-3" for="ocnpnum">OC/NP numero:</label>
-						<div class="col-md-9">
-							<input type="text" class="form-control" id="ocnpnum" name="ocnpnum">
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="control-label col-md-3" for="documento">Documento:</label>
-						<div class="col-md-9">
-							<input type="text" class="form-control" id="documento" name="documento">
+							<input type="text" class="form-control" id="orden_compra" name="orden_compra">
 						</div>
 					</div>
 

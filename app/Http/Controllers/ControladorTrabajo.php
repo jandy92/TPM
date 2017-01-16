@@ -22,7 +22,8 @@ class ControladorTrabajo extends Controller{
             	'fecha_pago'=>$r->get('fecha_pago'),
             	'receptor_factura'=>$r->get('receptor_factura'),
             	'orden_trabajo'=>$r->get('orden_trabajo'),
-            	'comentario'=>$r->get('comentario')
+            	'comentario'=>$r->get('comentario'),
+            	'orden_compra'=>$r->get('orden_compra')
         	));
         	//$trabajo->save();
 

@@ -18,6 +18,7 @@ class TablaItem extends Migration
             $table->string('nombre');
             $table->string('unidad_medida');
             $table->integer('id_tipo_item')->unsigned();
+            $table->softDeletes();
 
             $table->foreign('id_tipo_item')->references('id_tipo_item')->on('tipo_item')->onUpdate('cascade')->onDelete('cascade');
 
