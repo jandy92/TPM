@@ -37,6 +37,11 @@ Route::group(['middleware'=>['checklog','web']],function(){
 		Route::post('/nueva','ControladorCotizacion@nuevaCotizacion');	
 	});
 
+	Route::group(['prefix' => 'tipoTrabajo','middleware'=>['filtro_user']],function(){
+		Route::get('/', 'ControladorTipoTrabajo@tipoTrabajoForm');
+		Route::post('', 'ControladorTipoTrabajo@nuevoTipoTrabajo');	
+	});
+
 	Route::group(['prefix' => 'administracion/usuario','middleware'=>['filtro_admin']],function(){
 		Route::get('/lista','ControladorUsuario@listaUsuario');
 		Route::get('/nuevo','ControladorUsuario@nuevoUsuarioForm');
