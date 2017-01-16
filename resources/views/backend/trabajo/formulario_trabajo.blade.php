@@ -64,6 +64,20 @@ div.form-group {
 						</div>
 					</div>
 
+					<div class="form-group">
+						<label class="control-label col-md-3" for="gastofijo">Monto Neto:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="gastofijo" name="gastofijo" value="{{$cotizacion->gasto_fijo}}" readonly>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-md-3" for="montoBruto">Monto Bruto:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="montoBruto" name="montoBruto" readonly>
+						</div>
+					</div>
+
 					<!--<div class="form-group">
 						<label class="control-label col-md-3" for="tipo">Tipo de trabajo:</label>
 						<div class="col-md-9">
@@ -90,20 +104,6 @@ div.form-group {
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-md-3" for="gastofijo">Monto Neto:</label>
-						<div class="col-md-9">
-							<input type="text" class="form-control" id="gastofijo" name="gastofijo" value="{{$cotizacion->gasto_fijo}}">
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="control-label col-md-3" for="montoBruto">Monto Bruto:</label>
-						<div class="col-md-9">
-							<input type="text" class="form-control" id="montoBruto" name="montoBruto">
-						</div>
-					</div>
-
-					<div class="form-group">
 						<label class="control-label col-md-3" for="fecha_emision">Emisión cobro:</label>
 						<div class="col-md-9">
 							<input type="date" class="form-control" id="fecha_emision" name="fecha_emision">
@@ -111,9 +111,9 @@ div.form-group {
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-md-3" for="ocnpnum">OC/NP numero:</label>
+						<label class="control-label col-md-3" for="orden_compra">OC/NP numero:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="ocnpnum" name="ocnpnum">
+							<input type="text" class="form-control" id="orden_compra" name="orden_compra">
 						</div>
 					</div>
 
