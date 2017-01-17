@@ -84,6 +84,11 @@
 						<a href="#" class="btn btn-warning">Cancelar</a>
 					</div>
 				</div>
+
+				<div id="contactos">
+					
+				</div>
+
 				</fieldset>
 
 			</form>
@@ -207,7 +212,7 @@
 
 	function desasociarContacto(id){
 		for(i in contactos_asignados){
-			console.log(i);
+			//console.log(i);
 			c=contactos_asignados[i];
 			if(c.id===id){
 				$('#link_asociar_contacto_'+id).css('visibility','visible');
@@ -223,7 +228,6 @@
 			}
 		}
 	}
-
 
 
 	function renderFormTable(){
@@ -248,6 +252,17 @@
 			$('#tabla_contactos').append(row);
 		}
 	}
+
+	function submit_form(){
+		for(i in contactos_asignados){
+			c=contactos_asignados[i];
+			input="<input type='hidden' name='contactos[]' value="+c.id+"";
+			input+=">"
+			$('#contactos').append(input);
+		}
+			//return false;
+	}
+
 	show_contactos();
 </script>
 @endsection

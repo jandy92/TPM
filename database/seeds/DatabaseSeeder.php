@@ -21,6 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(Seeder_cotizacion::class);
         $this->call(seeder_tipo_material::class);
         $this->call(seederEstado::class);
-
+        $this->call(seeder_unidad_medida::class);
     }
 }

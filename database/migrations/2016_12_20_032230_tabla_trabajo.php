@@ -23,6 +23,7 @@ class TablaTrabajo extends Migration
             $table->string('comentario');
             $table->integer('id_estado')->unsigned();
             $table->integer('orden_compra');
+            $table->string('color');
             $table->timestamps();
             $table->softDeletes();
 
