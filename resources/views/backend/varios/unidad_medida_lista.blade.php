@@ -20,6 +20,28 @@
 					</div>
 				</fieldset>
 			</form>
+			</div>
+			<div class="well">
+
+			<table class="table">
+				<thead>
+					<th>Nombre</th>
+					<th>Abreviación</th>
+					<th></th>
+				</thead>
+				<tbody>
+					@foreach($unidades as $u)
+					<tr>
+						<td>{{$u->nombre}}</td>
+						<td>{{$u->nombre_abreviacion}}</td>
+						<td>
+							<a style="color:green" href="#">Editar</a>
+							<a style="color:orange" href="#">Eliminar</a>
+						</td>
+					</tr>
+					@endforeach
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>	
