@@ -84,6 +84,11 @@
 						<a href="#" class="btn btn-warning">Cancelar</a>
 					</div>
 				</div>
+
+				<div id="contactos">
+					
+				</div>
+
 				</fieldset>
 
 			</form>
@@ -206,8 +211,24 @@
 	}
 
 	function desasociarContacto(id){
-
+		for(i in contactos_asignados){
+			//console.log(i);
+			c=contactos_asignados[i];
+			if(c.id===id){
+				$('#link_asociar_contacto_'+id).css('visibility','visible');
+				if(i!=0){
+					contactos_asignados.splice(i,i);
+					renderFormTable();
+					break;		
+				}else{
+					contactos_asignados.shift();
+					renderFormTable();
+					break;
+				}
+			}
+		}
 	}
+
 
 	function renderFormTable(){
 		$('#tabla_contactos > tbody').empty();
@@ -225,12 +246,23 @@
 				row+=c.email;
 				row+="</td>";
 				row+="<td>";
-				row+="<a id='link_desasociar_contacto_"+c.id+"' style='color:red;cursor:pointer;' >des-asociar</a>";
+				row+="<a id='link_desasociar_contacto_"+c.id+"' onclick='desasociarContacto("+c.id+")' style='color:red;cursor:pointer;' >des-asociar</a>";
 				row+="</td>";
 			row+="</tr>";
 			$('#tabla_contactos').append(row);
 		}
 	}
+
+	function submit_form(){
+		for(i in contactos_asignados){
+			c=contactos_asignados[i];
+			input="<input type='hidden' name='contactos[]' value="+c.id+"";
+			input+=">"
+			$('#contactos').append(input);
+		}
+			//return false;
+	}
+
 	show_contactos();
 </script>
 @endsection

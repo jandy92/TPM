@@ -2,9 +2,6 @@
 <html>
 	<head>
 		<title>PDF Cotizacion</title>
-		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-    	<script type="text/javascript" src="../../js/jquery.min.js"></script>
-    	<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -14,7 +11,7 @@
 						<img class="" src="../../images/logos/tpm.jpeg" style="width: 100px">
 						<label class="control-label" for="info">TPM Ingeniería E.I.R.L.</label>
 					</div>
-					<legend>Informacion para Cotizacion</legend>
+					<legend>Informacion para Cotasdasdasdizacion</legend>
 					<fieldset>
 						<div class="form-group">
 							<label class="control-label col-md-4">N° de Folio</label>
@@ -54,7 +51,7 @@
 						<div class="form-group">
 							<label class="control-label col-md-4">Descripcion trabajo</label>
 							<div class="col-md-8">
-								<label class="control-label" for="contacto">{{$cotizacion->descripcion_trabajo}}</label>
+								<label class="control-label" for="descripcion">{{$cotizacion->descripcion_trabajo}}</label>
 							</div>
 						</div>
 
