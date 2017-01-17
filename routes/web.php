@@ -63,7 +63,7 @@ Route::group(['middleware'=>['checklog','web']],function(){
 	$this->get('/logout', 'Auth\LoginController@logout');
 });
 
-
+z
 Route::get('API/buscarCliente/{rut_cliente}','ControladorCliente@buscaContactos');
 Route::get('API/contactosDeCliente/{id}','ControladorCliente@AJAX_contactosDeCliente');
 Route::get('API/buscarclientes/{texto}','ControladorCliente@AJAX_busquedaClientes');
