@@ -6,10 +6,7 @@
 div.form-group {
     padding-bottom: 25px;
 }
-select.list1 option.option2
-{
-    background-color: #000000;
-}
+
 </style>
 </head>
 <div class="container">

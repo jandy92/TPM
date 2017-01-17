@@ -56,4 +56,8 @@ class ControladorTrabajo extends Controller{
 		$msg =['title'=>'Operacion realizada','text'=>'Se ha editado el trabajo'];
 		return redirect()->action('ControladorCotizacion@listaCotizacion')->with('mensaje',$msg);
 	}
+	function listaDeTrabajo(){
+    	$trabajo=Trabajo::all();
+    	return view('backend.trabajo.lista_trabajo',compact('trabajo'));
+    }
 }

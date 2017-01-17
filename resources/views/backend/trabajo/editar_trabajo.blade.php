@@ -1,6 +1,14 @@
 @extends('master')
 @section('titulo','Editar Trabajo')
 @section('contenido')
+<head>
+<style>
+div.form-group {
+    padding-bottom: 25px;
+}
+
+</style>
+</head>
 <div class="container">
 	<div class="col col-md-8 col-md-push-2">
 		@if($errors->all())
@@ -21,16 +29,21 @@
 					<input type="hidden" name="id_trabajo" value="{{$trabajo->id_trabajo}}">
 					<div class="form-group">
 						<label class="control-label col-md-3" for="tipo">Estado:</label>
-						<div class="col-md-9">
-							<select name="estado" style="width: 487px">
+						<div class="col-md-6">
+						<b>
+							<select id= "select_estado" name="estado" style="width: 300px">
 								@foreach($estados as $estado)
 									@if($estado->id_estado == $trabajo->estado->id_estado)
-										<option value="{{$estado->id_estado}}" selected>{{$estado->nombre}}</option>
+										<option selected value="{{$estado->id_estado}}"  style="background-color:#{{$estado->color}};color:#{{$estado->color_letra}}">{{$estado->nombre}}</option>
 									@else
-										<option value="{{$estado->id_estado}}">{{$estado->nombre}}</option>
+										<option value="{{$estado->id_estado}}" style="background-color:#{{$estado->color}};color:#{{$estado->color_letra}}">{{$estado->nombre}}</option>
 									@endif
 								@endforeach
 							</select>
+						</b>
+						</div>
+						<div class="col-md-3">
+							<span  id="label_color_trabajo" class="control-label col-md-3" for="tipo" style= "border:solid 1px black;width: 100%;height: 2em;display: inline-block;"></span>
 						</div>
 					</div>
 					<div class="row"></div>
@@ -102,5 +115,50 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+		colores=[];
+		@foreach($estados as $estado)
+			c = {};
+			c.valor = "#{{$estado->color}}";
+			c.id = {{$estado->id_estado}};
+			colores.push(c);
+		@endforeach
+
+		cambiaColorLabel();
+
+		$("#select_estado").change(function(){
+			cambiaColorLabel();
+		});
+
+		function cambiaColorLabel(){
+				valor = parseInt($("#select_estado").val());
+				for(i in colores){
+					c=colores[i];
+					if (c.id === valor){
+						console.log(c);
+						$('#label_color_trabajo').css('background-color',c.valor);
+						break;
+					}
+				}
+		}
+
+		/*
+		$('#rut').on('input',function(){
+			//quitar espacios y validar rut al ingresar valores
+			var r=$('#rut').val();
+			r = r.replace(/\s+/g, '');
+			$('#rut').val(r);
+			var v=$.Rut.validar($('#rut').val());
+			if(!v){
+				$('#rut').css('color','red');
+			}else{
+				$('#rut').css('color','green');
+			}
+		});
+		$('#rut').Rut({
+			format_on: 'keyup'
+		});
+		*/
+</script>
 
 @endsection

@@ -33,7 +33,8 @@ Route::group(['middleware'=>['checklog','web']],function(){
 		Route::get('/{id}/nuevo', 'ControladorTrabajo@nuevoTrabajoForm');
 		Route::post('/{id}/nuevo', 'ControladorTrabajo@nuevoTrabajo');
 		Route::get('/{id}/editar', 'ControladorTrabajo@editarTrabajoForm');
-		Route::post('/{id}/editar', 'ControladorTrabajo@editarTrabajo');	
+		Route::post('/{id}/editar', 'ControladorTrabajo@editarTrabajo');
+		Route::get('/lista', 'ControladorTrabajo@listaDeTrabajo');	
 	});
 	
 	Route::group(['prefix' => 'cotizacion','middleware'=>['filtro_user']],function(){
@@ -41,7 +42,7 @@ Route::group(['middleware'=>['checklog','web']],function(){
 		Route::get('/lista', 'ControladorCotizacion@listaCotizacion');
 		Route::post('/nueva','ControladorCotizacion@nuevaCotizacion');	
 		Route::get('/pdf','ControladorCotizacion@pdfCotizacionForm');
-		Route::get('/info','ControladorCotizacion@infoCotizacionForm');
+		Route::get('/{id}/editar','ControladorCotizacion@editarCotizacionForm');
 	});
 
 	Route::group(['prefix' => 'tipoTrabajo','middleware'=>['filtro_user']],function(){
@@ -62,6 +63,7 @@ Route::group(['middleware'=>['checklog','web']],function(){
 	});
 	Route::group(['prefix' => 'administracion/varios','middleware'=>['filtro_admin']],function(){
 		Route::get('/unidadMedida','ControladorVarios@unidades_de_medida_lista');
+		Route::post('/unidadMedida','ControladorVarios@nuevo_unidad_medida');
 	
 	});
 
