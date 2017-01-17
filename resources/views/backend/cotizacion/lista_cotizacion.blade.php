@@ -54,8 +54,7 @@
 
 						<td><a class="btn btn-primary" href="{{action('ControladorTrabajo@nuevoTrabajoForm',$cot->folio_cotizacion)}}">Aceptar Cotizacón</a></td>
 						<td>
-							<a class="btn btn-link" style="color:green" href="#">Editar</a>
-							<a class="btn btn-link" style="color:blue" href="#">Información</a>
+							<a class="btn btn-link" style="color:green" href="{{action('ControladorCotizacion@editarCotizacionForm',$cot->folio_cotizacion)}}">Editar</a>
 						</td>
 					</tr>
 					@endforeach
