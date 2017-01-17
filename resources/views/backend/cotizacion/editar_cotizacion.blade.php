@@ -1,54 +1,61 @@
 @extends('master')
-@section('titulo','Información cotización')
+@section('titulo','Editar cotización')
 @section('contenido')
-<div class="container">
-			<div class="col col-md-8 col-md-push-2">
-				<div class="well">
-					<div class="form-group">
-						<img class="" src="../../images/logos/tpm.jpeg" style="width: 100px">
-						<label class="control-label" for="info"><h2>TPM Ingeniería E.I.R.L.</h2></label>
-					</div>
-					<legend>Información para Cotización</legend>
-					<fieldset>
-						<div class="form-group">
-							<label class="control-label col-md-4">N° de Folio</label>
-							<div class="col-md-8">
-								<input type="text" class="form-control" id="titulo" name="titulo" value="{{$cotizacion->folio_cotizacion}}" readonly>
-							</div>
-						</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#contactos > option[value={{$cotizacion->id_contacto}}]').attr('selected','selected')
+		$('#tiposTrabajos > option[value={{$cotizacion->id_tipo_trabajo}}]').attr('selected','selected')
+	});
+</script>
 
+<div class="container">
+	<div class="col col-md-8 col-md-push-2">
+		<div class="well">
+			<legend>Editar Cotización</legend>
+				<form class="form" method="post" autocomplete="off">
+					<fieldset>
+						{{csrf_field()}}
+						<input type="hidden" name="folio_cotizacion" value="{{$cotizacion->folio_cotizacion}}">
 						<div class="form-group">
 							<label class="control-label col-md-4">Título</label>
 							<div class="col-md-8">
-								<input type="text" class="form-control" id="titulo" name="titulo" value="{{$cotizacion->nombre}}" readonly>
+								<input type="text" class="form-control" id="titulo" name="titulo" value="{{$cotizacion->nombre}}">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="control-label col-md-4">Cliente</label>
 							<div class="col-md-8">
-								<input type="text" class="form-control" id="cliente" name="cliente" value="{{$cotizacion->cliente->nombre}}" readonly>
+								<input type="text" class="form-control" id="cliente" name="cliente" value="{{$cotizacion->cliente->nombre}}">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="control-label col-md-4">Persona de Contacto</label>
 							<div class="col-md-8">
-								<input type="text" class="form-control" id="contacto" name="contacto" value="{{$cotizacion->contacto->nombre}} {{$cotizacion->contacto->apellido}}" readonly>
+								<select name="contactos" id="contactos" style="width: 300px">
+							 		@foreach($cliente->contactos as $c)
+										<option value="{{$c->id_contacto}}">{{$c->nombre}} {{$c->apellido}}</option>
+									@endforeach
+								</select>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="control-label col-md-4">Tipo de trabajo</label>
 							<div class="col-md-8">
-								<input type="text" class="form-control" id="tipo" name="tipo" value="{{$cotizacion->tipo_trabajo->nombre}}" readonly>
+								<select name="tiposTrabajos" id="tiposTrabajos" style="width: 300px">
+									@foreach($tipo_trabajo as $t)
+										<option value="{{$t->id_tipo_trabajo}}">{{$t->nombre}}</option>
+									@endforeach
+								</select>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="control-label col-md-4">Descripcion trabajo</label>
 							<div class="col-md-8">
-								<input type="text" class="form-control" id="descripcion" name="descripcion" value="{{$cotizacion->descripcion_trabajo}}" readonly>
+								<input type="text" class="form-control" id="descripcion" name="descripcion" value="{{$cotizacion->descripcion_trabajo}}">
 							</div>
 						</div>
 
@@ -84,7 +91,8 @@
 								</div>
 							</div>
 						</div>
-					</fieldset>
+						</fieldset>
+					</form>
 				</div>
 			</div>
 		</div>
