@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\EditarContactoRequest;
 use App\Contacto;
+use DB;
 
 class ControladorContacto extends Controller
 {
@@ -24,5 +25,10 @@ class ControladorContacto extends Controller
 		$contacto->save();
 
         return redirect()->action('ControladorCliente@listaDeContacto');
+    }
+    function buscarContacto($texto){
+    	$contactos=DB::table('contacto')->where('nombre','LIKE','%'.$texto.'%')->orWhere('apellido','LIKE','%'.$texto.'%')->get();
+
+        return response()->json($contactos);
     }
 }

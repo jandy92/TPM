@@ -24,8 +24,9 @@ class ControladorCliente extends Controller
         $contacto->apellido=$r->get('apellido');
         $contacto->email=$r->get('email');
         $contacto->telefono=$r->get('telefono');
-        //$contacto->save();
-        return $contacto;
+        $contacto->save();
+        return redirect()->action('ControladorCliente@listaDeContacto');
+        //return $contacto;
     }
 
     function nuevoClienteForm(){
@@ -44,18 +45,12 @@ class ControladorCliente extends Controller
         ));
         $cliente->save();
 
+
+        //return $r->get('contactos');
         if($r->get('contactos')){
         	foreach($r->get('contactos') as $c){
-                $tmp_array=explode(',',$c);
-        		//array_push($contactos,$tmp_array);
-                $contacto=new Contacto(array(
-                    'nombre'=>$tmp_array[0],
-                    'apellido'=>$tmp_array[1],
-                ));
-                $contacto->email=$tmp_array[2];
-                $contacto->telefono=$tmp_array[3];
-                //return $cliente;
-                //$cliente->contactos()->save($contacto);
+                $contacto=Contacto::find($c);
+                $cliente->contactos()->save($contacto);
             }
         }
         $msg =['title'=>'Operación exitosa','text'=>'Se ha registrado un nuevo cliente.'];

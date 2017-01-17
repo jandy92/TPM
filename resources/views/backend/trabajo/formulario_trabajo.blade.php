@@ -6,6 +6,10 @@
 div.form-group {
     padding-bottom: 25px;
 }
+select.list1 option.option2
+{
+    background-color: #000000;
+}
 </style>
 </head>
 <div class="container">
@@ -88,11 +92,13 @@ div.form-group {
 					<div class="form-group">
 						<label class="control-label col-md-3" for="tipo">Estado:</label>
 						<div class="col-md-9">
+						<b>
 							<select name="estado" style="width: 487px">
 								@foreach($estados as $estado)
-									<option value="{{$estado->id_estado}}">{{$estado->nombre}}</option>
+									<option value="{{$estado->id_estado}}" style="background-color:#{{$estado->color}};color:#{{$estado->color_letra}}">{{$estado->nombre}}</option>
 								@endforeach
 							</select>
+						</b>	
 						</div>
 					</div>
 
