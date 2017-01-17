@@ -53,15 +53,13 @@
 							<input type="phone" class="form-control" id="telefono" name="telefono">
 						</div>
 					</div>
-					<button type="button" class="btn btn-primary">Asociar contacto Contacto</button>
-
+					<button type="button" class="btn btn-primary" onclick="showModal()">Asociar contacto</button>
 
 
 					<div class="row">&nbsp;</div>
 					<div class="col">
 						<label>Personas de contacto</label>
 						<div class="panel panel-default">
-							
 	  						<div class="panel-body">
 	  							<div class="table-responsive">
 	  								<table class="table" id="tabla_contactos">
@@ -104,34 +102,26 @@
 	</div>
 </div>
 
-<div id="myModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Confirmation</h4>
-            </div>
-            <div class="modal-body">
-                <p>Do you want to save changes you made to document before closing?</p>
-                <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="modal fade" id="basicModal" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button-->
             <h4 class="modal-title" id="myModalLabel">Administrar Contactos</h4>
             </div>
             <div class="modal-body">
-                <h3>Modal Body</h3>
+            	<div class="form-group">            		
+            		<div class="col-md-12">
+                		<input type="text" class="form-control" name="">
+                		<button class="btn btn-default col-md-3">Buscar</button>
+            		</div>
+            	</div>
+            	<div class="form-group">
+            		<div id="modal_result">
+            			hjkhkhkhjkh
+            		</div>
+            	</div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -142,6 +132,30 @@
 </div>
 
 <script type="text/javascript">
-	$('#basicModal').modal('toggle');
+	var contactos=[];
+	@foreach($contactos as $c)
+		temp={};
+		temp.id={{$c->id_contacto}};
+		temp.telefono='{{$c->telefono}}';
+		temp.email='{{$c->email}}';
+		temp.nombre='{{$c->nombre}}';
+		temp.apellido='{{$c->apellido}}';
+		contactos.push(temp);
+	@endforeach
+
+	function filter_contactos(){
+
+	}
+
+	function show_contactos(){
+		$('#modal_result').clear();
+		for(c in contactos){
+
+		}
+	}
+
+	function showModal(){
+		$('#basicModal').modal('show');
+	}
 </script>
 @endsection
