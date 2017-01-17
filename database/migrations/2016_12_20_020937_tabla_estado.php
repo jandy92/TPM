@@ -14,7 +14,8 @@ class TablaEstado extends Migration{
         Schema::create('estado', function (Blueprint $table){
             $table->increments('id_estado');
             $table->string('nombre');
-            $table->string('color');
+            $table->string('color')->default('FFFFFF');
+            $table->string('color_letra')->default('000000');
             $table->softDeletes();
             $table->timestamps();
         });
