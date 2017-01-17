@@ -81,4 +81,8 @@ class ControladorCotizacion extends Controller
         $cotizacion=Cotizacion::find(1);
         return view('backend.pdf.pdf_cotizacion_v2', compact('cotizacion'));
     }
+    function infoCotizacionForm(){
+        $cotizacion=Cotizacion::find(1);
+        return view('backend.cotizacion.info_cotizacion', compact('cotizacion'));
+    }
 }

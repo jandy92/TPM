@@ -41,6 +41,7 @@ Route::group(['middleware'=>['checklog','web']],function(){
 		Route::get('/lista', 'ControladorCotizacion@listaCotizacion');
 		Route::post('/nueva','ControladorCotizacion@nuevaCotizacion');	
 		Route::get('/pdf','ControladorCotizacion@pdfCotizacionForm');
+		Route::get('/info','ControladorCotizacion@infoCotizacionForm');
 	});
 
 	Route::group(['prefix' => 'tipoTrabajo','middleware'=>['filtro_user']],function(){
