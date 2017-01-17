@@ -9,10 +9,9 @@
     		border: 1px ridge black;
 		}
 		table.d2{
-			border-collapse: separate;
-    		border-spacing: 0px;
     		text-align: right;
-    		border: 1px ridge black;
+    		margin-left: auto;
+    		width: 20%;
 		}
 		th.d1{
 			border-bottom: 1px ridge black;
@@ -24,6 +23,9 @@
 		td.d1{
 			border-right: 1px ridge black;
 		}
+		thead.d3{
+			background-color: lightgray;
+		}
 	</style>
 	<head>
 		<title>PDF Cotizacion</title>
@@ -33,9 +35,9 @@
 			<div>
 				<div>
 					<div>
-						<label>TPM Ingeniería E.I.R.L.</label>
+						<label><h1>TPM Ingeniería E.I.R.L.</h1></label>
 					</div>
-					<label><h4>Información para Cotización</h4></label>
+					<label><h3>Información para Cotización</h3></label>
 					<fieldset>
 						<table>
 							<thead>
@@ -80,7 +82,7 @@
 
 						<label><h4>Detalles</h4></label>
 			  			<table class="d1">
-		  					<thead>
+		  					<thead class="d3">
 								<th class="d1">Item</th>
 								<th class="d1">Descripción</th>
 								<th class="d1">Cantidad</th>
@@ -103,9 +105,23 @@
 									<td class="d1">19.500</td>
 									<td>19.500</td>
 								</tr>
+								<tr>
+									<td class="d1">2</td>
+									<td class="d1">Esmalte con anticorrosivo gris para puertas que sirven para nada grises</td>
+									<td class="d1">0</td>
+									<td class="d1">0</td>
+									<td>0</td>
+								</tr>
 							</tbody>
 						</table>
-						
+						<table class="d2">
+							<thead></thead>
+							<tbody>
+								<td><b>Total</b></td>
+								<td><b>29.500</b></td>
+							</tbody>
+						</table>
+						<br>
 					</fieldset>
 				</div>
 			</div>
