@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\NuevoTrabajoRequest;
-use App\Http\Requests\editarTrabajoRequest;
+use App\Http\Requests\EditarTrabajoRequest;
 use App\Http\Controllers\Controller;
 use App\Cotizacion;
 use App\Tipo_trabajo;
@@ -42,6 +42,8 @@ class ControladorTrabajo extends Controller{
 
 	}
 	function editarTrabajo(EditarTrabajoRequest $r){
+		$trabajo = Trabajo::find($r->get('id_trabajo'));
+		//return $trabajo;
 		$trabajo->numero_factura = $r->get('numero_factura');
 		$trabajo->fecha_emision_cobro = $r->get('fecha_emision_cobro');
 		$trabajo->fecha_pago = $r->get('fecha_pago');
