@@ -104,25 +104,34 @@
             <h4 class="modal-title" id="myModalLabel">Administrar Contactos</h4>
             </div>
             <div class="modal-body">
-            	<div class="form-group">            		
-            		<div class="col-md-12">
-                		<input onkeyup="listaContactos()"  id="input_filter_contactos" type="text" class="form-control" name="">
-            		</div>
+            	<div class="well">
+            		<div class="row">
+		            	<div class="form-group">            		
+		            		<div class="col-md-12">
+		                		<input onkeyup="listaContactos()"  id="input_filter_contactos" type="text" class="form-control" placeholder="Filtrar por nombre o apellido" name="">
+		            		</div>
+		            	</div>
+	            	</div>
             	</div>
-            	<div class="form-group">
-            		<div id="modal_result">
-            			<table class="table" id="modal_tabla_contactos">
-            				<thead>
-            					<th>Nombre</th>
-            					<th>Teléfono</th>
-            					<th>E-mail</th>
-            					<th>Acción</th>
-            				</thead>
-            				<tbody>
-            					
-            				</tbody>
-            			</table>
-            		</div>
+
+            	<div class="well">
+	            	<div class="row">
+		            	<div class="form-group">
+		            		<div id="modal_result">
+		            			<table class="table" id="modal_tabla_contactos">
+		            				<thead>
+		            					<th>Nombre</th>
+		            					<th>Teléfono</th>
+		            					<th>E-mail</th>
+		            					<th>Acción</th>
+		            				</thead>
+		            				<tbody>
+		            					
+		            				</tbody>
+		            			</table>
+		            		</div>
+		            	</div>
+	            	</div>
             	</div>
             </div>
             <div class="modal-footer">
