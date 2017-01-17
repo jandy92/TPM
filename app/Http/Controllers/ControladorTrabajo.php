@@ -7,12 +7,14 @@ use App\Http\Requests\NuevoTrabajoRequest;
 use App\Http\Controllers\Controller;
 use App\Cotizacion;
 use App\Tipo_trabajo;
+use App\Estado;
 
 class ControladorTrabajo extends Controller{
 	function nuevoTrabajoForm($folio_cotizacion){
 		$cotizacion = Cotizacion::find($folio_cotizacion);
 		$tipo_trabajo = Tipo_trabajo::all();
-    	return view('backend.trabajo.formulario_trabajo', compact("cotizacion"), compact("tipo_trabajo"));
+		$estados = Estado::all();
+    	return view('backend.trabajo.formulario_trabajo', compact("cotizacion","tipo_trabajo","estados"));
     }
     //
     function nuevoTrabajo(NuevoTrabajoRequest $r){
@@ -23,7 +25,8 @@ class ControladorTrabajo extends Controller{
             	'receptor_factura'=>$r->get('receptor_factura'),
             	'orden_trabajo'=>$r->get('orden_trabajo'),
             	'comentario'=>$r->get('comentario'),
-            	'orden_compra'=>$r->get('orden_compra')
+            	'orden_compra'=>$r->get('orden_compra'),
+            	'id_estado'=>$r->get('estado')
         	));
         	//$trabajo->save();
 

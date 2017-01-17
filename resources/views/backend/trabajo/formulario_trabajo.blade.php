@@ -67,27 +67,28 @@ div.form-group {
 					<div class="form-group">
 						<label class="control-label col-md-3" for="gastofijo">Monto Neto:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="gastofijo" name="gastofijo" value="{{$cotizacion->gasto_fijo}}" readonly>
+							<input type="text" class="form-control" id="gastofijo" name="gastofijo" value="${{$cotizacion->gasto_fijo}}" readonly>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="control-label col-md-3" for="montoBruto">Monto Bruto:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="montoBruto" name="montoBruto" readonly>
+							<input type="text" class="form-control" id="montoBruto" name="montoBruto" value="${{$cotizacion->gasto_fijo * 1.19}}" readonly>
 						</div>
 					</div>
 
-					<!--<div class="form-group">
+					<div class="form-group">
 						<label class="control-label col-md-3" for="tipo">Tipo de trabajo:</label>
 						<div class="col-md-9">
-							<select name="tipo_trabajo" style="width: 487px">
-								@foreach($tipo_trabajo as $c)
-									<option value="{{$c->id_tipo_trabajo}}">{{$c->nombre}}</option>
+							<select name="estado" style="width: 487px">
+								@foreach($estados as $estado)
+									<option value="{{$estado->id_estado}}">{{$estado->nombre}}</option>
 								@endforeach
 							</select>
 						</div>
-					</div> -->
+					</div>
+
 					<div class="form-group">
 						<label class="control-label col-md-3" for="numero_factura">Documento:</label>
 						<div class="col-md-9">
@@ -124,12 +125,6 @@ div.form-group {
 						</div>
 					</div>
 
-					<div class="form-group">
-						<label class="control-label col-md-3" for="estadoActual">Estado:</label>
-						<div class="col-md-9">
-							<input type="text" class="form-control" id="estadoActual" name="estadoActual">
-						</div>
-					</div>
 
 					<div class="form-group">
 						<label class="control-label col-md-3" for="receptor_factura">Enviar factura a:</label>
