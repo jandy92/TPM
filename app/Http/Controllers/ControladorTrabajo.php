@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\NuevoTrabajoRequest;
+use App\Http\Requests\editarTrabajoRequest;
 use App\Http\Controllers\Controller;
 use App\Cotizacion;
 use App\Tipo_trabajo;
@@ -36,7 +37,9 @@ class ControladorTrabajo extends Controller{
 
 	function editarTrabajoForm($id_trabajo){
 		$trabajo = Trabajo::find($id_trabajo);
-		return view('backend.trabajo.editar_trabajo', compact("trabajo"));
+		$estados = Estado::all();
+		return view('backend.trabajo.editar_trabajo', compact("trabajo","estados"));
+
 	}
 	function editarTrabajo(EditarTrabajoRequest $r){
 		$trabajo->numero_factura = $r->get('numero_factura');
