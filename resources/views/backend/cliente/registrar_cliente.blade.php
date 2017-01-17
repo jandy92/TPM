@@ -91,7 +91,6 @@
 	</div>
 </div>
 
-
 <div class="modal fade" id="basicModal" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -172,7 +171,7 @@
 				row+=c.email;
 				row+="</td>";
 				row+="<td>";
-				row+="<a href='#'>Asociar</a>";
+				row+="<a id='link_asociar_contacto_"+c.id+"' style='color:blue;cursor:pointer;' onclick='asociarContacto("+c.id+")'>Asociar</a>";
 				row+="</td>";
 			row+="</tr>";
 			$('#modal_tabla_contactos').append(row);
@@ -184,13 +183,36 @@
 	}
 
 	function asociarContacto(id){
-		console.log(id);
+		//console.log(id);
+		found=false;
+		for(i in contactos_asignados){
+			c=contactos_asignados[i];
+			if(c.id===id){
+				found=true;
+				break;
+			}
+		}
+		if(!found){
+			for(i in contactos){
+				c=contactos[i];
+				if(c.id===id){
+					$("#link_asociar_contacto_"+id).css('visibility','hidden');
+					contactos_asignados.push(c);
+					renderFormTable();	
+					break;
+				}
+			}
+		}
+	}
+
+	function desasociarContacto(id){
+
 	}
 
 	function renderFormTable(){
 		$('#tabla_contactos > tbody').empty();
-		for(i in contactos){
-			c=contactos[i];
+		for(i in contactos_asignados){
+			c=contactos_asignados[i];
 			row="<tr>";
 				row+="<td>";
 				row+=c.nombre+" ";
@@ -203,13 +225,12 @@
 				row+=c.email;
 				row+="</td>";
 				row+="<td>";
-				row+="<a href='#' style='color:red' >des-asociar</a>";
+				row+="<a id='link_desasociar_contacto_"+c.id+"' style='color:red;cursor:pointer;' >des-asociar</a>";
 				row+="</td>";
 			row+="</tr>";
 			$('#tabla_contactos').append(row);
 		}
 	}
-
 	show_contactos();
 </script>
 @endsection

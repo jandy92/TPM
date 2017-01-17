@@ -76,4 +76,8 @@ class ControladorCotizacion extends Controller
 
         return response()->json($cotizacion);
     }
+
+    function pdfCotizacionForm(){
+        return view('backend.pdf.pdf_cotizacion');
+    }
 }

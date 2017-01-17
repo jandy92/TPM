@@ -15,6 +15,7 @@ class TablaEstado extends Migration{
             $table->increments('id_estado');
             $table->string('nombre');
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 

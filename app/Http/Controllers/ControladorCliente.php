@@ -118,6 +118,4 @@ class ControladorCliente extends Controller
             return response()->json(['cliente'=>$cliente,'contactos'=>$cliente->contactos]);
         }
     }
-
-
 }
