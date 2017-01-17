@@ -90,67 +90,8 @@
 				</form>
 			</div>
 		</div>
-		<script type="text/javascript">
-			var contactosId= [];
-			@foreach($cliente->contactos as $cont)
-				var temp={
-					'nombre': "{{$cont->nombre}}",
-					'apellido': "{{$cont->apellido}}",
-					'email': "{{$cont->email}}",
-					'telefono': "{{$cont->telefono}}",
-				};
-				contactosId.push(temp);
-			@endforeach
-			cambiarTabla();
-
-			function cambiarTabla() {
-				$('#tabla_contactos').find("tr:gt(1)").remove();  
-				for(var c in contactosId){
-					var row='';
-					row+='<td>'+contactosId[c].nombre+'</td>';
-					row+='<td>'+contactosId[c].apellido+'</td>';
-					row+='<td>'+contactosId[c].email+'</td>';
-					row+='<td>'+contactosId[c].telefono+'</td>';
-					row+='<td><button type="button" onclick="remContacto('+parseInt(c)+')" class="btn btn-danger">-</button</td>';
-					$('#tabla_contactos tr:last').after('<tr id="'+c+'">'+row+'</tr>');
-	//console.log(contactos[c].nombre);
-				}
-			}
-			function addContacto(){
-				var nombre=$('#new_nombre').val();
-				var apellido=$('#new_apellido').val();
-				var email=$('#new_email').val();
-				var telefono=$('#new_telefono').val();
-
-				if(nombre.trim()!='' && apellido.trim()!=''){
-					$('#new_nombre').val('');
-					$('#new_apellido').val('');
-					$('#new_email').val('');
-					$('#new_telefono').val('');
-					contactosId [contactosId.length]={'nombre':nombre,'apellido':apellido,'email':email,'telefono':telefono};
-					cambiarTabla();
-				}
-			}
-			function remContacto(id){
-				if (confirm('Seguro de eliminar persona de contacto seleccionada?')) {
-					delete contactosId[id]
-					cambiarTabla();
-				}
-			}
-			function submit_form(){
-	  			var input = $("<input>")
-	               .attr("type", "hidden")
-	               .attr("name", "hola").val("xd");
-				$('#form').append($(input));
-	  			for(i in contactosId){
-	  				c=contactosId[i];
-	  				$('#form').append("<input type='hidden' name='contactosId["+i+"]' value='"+objectJoin(c,',')+"'></input>");
-	  			}
-
-  			//return false;
-
-  			}
-
-		</script>
 	</div>
+		<script type="text/javascript">
+			
+		</script>
 @endsection
