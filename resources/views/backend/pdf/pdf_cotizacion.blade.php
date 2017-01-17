@@ -2,16 +2,16 @@
 <html>
 	<head>
 		<title>PDF Cotizacion</title>
-		<link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
-    	<script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
-    	<script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    	<script type="text/javascript" src="../../js/jquery.min.js"></script>
+    	<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<div class="container">
 			<div class="col col-md-8 col-md-push-2">
 				<div class="well">
 					<div class="form-group">
-						<img class="" src="{{asset('images/logos/tpm.jpeg')}}" style="width: 100px">
+						<img class="" src="../../images/logos/tpm.jpeg" style="width: 100px">
 						<label class="control-label" for="info">TPM Ingeniería E.I.R.L.</label>
 					</div>
 					<legend>Informacion para Cotizacion</legend>
@@ -19,42 +19,42 @@
 						<div class="form-group">
 							<label class="control-label col-md-4">N° de Folio</label>
 							<div class="col-md-8">
-								<label class="control-label" for="folio">Aqui va folio</label>
+								<label class="control-label" for="folio">{{$cotizacion->folio_cotizacion}}</label>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="control-label col-md-4">Título</label>
 							<div class="col-md-8">
-								<label class="control-label" for="titulo">Aqui va titulo</label>
+								<label class="control-label" for="titulo">{{$cotizacion->nombre}}</label>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="control-label col-md-4">Cliente</label>
 							<div class="col-md-8">
-								<label class="control-label" for="cliente">Aqui va cliente</label>
+								<label class="control-label" for="cliente">{{$cotizacion->cliente->nombre}}</label>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="control-label col-md-4">Persona de Contacto</label>
 							<div class="col-md-8">
-								<label class="control-label" for="contacto">Aqui va contacto</label>
+								<label class="control-label" for="contacto">{{$cotizacion->contacto->nombre}} {{$cotizacion->contacto->apellido}}</label>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="control-label col-md-4">Tipo de trabajo</label>
 							<div class="col-md-8">
-								<label class="control-label" for="tipo">Aqui va tipo</label>
+								<label class="control-label" for="tipo">{{$cotizacion->tipo_trabajo->nombre}}</label>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="control-label col-md-4">Descripcion trabajo</label>
 							<div class="col-md-8">
-								<label class="control-label" for="contacto">Aqui va descripcion</label>
+								<label class="control-label" for="contacto">{{$cotizacion->descripcion_trabajo}}</label>
 							</div>
 						</div>
 

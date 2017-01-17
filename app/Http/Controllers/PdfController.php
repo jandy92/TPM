@@ -9,7 +9,7 @@ class PdfController extends Controller
 {
     function crearPDF($folio_cotizacion){
     	$cotizacion = Cotizacion::find($folio_cotizacion);
-    	$url = "pdf.nombre de vista";
+    	$url = ".backend.pdf.pdf_cotizacion";
     	$view = \View::make($url,compact('cotizacion'))->render();
     	$pdf = \App::make('dompdf.wrapper');
     	$pdf -> loadHTML($view);

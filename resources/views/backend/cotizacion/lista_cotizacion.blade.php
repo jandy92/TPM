@@ -52,7 +52,8 @@
 						<td>{{$cot->tipo_trabajo->nombre}}</td>
 						
 						<td>{{$cot->descripcion_trabajo}}</td>
-						<td><a class="btn btn-link" style="color:red" href="javascript:genPDF()">PDF</a></td>
+						<td><a class="btn btn-link" style="color:red" href="{{action('PdfController@crearPDF',$cot->folio_cotizacion)}}">PDF</a></td>
+
 						<td><a class="btn btn-primary" href="{{action('ControladorTrabajo@nuevoTrabajoForm',$cot->folio_cotizacion)}}">Aceptar Cotizacón</a></td>
 						<td>
 							<a class="btn btn-link" style="color:green" href="#">Editar</a>
