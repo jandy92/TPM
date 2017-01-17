@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Tipo_material;
+use App\Tipo_item;
 
 class seeder_tipo_material extends Seeder
 {
@@ -12,13 +12,13 @@ class seeder_tipo_material extends Seeder
      */
     public function run()
     {
-    	$c=new Tipo_material(array(
+    	$c=new Tipo_item(array(
             'id_tipo_item'=>1,
             'nombre'=>'Material'
         ));
         $c->save();
 
-        $c=new Tipo_material(array(
+        $c=new Tipo_item(array(
             'id_tipo_item'=>2,
             'nombre'=>'Mano de Obra'
         ));

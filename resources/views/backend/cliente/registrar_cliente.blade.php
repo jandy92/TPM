@@ -190,7 +190,7 @@
 		}
 		
 	}
-
+	
 	function showModal(){
 		$('#basicModal').modal('show');
 	}
