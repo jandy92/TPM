@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(seeder_contactos::class);
         $this->call(Seeder_cotizacion::class);
         $this->call(seeder_tipo_material::class);
+        $this->call(seederEstado::class);
 
     }
 }

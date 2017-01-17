@@ -4,17 +4,19 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TablaEstado extends Migration{
+class TablaUnidadMedida extends Migration
+{
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up(){
-        Schema::create('estado', function (Blueprint $table){
-            $table->increments('id_estado');
+    public function up()
+    {
+        Schema::create('unidad_medida', function (Blueprint $table){
+            $table->increments('id_unidad');
             $table->string('nombre');
-            $table->softDeletes();
+            $table->string('nombre_abreviacion');
             $table->timestamps();
         });
     }
@@ -24,9 +26,8 @@ class TablaEstado extends Migration{
      *
      * @return void
      */
-    public function down(){
-        
-        Schema::dropIfExists('estado');
-    
+    public function down()
+    {
+        Schema::drop('unidad_medida');
     }
 }

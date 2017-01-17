@@ -18,9 +18,11 @@ class TablaItem extends Migration
             $table->string('nombre');
             $table->string('unidad_medida');
             $table->integer('id_tipo_item')->unsigned();
-            $table->softDeletes();
+            $table->integer('id_unidad')->unsigned();
+            $table->timestamps();
 
             $table->foreign('id_tipo_item')->references('id_tipo_item')->on('tipo_item')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_unidad')->references('id_unidad')->on('unidad_medida')->onUpdate('cascade')->onDelete('cascade'); 
 
 
         });
@@ -31,8 +33,7 @@ class TablaItem extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down(){
          Schema::dropIfExists('item');
     }
     

@@ -70,17 +70,6 @@
   											<th>Teléfono</th>
   											<th></th>
   										</thead>
-  									<!--
-  										<tbody>
-  											<tr>
-	  											<td><input class="form-control" type="text" id="new_nombre" ></td>
-	  											<td><input class="form-control" type="text" id="new_apellido" ></td>
-	  											<td><input class="form-control" type="text" id="new_email" ></td>
-	  											<td><input class="form-control" type="text" id="new_telefono" ></td>
-	  											<td><button type="button" onclick="addContacto()" class="btn btn-primary">+</button></td>
-  											</tr>
-  										</tbody>
-  									-->	
 	  								</table>
 	  							</div>
 							</div>
@@ -101,7 +90,6 @@
 		</div>
 	</div>
 </div>
-
 
 <div class="modal fade" id="basicModal" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog">
@@ -143,7 +131,7 @@
 
 <script type="text/javascript">
 	var contactos=[];
-
+	var contactos_asignados=[];
 	@foreach($contactos as $c)
 		temp={};
 		temp.id={{$c->id_contacto}};
@@ -183,18 +171,66 @@
 				row+=c.email;
 				row+="</td>";
 				row+="<td>";
-				row+="<a href='#'>Asociar</a>";
+				row+="<a id='link_asociar_contacto_"+c.id+"' style='color:blue;cursor:pointer;' onclick='asociarContacto("+c.id+")'>Asociar</a>";
 				row+="</td>";
 			row+="</tr>";
 			$('#modal_tabla_contactos').append(row);
 		}
-		
 	}
 	
 	function showModal(){
 		$('#basicModal').modal('show');
 	}
 
+	function asociarContacto(id){
+		//console.log(id);
+		found=false;
+		for(i in contactos_asignados){
+			c=contactos_asignados[i];
+			if(c.id===id){
+				found=true;
+				break;
+			}
+		}
+		if(!found){
+			for(i in contactos){
+				c=contactos[i];
+				if(c.id===id){
+					$("#link_asociar_contacto_"+id).css('visibility','hidden');
+					contactos_asignados.push(c);
+					renderFormTable();	
+					break;
+				}
+			}
+		}
+	}
+
+	function desasociarContacto(id){
+
+	}
+
+	function renderFormTable(){
+		$('#tabla_contactos > tbody').empty();
+		for(i in contactos_asignados){
+			c=contactos_asignados[i];
+			row="<tr>";
+				row+="<td>";
+				row+=c.nombre+" ";
+				row+=c.apellido;
+				row+="</td>";
+				row+="<td>";
+				row+=c.telefono;
+				row+="</td>";
+				row+="<td>";
+				row+=c.email;
+				row+="</td>";
+				row+="<td>";
+				row+="<a id='link_desasociar_contacto_"+c.id+"' style='color:red;cursor:pointer;' >des-asociar</a>";
+				row+="</td>";
+			row+="</tr>";
+			$('#tabla_contactos').append(row);
+		}
+	}
 	show_contactos();
 </script>
 @endsection
