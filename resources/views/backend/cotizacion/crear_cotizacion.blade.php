@@ -1,6 +1,10 @@
 @extends('master')
 @section('titulo','Crear cotización')
 @section('contenido')
+<style type="text/css">
+	
+	
+</style>
 <div class="container">
 	<div class="col col-md-8 col-md-push-2">
 		@if($errors->all())
@@ -15,7 +19,7 @@
 		@endif
 		<div class="well">
 			<legend><h3>Crear cotización</h3></legend>
-			<form class="form" method="post" autocomplete="off">
+			<form class="form" method="post" onsubmit="return submit_form()" autocomplete="off">
 				<fieldset>
 					{{csrf_field()}}
 
@@ -329,22 +333,21 @@
 			$('#pesos_util').html(utilidades);
 			$('#total').html(totalCU);
 		}
-		/*
-		$('#rut').on('input',function(){
-			//quitar espacios y validar rut al ingresar valores
-			var r=$('#rut').val();
-			r = r.replace(/\s+/g, '');
-			$('#rut').val(r);
-			var v=$.Rut.validar($('#rut').val());
-			if(!v){
-				$('#rut').css('color','red');
-			}else{
-				$('#rut').css('color','green');
+
+		function submit_form(){
+			for(i in items){
+				c=items[i];
+				console.log(c);
+				input="<input type='hidden' name='items["+c.id+"][id]' value="+c.id+"";
+				input+=">"
+				input="<input type='hidden' name='items["+c.id+"][nombre]' value="+c.nombre+"";
+				input+=">"
+				input="<input type='hidden' name='items["+c.id+"][unidad]' value="+c.unidad+"";
+				input+=">"
+
+				$('#tabla_items').append(input);
 			}
-		});
-		$('#rut').Rut({
-			format_on: 'keyup'
-		});
-		*/
+			//return false;
+		}
 </script>
 @endsection

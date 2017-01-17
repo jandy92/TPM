@@ -32,7 +32,14 @@ class ControladorCotizacion extends Controller
     	echo "<br/>";
     	echo "UTILIDAD (%)= ".$r->get('utilidad');
     	echo "<br/>";
-*/      $cliente=Cliente::whereRut_cliente($r->get('cliente'))->first();
+
+
+
+
+*/
+        return $r->get('items');
+
+      /*$cliente=Cliente::whereRut_cliente($r->get('cliente'))->first();
         $contacto = Contacto::find($r->get('contactos'));
         $tipo= Tipo_trabajo::find($r->get('tiposTrab'));
 
@@ -47,7 +54,7 @@ class ControladorCotizacion extends Controller
 
         $cotizacion->save();
         $msj=["title" => "Cotizacion", "text" => "Cotizacion registrada con éxito"];
-        return redirect()->action('ControladorCotizacion@listaCotizacion')->with("mensaje", $msj);
+        return redirect()->action('ControladorCotizacion@listaCotizacion')->with("mensaje", $msj);*/
     }
 
 
