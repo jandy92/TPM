@@ -70,17 +70,6 @@
   											<th>Teléfono</th>
   											<th></th>
   										</thead>
-  									<!--
-  										<tbody>
-  											<tr>
-	  											<td><input class="form-control" type="text" id="new_nombre" ></td>
-	  											<td><input class="form-control" type="text" id="new_apellido" ></td>
-	  											<td><input class="form-control" type="text" id="new_email" ></td>
-	  											<td><input class="form-control" type="text" id="new_telefono" ></td>
-	  											<td><button type="button" onclick="addContacto()" class="btn btn-primary">+</button></td>
-  											</tr>
-  										</tbody>
-  									-->	
 	  								</table>
 	  							</div>
 							</div>
@@ -143,7 +132,7 @@
 
 <script type="text/javascript">
 	var contactos=[];
-
+	var contactos_asignados=[];
 	@foreach($contactos as $c)
 		temp={};
 		temp.id={{$c->id_contacto}};
@@ -188,11 +177,37 @@
 			row+="</tr>";
 			$('#modal_tabla_contactos').append(row);
 		}
-		
 	}
 	
 	function showModal(){
 		$('#basicModal').modal('show');
+	}
+
+	function asociarContacto(id){
+		console.log(id);
+	}
+
+	function renderFormTable(){
+		$('#tabla_contactos > tbody').empty();
+		for(i in contactos){
+			c=contactos[i];
+			row="<tr>";
+				row+="<td>";
+				row+=c.nombre+" ";
+				row+=c.apellido;
+				row+="</td>";
+				row+="<td>";
+				row+=c.telefono;
+				row+="</td>";
+				row+="<td>";
+				row+=c.email;
+				row+="</td>";
+				row+="<td>";
+				row+="<a href='#' style='color:red' >des-asociar</a>";
+				row+="</td>";
+			row+="</tr>";
+			$('#tabla_contactos').append(row);
+		}
 	}
 
 	show_contactos();
