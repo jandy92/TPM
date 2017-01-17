@@ -204,6 +204,11 @@
 			}
 		}
 	}
+
+	function desasociarContacto(id){
+
+	}
+
 	function renderFormTable(){
 		$('#tabla_contactos > tbody').empty();
 		for(i in contactos_asignados){
@@ -220,7 +225,7 @@
 				row+=c.email;
 				row+="</td>";
 				row+="<td>";
-				row+="<b  style='color:red;cursor:pointer;' >des-asociar</a>";
+				row+="<a id='link_desasociar_contacto_"+c.id+"' style='color:red;cursor:pointer;' >des-asociar</a>";
 				row+="</td>";
 			row+="</tr>";
 			$('#tabla_contactos').append(row);
