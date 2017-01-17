@@ -37,8 +37,7 @@ Route::group(['middleware'=>['checklog','web']],function(){
 	Route::group(['prefix' => 'cotizacion','middleware'=>['filtro_user']],function(){
 		Route::get('/nueva', 'ControladorCotizacion@nuevaCotizacionForm');
 		Route::get('/lista', 'ControladorCotizacion@listaCotizacion');
-		Route::post('/nueva','ControladorCotizacion@nuevaCotizacion');
-		Route::get('/pdf', 'ControladorCotizacion@pdfCotizacionForm');
+		Route::post('/nueva','ControladorCotizacion@nuevaCotizacion');	
 	});
 
 	Route::group(['prefix' => 'tipoTrabajo','middleware'=>['filtro_user']],function(){
@@ -58,17 +57,13 @@ Route::group(['middleware'=>['checklog','web']],function(){
 		Route::post('/editar/{id}','ControladorUsuario@editarUsuario');
 	});
 
-	Route::group(['prefix' => 'administracion/varios','middleware'=>['filtro_admin']],function(){
-		Route::get('/unidadesMedida','ControladorVarios@unidades_de_medida_lista');
-	});
-
 	Route::get('/', 'ControladorPaginas@home');
 	Route::get('/home', 'HomeController@index');
 
 	$this->get('/logout', 'Auth\LoginController@logout');
 });
 
-z
+Route::get('pdf/{folio}','PdfController@crearPDF');
 Route::get('API/buscarCliente/{rut_cliente}','ControladorCliente@buscaContactos');
 Route::get('API/contactosDeCliente/{id}','ControladorCliente@AJAX_contactosDeCliente');
 Route::get('API/buscarclientes/{texto}','ControladorCliente@AJAX_busquedaClientes');
