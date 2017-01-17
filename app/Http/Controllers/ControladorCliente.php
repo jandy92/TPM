@@ -24,8 +24,9 @@ class ControladorCliente extends Controller
         $contacto->apellido=$r->get('apellido');
         $contacto->email=$r->get('email');
         $contacto->telefono=$r->get('telefono');
-        //$contacto->save();
-        return $contacto;
+        $contacto->save();
+        return redirect()->action('ControladorCliente@listaDeContacto');
+        //return $contacto;
     }
 
     function nuevoClienteForm(){
