@@ -37,7 +37,9 @@ class ControladorCotizacion extends Controller
         $tipo= Tipo_trabajo::find($r->get('tiposTrab'));
 
         $cotizacion = new Cotizacion(array('nombre'=>$r->get('titulo'),
-            'descripcion_trabajo'=>$r->get('descTrab')
+            'descripcion_trabajo'=>$r->get('descTrab'),
+            'gasto_fijo'=>$r->get('gastoFijo'),
+            'utilidad'=>$r->get('utilidad')
             ));
         $cotizacion->cliente()->associate($cliente);
         $cotizacion->contacto()->associate($contacto);
@@ -81,8 +83,10 @@ class ControladorCotizacion extends Controller
         $cotizacion=Cotizacion::find(1);
         return view('backend.pdf.pdf_cotizacion_v2', compact('cotizacion'));
     }
-    function infoCotizacionForm(){
-        $cotizacion=Cotizacion::find(1);
-        return view('backend.cotizacion.info_cotizacion', compact('cotizacion'));
+    function editarCotizacionForm($folio_cotizacion){
+        $cotizacion=Cotizacion::find($folio_cotizacion);
+        $cliente=Cliente::find($cotizacion->id_cliente);
+        $tipo_trabajo = Tipo_trabajo::all();
+        return view('backend.cotizacion.editar_cotizacion', compact('cotizacion','cliente','tipo_trabajo'));
     }
 }
