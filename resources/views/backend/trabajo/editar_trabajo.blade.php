@@ -1,19 +1,15 @@
-<head>
-<style>
-div.form-group {
-    padding-bottom: 25px;
-}
-</style>
-</head>
+@extends('master')
+@section('titulo','Editar Trabajo')
+@section('contenido')
 <div class="container">
 	<div class="col col-md-8 col-md-push-2">
 		@if($errors->all())
 		   <div class="alert alert-danger">
 		   	Se han detectado los siguientes errores:
 		   	<ul>
-		   @foreach ($errors->all() as $error)
+		  	@foreach ($errors->all() as $error)
 		     <li> {{ $error }}</li>
-		  @endforeach
+			@endforeach
 		  	</ul>
 		  </div>
 		@endif
@@ -22,13 +18,16 @@ div.form-group {
 			<form class="form" method="post" autocomplete="off">
 				<fieldset>
 					{{csrf_field()}}
-
 					<div class="form-group">
 						<label class="control-label col-md-3" for="tipo">Estado:</label>
 						<div class="col-md-9">
 							<select name="estado" style="width: 487px">
 								@foreach($estados as $estado)
-									<option value="{{$estado->id_estado}}">{{$estado->nombre}}</option>
+									@if($estado->id_estado == $trabajo->estado->id_estado)
+										<option value="{{$estado->id_estado}}" selected>{{$estado->nombre}}</option>
+									@else
+										<option value="{{$estado->id_estado}}">{{$estado->nombre}}</option>
+									@endif
 								@endforeach
 							</select>
 						</div>
