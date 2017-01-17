@@ -53,15 +53,13 @@
 							<input type="phone" class="form-control" id="telefono" name="telefono">
 						</div>
 					</div>
-					<button type="button" class="btn btn-primary">Asociar contacto Contacto</button>
-
+					<button type="button" class="btn btn-primary" onclick="showModal()">Asociar contacto</button>
 
 
 					<div class="row">&nbsp;</div>
 					<div class="col">
 						<label>Personas de contacto</label>
 						<div class="panel panel-default">
-							
 	  						<div class="panel-body">
 	  							<div class="table-responsive">
 	  								<table class="table" id="tabla_contactos">
@@ -104,42 +102,99 @@
 	</div>
 </div>
 
-<div id="myModal" class="modal fade">
+
+<div class="modal fade" id="basicModal" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Confirmation</h4>
+            <!--button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button-->
+            <h4 class="modal-title" id="myModalLabel">Administrar Contactos</h4>
             </div>
             <div class="modal-body">
-                <p>Do you want to save changes you made to document before closing?</p>
-                <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>
+            	<div class="form-group">            		
+            		<div class="col-md-12">
+                		<input  id="input_filter_contactos" type="text" class="form-control" name="">
+                		<button  type="button" onclick="listaContactos()" class="btn btn-default col-md-3">Buscar</button>
+            		</div>
+            	</div>
+            	<div class="form-group">
+            		<div id="modal_result">
+            			<table class="table" id="modal_tabla_contactos">
+            				<thead>
+            					<th>Nombre</th>
+            					<th>Teléfono</th>
+            					<th>E-mail</th>
+            					<th>Acción</th>
+            				</thead>
+            				<tbody>
+            					
+            				</tbody>
+            			</table>
+            		</div>
+            	</div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
-            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-            </div>
-            <div class="modal-body">
-                <h3>Modal Body</h3>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <!--button type="button" class="btn btn-primary">Seleccionar</button-->
         </div>
     </div>
   </div>
 </div>
+
 <script type="text/javascript">
-	$('#modal').modal('toggle');
+	var contactos=[];
+
+	@foreach($contactos as $c)
+		temp={};
+		temp.id={{$c->id_contacto}};
+		temp.telefono='{{$c->telefono}}';
+		temp.email='{{$c->email}}';
+		temp.nombre='{{$c->nombre}}';
+		temp.apellido='{{$c->apellido}}';
+		contactos.push(temp);
+	@endforeach
+
+
+	function listaContactos(){
+		if($('#input_filter_contactos').val().length>0){
+			filter_contactos();
+		}else{
+			show_contactos();
+		}
+	}
+
+	function filter_contactos(){
+
+	}
+
+	function show_contactos(){
+		$('#modal_tabla_contactos > tbody').empty();
+		for(i in contactos){
+			c=contactos[i];
+			row="<tr>";
+				row+="<td>";
+				row+=c.nombre+" ";
+				row+=c.apellido;
+				row+="</td>";
+				row+="<td>";
+				row+=c.telefono;
+				row+="</td>";
+				row+="<td>";
+				row+=c.email;
+				row+="</td>";
+				row+="<td>";
+				row+="<a href='#'>Asociar</a>";
+				row+="</td>";
+			row+="</tr>";
+			$('#modal_tabla_contactos').append(row);
+		}
+		
+	}
+
+	function showModal(){
+		$('#basicModal').modal('show');
+	}
+
+	show_contactos();
 </script>
 @endsection

@@ -13,9 +13,6 @@ use DB;
 
 class ControladorCliente extends Controller
 {
-    function nuevoClienteForm(){
-    	return view('backend.cliente.registrar_cliente');
-    }
 
     function nuevoContactoForm(){
         return view('backend.cliente.registrar_contacto');
@@ -29,6 +26,11 @@ class ControladorCliente extends Controller
         $contacto->telefono=$r->get('telefono');
         //$contacto->save();
         return $contacto;
+    }
+
+    function nuevoClienteForm(){
+    	$contactos=Contacto::all();
+        return view('backend.cliente.registrar_cliente',compact('contactos'));
     }
 
     function nuevoCliente(NuevoClienteRequest $r){
@@ -59,10 +61,12 @@ class ControladorCliente extends Controller
         $msg =['title'=>'Operación exitosa','text'=>'Se ha registrado un nuevo cliente.'];
     	return redirect()->action('ControladorCliente@listaDeCliente')->with('mensaje',$msg);
     }
+    
     function editarClienteForm($idCliente){
         $cliente = Cliente::find($idCliente);
         return view("backend.cliente.editar_cliente", compact("cliente"));
     }
+
     function editarCliente(EditarClienteRequest $r){
         $cliente = Cliente::find($r->get('id_cliente'));
         $rutTemp = $r->get('rut');
