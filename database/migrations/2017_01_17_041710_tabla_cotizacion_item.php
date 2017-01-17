@@ -16,7 +16,6 @@ class TablaCotizacionItem extends Migration
        Schema::create('cotizacion_item', function (Blueprint $table){
             $table->integer('id_item')->unsigned();
             $table->integer('folio_cotizacion')->unsigned();
-            $table->softDeletes();
             
             $table->integer('cantidad');
             $table->integer('precio_unitario');
