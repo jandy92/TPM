@@ -106,8 +106,7 @@
             <div class="modal-body">
             	<div class="form-group">            		
             		<div class="col-md-12">
-                		<input  id="input_filter_contactos" type="text" class="form-control" name="">
-                		<button  type="button" onclick="listaContactos()" class="btn btn-default col-md-3">Buscar</button>
+                		<input onkeyup="listaContactos()"  id="input_filter_contactos" type="text" class="form-control" name="">
             		</div>
             	</div>
             	<div class="form-group">
@@ -137,6 +136,7 @@
 <script type="text/javascript">
 	var contactos=[];
 	var contactos_asignados=[];
+	var contactos_filtrados=[];
 	@foreach($contactos as $c)
 		temp={};
 		temp.id={{$c->id_contacto}};
@@ -157,7 +157,30 @@
 	}
 
 	function filter_contactos(){
-
+		contactos_filtrados=[];
+		$('#modal_tabla_contactos > tbody').empty();
+		filtro=$('#input_filter_contactos').val().toLowerCase();
+		for(i in contactos){
+			c=contactos[i];
+			if(c.nombre.toLowerCase().indexOf(filtro)>=0 || c.apellido.toLowerCase().indexOf(filtro)>=0){
+				row="<tr>";
+				row+="<td>";
+				row+=c.nombre+" ";
+				row+=c.apellido;
+				row+="</td>";
+				row+="<td>";
+				row+=c.telefono;
+				row+="</td>";
+				row+="<td>";
+				row+=c.email;
+				row+="</td>";
+				row+="<td>";
+				row+="<a id='link_asociar_contacto_"+c.id+"' style='color:blue;cursor:pointer;' onclick='asociarContacto("+c.id+")'>Asociar</a>";
+				row+="</td>";
+				row+="</tr>";
+				$('#modal_tabla_contactos').append(row);
+			}
+		}
 	}
 
 	function show_contactos(){
@@ -184,6 +207,7 @@
 	}
 	
 	function showModal(){
+		$('#input_filter_contactos').focus();
 		$('#basicModal').modal('show');
 	}
 
@@ -260,9 +284,7 @@
 			input+=">"
 			$('#contactos').append(input);
 		}
-			//return false;
 	}
-
 	show_contactos();
 </script>
 @endsection
