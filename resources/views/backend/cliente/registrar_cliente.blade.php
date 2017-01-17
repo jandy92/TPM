@@ -65,9 +65,8 @@
 	  								<table class="table" id="tabla_contactos">
   										<thead>
   											<th>Nombre</th>
-  											<th>Apellido</th>
-  											<th>Email</th>
   											<th>Teléfono</th>
+  											<th>Email</th>
   											<th></th>
   										</thead>
 	  								</table>
