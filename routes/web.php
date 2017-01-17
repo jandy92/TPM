@@ -62,6 +62,7 @@ Route::group(['middleware'=>['checklog','web']],function(){
 	});
 	Route::group(['prefix' => 'administracion/varios','middleware'=>['filtro_admin']],function(){
 		Route::get('/unidadMedida','ControladorVarios@unidades_de_medida_lista');
+		Route::post('/unidadMedida','ControladorVarios@nuevo_unidad_medida');
 	
 	});
 

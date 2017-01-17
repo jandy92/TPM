@@ -5,6 +5,9 @@
 	<div class="col col-md-8 col-md-push-2">
 
 		<div class="well">
+		@foreach ($errors->all() as $error)
+                <p class="alert alert-danger">{{ $error }}</p>
+                @endforeach 
 			<legend>Unidades de medida</legend>
 			<form class="form" id="form" method="post" autocomplete="off">
 				<fieldset>
@@ -12,14 +15,14 @@
 					<div class="form-group">
 						<label class="control-label col-md-2" for="nombre">Nombre:</label>
 						<div class="col-md-3">
-							<input type="text" class="form-control" id="nombre" name="nombre">
+							<input type="text" class="form-control" name="nombre">
 						</div>
 						<label class="control-label col-md-2" for="nombre">Abreviación:</label>
 						<div class="col-md-3">
-							<input type="text" class="form-control" id="nombre" name="nombre">
+							<input type="text" class="form-control" name="abreviacion">
 						</div>
 						<div class="col-md-2">
-							<button type="button" class="btn btn-primary">Agregar</button>
+							<button class="btn btn-primary">Agregar</button>
 						</div>
 						
 					</div>
