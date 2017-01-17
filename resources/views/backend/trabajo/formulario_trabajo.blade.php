@@ -91,14 +91,23 @@ select.list1 option.option2
 
 					<div class="form-group">
 						<label class="control-label col-md-3" for="tipo">Estado:</label>
-						<div class="col-md-9">
+						<div class="col-md-6">
 						<b>
-							<select name="estado" style="width: 487px">
+							<select id="select_estado" name="estado" style="width: 300px">
 								@foreach($estados as $estado)
+									@if($estado->id_estado==0)
+									<option selected value="{{$estado->id_estado}}" style="background-color:#{{$estado->color}};color:#{{$estado->color_letra}}">{{$estado->nombre}}</option>
+									@else
 									<option value="{{$estado->id_estado}}" style="background-color:#{{$estado->color}};color:#{{$estado->color_letra}}">{{$estado->nombre}}</option>
+									@endif
 								@endforeach
+
 							</select>
+
 						</b>	
+						</div>
+						<div class="col-md-3">
+							<span  id="label_color_trabajo" class="control-label col-md-3" for="tipo" style= "border:solid 1px black;width: 100%;height: 2em;display: inline-block;"></span>
 						</div>
 					</div>
 
@@ -173,6 +182,31 @@ select.list1 option.option2
 
 
 <script type="text/javascript">
+		colores=[];
+		@foreach($estados as $estado)
+			c = {};
+			c.valor = "#{{$estado->color}}";
+			c.id = {{$estado->id_estado}};
+			colores.push(c);
+		@endforeach
+
+		cambiaColorLabel();
+
+		$("#select_estado").change(function(){
+			cambiaColorLabel();
+		});
+
+		function cambiaColorLabel(){
+				valor = parseInt($("#select_estado").val());
+				for(i in colores){
+					c=colores[i];
+					if (c.id === valor){
+						console.log(c);
+						$('#label_color_trabajo').css('background-color',c.valor);
+						break;
+					}
+				}
+		}
 
 		/*
 		$('#rut').on('input',function(){
