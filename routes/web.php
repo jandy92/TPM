@@ -57,6 +57,10 @@ Route::group(['middleware'=>['checklog','web']],function(){
 		Route::post('/editar/{id}','ControladorUsuario@editarUsuario');
 	});
 
+	Route::group(['prefix' => 'administracion/varios','middleware'=>['filtro_admin']],function(){
+		Route::get('/unidadesMedida','ControladorVarios@unidades_de_medida_lista');
+	});
+
 	Route::get('/', 'ControladorPaginas@home');
 	Route::get('/home', 'HomeController@index');
 
