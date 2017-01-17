@@ -81,7 +81,7 @@
 						<div class="row">&nbsp;</div>
 						<button type="submit" class="btn btn-success">Registrar</button>
 						&nbsp;
-						<a href="#" class="btn btn-warning">Cancelar</a>
+						<a href="{{action('ControladorCliente@listaDeCliente')}}" class="btn btn-warning">Cancelar</a>
 					</div>
 				</div>
 
