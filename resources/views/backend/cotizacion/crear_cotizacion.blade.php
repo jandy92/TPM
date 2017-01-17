@@ -229,7 +229,7 @@
 							for(i in Y.contactos){
 								var c= Y.contactos[i];
 								console.log(c.nombre);
-								$('#contactos').append('<option value="'+c.id_contacto+'" >'+c.nombre+'</option>');
+								$('#contactos').append('<option value="'+c.id_contacto+'" >'+c.nombre+" "+c.apellido+'</option>');
 							}
 							$('#submit_button').attr('disabled',false);
 						}else{
