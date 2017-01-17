@@ -46,11 +46,9 @@
 					<tr>
 						<td>{{$cot->folio_cotizacion}}</td>
 						<td>{{$cot->nombre}}</td>
-
 						<td>{{$cot->cliente->nombre}}</td>
 						<td>{{$cot->contacto->nombre}} {{$cot->contacto->apellido}}</td>
 						<td>{{$cot->tipo_trabajo->nombre}}</td>
-						
 						<td>{{$cot->descripcion_trabajo}}</td>
 						<td><a class="btn btn-link" style="color:red" href="{{action('PdfController@crearPDF',$cot->folio_cotizacion)}}">PDF</a></td>
 
@@ -147,16 +145,6 @@
 		}
 	}
 
-	function genPDF() {
-		console.log("generando pdf");
-	
-		var doc = new jsPDF();
-		
-		doc.text(20,20,'TEST Message!!');
-		doc.addPage();
-		doc.text(20,20,'TEST Page 2!');
-		doc.save('Test.pdf');
-	}
 
 </script>
 @endsection

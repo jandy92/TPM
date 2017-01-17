@@ -70,6 +70,7 @@ Route::group(['middleware'=>['checklog','web']],function(){
 	$this->get('/logout', 'Auth\LoginController@logout');
 });
 
+Route::get('API/buscarContacto/{texto}','ControladorContacto@buscarContacto');
 Route::get('pdf/{folio}','PdfController@crearPDF');
 Route::get('API/buscarCliente/{rut_cliente}','ControladorCliente@buscaContactos');
 Route::get('API/contactosDeCliente/{id}','ControladorCliente@AJAX_contactosDeCliente');

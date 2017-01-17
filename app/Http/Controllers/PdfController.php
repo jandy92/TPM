@@ -14,6 +14,6 @@ class PdfController extends Controller
     	$pdf = \App::make('dompdf.wrapper');
     	$pdf -> loadHTML($view);
 
-    	return $pdf->download('Cotizacion_xx.pdf');
+    	return $pdf->download('Cotizacion_'.$folio_cotizacion.'.pdf');
     }
 }
