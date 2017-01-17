@@ -29,6 +29,7 @@ class NuevoTrabajoRequest extends FormRequest
             'fecha_pago'=>'required',
             'receptor_factura'=>'required',
             'orden_trabajo'=>'required',
+            'orden_compra'=>'required',
             //
         ];
     }

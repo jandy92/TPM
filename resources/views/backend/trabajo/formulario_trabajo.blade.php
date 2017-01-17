@@ -105,9 +105,9 @@ div.form-group {
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-md-3" for="fecha_emision">Emisión cobro:</label>
+						<label class="control-label col-md-3" for="fecha_emision_cobro">Emisión cobro:</label>
 						<div class="col-md-9">
-							<input type="date" class="form-control" id="fecha_emision" name="fecha_emision">
+							<input type="date" class="form-control" id="fecha_emision_cobro" name="fecha_emision_cobro">
 						</div>
 					</div>
 
