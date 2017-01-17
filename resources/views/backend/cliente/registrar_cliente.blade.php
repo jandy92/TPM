@@ -113,13 +113,23 @@
             <div class="modal-body">
             	<div class="form-group">            		
             		<div class="col-md-12">
-                		<input type="text" class="form-control" name="">
-                		<button class="btn btn-default col-md-3">Buscar</button>
+                		<input  id="input_filter_contactos" type="text" class="form-control" name="">
+                		<button  type="button" onclick="listaContactos()" class="btn btn-default col-md-3">Buscar</button>
             		</div>
             	</div>
             	<div class="form-group">
             		<div id="modal_result">
-            			hjkhkhkhjkh
+            			<table class="table" id="modal_tabla_contactos">
+            				<thead>
+            					<th>Nombre</th>
+            					<th>Teléfono</th>
+            					<th>E-mail</th>
+            					<th>Acción</th>
+            				</thead>
+            				<tbody>
+            					
+            				</tbody>
+            			</table>
             		</div>
             	</div>
             </div>
@@ -133,6 +143,7 @@
 
 <script type="text/javascript">
 	var contactos=[];
+
 	@foreach($contactos as $c)
 		temp={};
 		temp.id={{$c->id_contacto}};
@@ -143,19 +154,47 @@
 		contactos.push(temp);
 	@endforeach
 
+
+	function listaContactos(){
+		if($('#input_filter_contactos').val().length>0){
+			filter_contactos();
+		}else{
+			show_contactos();
+		}
+	}
+
 	function filter_contactos(){
 
 	}
 
 	function show_contactos(){
-		$('#modal_result').clear();
-		for(c in contactos){
-
+		$('#modal_tabla_contactos > tbody').empty();
+		for(i in contactos){
+			c=contactos[i];
+			row="<tr>";
+				row+="<td>";
+				row+=c.nombre+" ";
+				row+=c.apellido;
+				row+="</td>";
+				row+="<td>";
+				row+=c.telefono;
+				row+="</td>";
+				row+="<td>";
+				row+=c.email;
+				row+="</td>";
+				row+="<td>";
+				row+="<a href='#'>Asociar</a>";
+				row+="</td>";
+			row+="</tr>";
+			$('#modal_tabla_contactos').append(row);
 		}
+		
 	}
 
 	function showModal(){
 		$('#basicModal').modal('show');
 	}
+
+	show_contactos();
 </script>
 @endsection
