@@ -1,6 +1,8 @@
 @extends('master')
 @section('titulo','Pagina principal')
 @section('contenido')
+
+
 <div class="container">
 <h2>Bienvenido, {{Auth::user()->name}}.</h2>
 @if(Auth::user()->hasRole('admin'))
@@ -29,14 +31,14 @@
 			<table class="table table-striped">
 				<tr>
 					<th>Cotizaciones pendientes</th>
-					<td>0</td>
+					<td>{{$cont}}</td>
 				</tr>
 			</table>
 		</div>
 	</div>
 @endif
 @if(Auth::user()->hasRole('cont'))
-	cont
+	
 @endif
 </div>	
 @endsection
