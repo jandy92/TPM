@@ -54,7 +54,7 @@ div.form-group {
 					<div class="form-group">
 						<label class="control-label col-md-3" for="contacto">Persona Contacto:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="contacto" name="contacto" value="{{$cotizacion->contacto->nombre}}"  readonly>
+							<input type="text" class="form-control" id="contacto" name="contacto" value="{{$cotizacion->contacto->nombre.' '.$cotizacion->contacto->apellido}}"  readonly>
 						</div>
 					</div>
 
