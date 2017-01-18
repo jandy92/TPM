@@ -165,7 +165,7 @@ div.form-group {
 						<div class="row">&nbsp;</div>
 						<button type="submit" class="btn btn-success">Guardar</button>
 						&nbsp;
-						<a href="#" class="btn btn-warning">Cancelar</a>
+						<a href="{{action('ControladorCotizacion@listaCotizacion')}}" class="btn btn-warning">Cancelar</a>
 					</div>
 				</div>
 

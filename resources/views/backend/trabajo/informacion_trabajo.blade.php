@@ -97,7 +97,7 @@ div.form-group {
 					<div class="form-group">
 						<label class="control-label col-md-3" for="numero_factura">Documento:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="numero_factura" name="numero_factura" value="{{$trabajo->documento}}" >
+							<input type="text" class="form-control" id="numero_factura" name="numero_factura" value="{{$trabajo->numero_factura}}" readonly >
 
 						</div>
 					</div>
@@ -105,28 +105,28 @@ div.form-group {
 					<div class="form-group">
 						<label class="control-label col-md-3" for="orden_trabajo">NºOT:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="orden_trabajo" name="orden_trabajo" >
+							<input type="text" class="form-control" id="orden_trabajo" name="orden_trabajo" value="{{$trabajo->orden_trabajo}}"  readonly>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="control-label col-md-3" for="fecha_emision_cobro">Emisión cobro:</label>
 						<div class="col-md-9">
-							<input type="date" class="form-control" id="fecha_emision_cobro" name="fecha_emision_cobro">
+							<input type="date" class="form-control" id="fecha_emision_cobro" name="fecha_emision_cobro" value="{{$trabajo->fecha_emision_cobro}}" readonly>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="control-label col-md-3" for="orden_compra">OC/NP numero:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="orden_compra" name="orden_compra">
+							<input type="text" class="form-control" id="orden_compra" name="orden_compra" value="{{$trabajo->orden_compra}}" readonly>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="control-label col-md-3" for="fecha_pago">Pagado en:</label>
 						<div class="col-md-9">
-							<input type="date" class="form-control" id="fecha_pago" name="fecha_pago">
+							<input type="date" class="form-control" id="fecha_pago" name="fecha_pago" value="{{$trabajo->fecha_pago}}" readonly>
 						</div>
 					</div>
 
@@ -134,14 +134,14 @@ div.form-group {
 					<div class="form-group">
 						<label class="control-label col-md-3" for="receptor_factura">Enviar factura a:</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" id="receptor_factura" name="receptor_factura">
+							<input type="text" class="form-control" id="receptor_factura" name="receptor_factura" value="{{$trabajo->receptor_factura}}" readonly>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="control-label col-md-3" for="comentario">Comentario:</label>
 						<div class="col-md-9" h>
-							<textarea cols=60 rows=10 name="comentario"></textarea>
+							<textarea cols=60 rows=10 name="comentario" readonly>{{$trabajo->comentario}}</textarea>
 						</div>
 					</div>
 				
@@ -149,9 +149,8 @@ div.form-group {
 				<div class="form-group">
 					<div class="col-md-5 col-md-push-5">
 						<div class="row">&nbsp;</div>
-						<button type="submit" class="btn btn-success">Guardar</button>
-						&nbsp;
-						<a href="#" class="btn btn-warning">Cancelar</a>
+						
+						<a href="{{action('ControladorTrabajo@listaDeTrabajo')}}" class="btn btn-warning">Salir</a>
 					</div>
 				</div>
 
