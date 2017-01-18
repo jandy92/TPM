@@ -10,7 +10,7 @@ use App\Cotizacion;
 use App\Tipo_trabajo;
 use App\Estado;
 use App\Trabajo;
-
+use DB;
 class ControladorTrabajo extends Controller{
 	function nuevoTrabajoForm($folio_cotizacion){
 		$cotizacion = Cotizacion::find($folio_cotizacion);
@@ -59,5 +59,9 @@ class ControladorTrabajo extends Controller{
 	function listaDeTrabajo(){
     	$trabajo=Trabajo::all();
     	return view('backend.trabajo.lista_trabajo',compact('trabajo'));
+    }
+    function AJAX_busquedaTrabajos($texto){
+        $trabajo=DB::table('trabajo')->where('numero_factura','LIKE','%'.$texto.'%')->get();
+        return response()->json($trabajo);
     }
 }
