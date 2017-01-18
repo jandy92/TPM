@@ -31,6 +31,8 @@
 					<script type="text/javascript">
 						tmp_c={
 							numero_factura:"{{$cli->numero_factura}}",
+							nombre_cliente:"{{$cli->cotizacion->cliente->nombre}}",
+							nombre_contacto:"{{$cli->cotizacion->contacto->nombre." ".$cli->cotizacion->contacto->apellido}}",
 							fecha_emision_cobro:"{{$cli->fecha_emision_cobro}}",
 							fecha_pago:"{{$cli->fecha_pago}}",
 							id_estado:"{{$cli->estado->nombre}}",
@@ -85,9 +87,11 @@
 	    		//info="{{action('ControladorTrabajo@editarTrabajoForm','#ID_TRABAJO')}}".replace("#ID_CLIENTE",c.id_cliente);
 	    		row="<tr>";
 	    		row+="<td>"+c.numero_factura+"</td>";
+	    		row+="<td>"+c.cliente+"</td>";
+	    		row+="<td>"+c.contacto+"</td>";
 	    		row+="<td>"+c.fecha_emision_cobro+"</td>";
 	    		row+="<td>"+c.fecha_pago+"</td>";
-	    		row+="<td>"+c.id_estado+"</td>";
+	    		row+="<td>"+c.nombre_estado+"</td>";
 	    		row+="<td>"+c.receptor_factura+"</td>";
 				row+="<td>";
 				row+='<a class="btn btn-link" style="color:green" href="#LINK">Editar</a>'.replace("#LINK",edit);
@@ -105,6 +109,8 @@
 	    		//info="{{action('ControladorTrabajo@editarTrabajoForm','#ID_TRABAJO')}}".replace("#ID_CLIENTE",c.id_cliente);
 	    		row="<tr>";
 	    		row+="<td>"+c.numero_factura+"</td>";
+	    		row+="<td>"+c.nombre_cliente+"</td>";
+	    		row+="<td>"+c.nombre_contacto+"</td>";
 	    		row+="<td>"+c.fecha_emision_cobro+"</td>";
 	    		row+="<td>"+c.fecha_pago+"</td>";
 	    		row+="<td>"+c.id_estado+"</td>";
