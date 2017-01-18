@@ -59,10 +59,12 @@ class ControladorCliente extends Controller
     
     function editarClienteForm($idCliente){
         $cliente = Cliente::find($idCliente);
-        return view("backend.cliente.editar_cliente", compact("cliente"));
+        $contactos= Contacto::all();
+        return view("backend.cliente.editar_cliente", compact("cliente","contactos"));
     }
 
     function editarCliente(EditarClienteRequest $r){
+        //return $r->get('contactos');
         $cliente = Cliente::find($r->get('id_cliente'));
         $rutTemp = $r->get('rut');
         if (strlen (  $rutTemp ) > 1){
@@ -73,6 +75,16 @@ class ControladorCliente extends Controller
         $cliente->giro = $r->get('giro');
         $cliente->telefono = $r->get('telefono');
         $cliente->save();
+
+        $cliente->contactos()->detach();
+        if($r->get('contactos')){
+            foreach($r->get('contactos') as $c){
+                $contacto=Contacto::find($c);
+                $cliente->contactos()->save($contacto);
+                
+            }
+        }
+        
         $msj=["title" => "Registro", "text" => "Te registraste"];
         return redirect()->action('ControladorCliente@listaDeCliente')->with("mensaje", $msj);
     }

@@ -53,12 +53,13 @@
 							<input type="phone" class="form-control" id="telefono" name="telefono">
 						</div>
 					</div>
-					<button type="button" class="btn btn-primary" onclick="showModal()">Asociar contacto</button>
-
 
 					<div class="row">&nbsp;</div>
+					
+					<label>Personas de contacto</label>
+
 					<div class="col">
-						<label>Personas de contacto</label>
+					<button type="button" class="btn btn-primary" onclick="showModal()">Asociar contacto</button>
 						<div class="panel panel-default">
 	  						<div class="panel-body">
 	  							<div class="table-responsive">
