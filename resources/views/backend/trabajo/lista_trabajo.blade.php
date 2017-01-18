@@ -14,6 +14,8 @@
 			<table id="table" class="table table-hover table-striped table-condensed table-responsive  ">
 				<thead>
 					<th>Nº Factura</th>
+					<th>Cliente</th>
+					<th>Contacto</th>
 					<th>Emision cobro</th>
 					<th>Fecha de pago</th>
 					<th>Estado</th>
@@ -38,6 +40,8 @@
 					</script>
 					<tr>
 						<td>{{$cli->numero_factura}}</td>
+						<td>{{$cli->cotizacion->cliente->nombre}}</td>
+						<td>{{$cli->cotizacion->contacto->nombre." ".$cli->cotizacion->contacto->apellido}}</td>
 						<td>{{$cli->fecha_emision_cobro}}</td>
 						<td>{{$cli->fecha_pago}}</td>
 						<td>{{$cli->estado->nombre}}</td>
