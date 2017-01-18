@@ -74,6 +74,10 @@ class ControladorTrabajo extends Controller{
 
         
        	return response()->json($trabajo);
-
+	}
+	function informacionTrabajo($id_trabajo){
+    	$trabajo=Trabajo::find($id_trabajo);
+    	return view('backend.trabajo.informacion_trabajo',compact('trabajo'));
     }
+
 }

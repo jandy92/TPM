@@ -34,7 +34,8 @@ Route::group(['middleware'=>['checklog','web']],function(){
 		Route::post('/{id}/nuevo', 'ControladorTrabajo@nuevoTrabajo');
 		Route::get('/{id}/editar', 'ControladorTrabajo@editarTrabajoForm');
 		Route::post('/{id}/editar', 'ControladorTrabajo@editarTrabajo');
-		Route::get('/lista', 'ControladorTrabajo@listaDeTrabajo');	
+		Route::get('/lista', 'ControladorTrabajo@listaDeTrabajo');
+		Route::get('/{id}/informacion', 'ControladorTrabajo@informacionTrabajo');	
 	});
 	
 	Route::group(['prefix' => 'cotizacion','middleware'=>['filtro_user']],function(){

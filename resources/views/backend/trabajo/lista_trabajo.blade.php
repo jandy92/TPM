@@ -55,7 +55,7 @@
 				</tbody>
 			</table>
 		@else
-			No existen clientes registrados
+			No existen trabajos registrados
 		@endif
 	</div>
 </div>
