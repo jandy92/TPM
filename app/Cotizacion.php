@@ -9,7 +9,7 @@ class Cotizacion extends Model
 {
 	use SoftDeletes;
 
-    protected $dates = ['deleted_at'];
+   protected $dates = ['deleted_at'];
    protected $table = 'cotizacion';
    protected $guarded = [];
    protected $primaryKey='folio_cotizacion';
@@ -31,6 +31,10 @@ class Cotizacion extends Model
 
  	public function item(){
  		return $this->belongsToMany('App\Item','cotizacion_item','id_item','folio_cotizacion');
+ 	}
+
+ 	public function trabajo(){
+ 		return $this->belongsTo('App\Trabajo','folio_cotizacion','folio_cotizacion');
  	}
 
 

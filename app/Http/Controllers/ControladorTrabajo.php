@@ -28,7 +28,8 @@ class ControladorTrabajo extends Controller{
             	'orden_trabajo'=>$r->get('orden_trabajo'),
             	'comentario'=>$r->get('comentario'),
             	'orden_compra'=>$r->get('orden_compra'),
-            	'id_estado'=>$r->get('estado')
+            	'id_estado'=>$r->get('estado'),
+            	'folio_cotizacion'=>$r->get('folio'),
         	));
         	$trabajo->save();
         	$msg =['title'=>'Operacion realizada','text'=>'Se ha guardado un trabajo nuevo'];
@@ -52,6 +53,7 @@ class ControladorTrabajo extends Controller{
 		$trabajo->comentario = $r->get('comentario');
 		$trabajo->id_estado = $r->get('estado');
 		$trabajo->orden_compra = $r->get('orden_compra');
+
 		$trabajo->save();
 		$msg =['title'=>'Operacion realizada','text'=>'Se ha editado el trabajo'];
 		return redirect()->action('ControladorCotizacion@listaCotizacion')->with('mensaje',$msg);
@@ -60,8 +62,18 @@ class ControladorTrabajo extends Controller{
     	$trabajo=Trabajo::all();
     	return view('backend.trabajo.lista_trabajo',compact('trabajo'));
     }
+
     function AJAX_busquedaTrabajos($texto){
-        $trabajo=DB::table('trabajo')->where('numero_factura','LIKE','%'.$texto.'%')->get();
-        return response()->json($trabajo);
+        
+        $trabajo=Trabajo::whereHas('cotizacion',function($q)use($texto){
+        	$q->whereHas('cliente',function($q)use($texto){
+        		$q->where('nombre','LIKE','%'.$texto.'%');})->orWhereHas('contacto',function($q)use($texto){
+        			$q->where('nombre','LIKE','%'.$texto.'%');
+        		});
+        })->orWhere('folio_cotizacion','LIKE','%'.$texto.'%')->get();
+
+        
+       	return response()->json($trabajo);
+
     }
 }
