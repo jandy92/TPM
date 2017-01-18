@@ -77,7 +77,12 @@ class ControladorCotizacion extends Controller
 
     function listaCotizacion(){
         $cotizacion=Cotizacion::all();
-    	return view('backend.cotizacion.lista_cotizacion',compact("cotizacion"));
+        /*if(empty($cotizacion[1]->trabajo)){
+    	   return "no tiene trabajo";
+        }else{
+            return "si tiene trabajo";
+        }*/
+        return view('backend.cotizacion.lista_cotizacion',compact("cotizacion"));
     }
 
 
@@ -98,6 +103,11 @@ class ControladorCotizacion extends Controller
             $cot['apellido_contacto']=$aux2->apellido;
             $aux3= Tipo_trabajo::where('id_tipo_trabajo','=',$cot->id_tipo_trabajo)->first();
             $cot['nombre_tipo_trabajo']=$aux3->nombre;
+            if(empty($cot->trabajo)){
+                $cot['con_trabajo']=false;
+            }else{
+                $cot['con_trabajo']=true;
+            }
         }
 
         return response()->json($cotizacion);

@@ -32,31 +32,44 @@
 					</form>
 
 					@foreach($cotizacion as $cot)
-					<script type="text/javascript">
-						tmp_c={
-							folio_cotizacion:"{{$cot->folio_cotizacion}}",
-							nombre:"{{$cot->nombre}}",
-							cliente:"{{$cot->cliente->nombre}}",
-							contacto:"{{$cot->contacto->nombre}}"+" "+"{{$cot->contacto->apellido}}",
-							tipoTrab:"{{$cot->tipo_trabajo->nombre}}",
-							detalle:"{{$cot->descripcion_trabajo}}",
-						};
-						cotizaciones.push(tmp_c);
-					</script>
-					<tr>
-						<td>{{$cot->folio_cotizacion}}</td>
-						<td>{{$cot->nombre}}</td>
-						<td>{{$cot->cliente->nombre}}</td>
-						<td>{{$cot->contacto->nombre}} {{$cot->contacto->apellido}}</td>
-						<td>{{$cot->tipo_trabajo->nombre}}</td>
-						<td>{{$cot->descripcion_trabajo}}</td>
-						<td><a class="btn btn-link" style="color:red" href="{{action('PdfController@crearPDF',$cot->folio_cotizacion)}}">PDF</a></td>
+						@if(empty($cot->trabajo))
+							<script type="text/javascript">
+							console.log({{$cot->trab}});
+								tmp_c={
+									folio_cotizacion:"{{$cot->folio_cotizacion}}",
+									nombre:"{{$cot->nombre}}",
+									cliente:"{{$cot->cliente->nombre}}",
+									contacto:"{{$cot->contacto->nombre}}"+" "+"{{$cot->contacto->apellido}}",
+									tipoTrab:"{{$cot->tipo_trabajo->nombre}}",
+									detalle:"{{$cot->descripcion_trabajo}}",
+								};
+								cotizaciones.push(tmp_c);
+							</script>
+							<tr>
+								<td>{{$cot->folio_cotizacion}}</td>
+								<td>{{$cot->nombre}}</td>
+								<td>{{$cot->cliente->nombre}}</td>
+								<td>{{$cot->contacto->nombre}} {{$cot->contacto->apellido}}</td>
+								<td>{{$cot->tipo_trabajo->nombre}}</td>
+								<td>{{$cot->descripcion_trabajo}}</td>
+								<td><a class="btn btn-link" style="color:red" href="{{action('PdfController@crearPDF',$cot->folio_cotizacion)}}">PDF</a></td>
 
-						<td><a class="btn btn-primary" href="{{action('ControladorTrabajo@nuevoTrabajoForm',$cot->folio_cotizacion)}}">Aceptar Cotizacón</a></td>
-						<td>
-							<a class="btn btn-link" style="color:green" href="{{action('ControladorCotizacion@editarCotizacionForm',$cot->folio_cotizacion)}}">Editar</a>
-						</td>
-					</tr>
+								<td><a class="btn btn-primary" href="{{action('ControladorTrabajo@nuevoTrabajoForm',$cot->folio_cotizacion)}}">Aceptar Cotizacón</a></td>
+								<td>
+									<a class="btn btn-link" style="color:green" href="{{action('ControladorCotizacion@editarCotizacionForm',$cot->folio_cotizacion)}}">Editar</a>
+								</td>
+							</tr>
+
+
+						@else
+							No hay cotizaciones por aceptar o
+
+						@endif
+
+
+
+
+
 					@endforeach
 				</tbody>
 			</table>
@@ -89,11 +102,9 @@
 
 	    	for(i in cotizaciones_filtradas){
 	    		c=cotizaciones_filtradas[i];
+	    		if(c.con_trabajo===false){
 	    		//funcion para generar boton editar
-	    		edit="#";
-	    		//funcion para generar boton informacion
-	    		info="#";
-
+	    		edit="{{action('ControladorCotizacion@editarCotizacionForm',$cot->folio_cotizacion)}}";
 	    		row="<tr>";
 	    		row+="<td>"+c.folio_cotizacion+"</td>";
 	    		row+="<td>"+c.nombre+"</td>";
@@ -109,18 +120,16 @@
 				row+="</td>";
 				row+="<td>";
 				row+='<a class="btn btn-link" style="color:green" href="#LINK">Editar</a>'.replace("#LINK",edit);
-				row+='<a class="btn btn-link" style="color:blue" href="#LINK">Informacion</a>'.replace("#LINK",info);
 				row+="</td>";
 	    		row+="</tr>";
 	    		$("#table > tbody").append(row);
+	    		}
 	    	}
 		}else{
 			$("#table > tbody").empty();
 	    	for(i in cotizaciones){
 	    		c=cotizaciones[i];
-				edit="#";
-	    		info="#";
-	    		//info="{{action('ControladorCliente@editarClienteForm','#ID_CLIENTE')}}".replace("#ID_CLIENTE",c.id_cliente);
+				edit="{{action('ControladorCotizacion@editarCotizacionForm',$cot->folio_cotizacion)}}";
 	    		row="<tr>";
 	    		row+="<td>"+c.folio_cotizacion+"</td>";
 	    		row+="<td>"+c.nombre+"</td>";
@@ -136,7 +145,6 @@
 				row+="</td>";
 				row+="<td>";
 				row+='<a class="btn btn-link" style="color:green" href="#LINK">Editar</a>'.replace("#LINK",edit);
-				row+='<a class="btn btn-link" style="color:blue" href="#LINK">Informacion</a>'.replace("#LINK",info);
 				row+="</td>";
 	    		row+="</tr>";
 	    		$("#table > tbody").append(row);
