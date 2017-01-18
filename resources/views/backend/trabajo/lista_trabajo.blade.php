@@ -9,7 +9,7 @@
 	<div class="col">
 	</div>
 	<div class="well">
-		<legend>Lista de clientes</legend>
+		<legend>Lista de trabajos</legend>
 		@if(isset($trabajo)&&!$trabajo->isEmpty())
 			<table id="table" class="table table-hover table-striped table-condensed table-responsive  ">
 				<thead>
@@ -59,14 +59,14 @@
 	function filtrarClientes(){
 		if($('#filtro').val()!=''){
 			console.log($('#filtro').val());
-			var url_="{{action('ControladorCliente@AJAX_busquedaClientes','#VALUE')}}".replace('#VALUE',$('#filtro').val());
+			var url_="{{action('ControladorTrabajo@AJAX_busquedaTrabajos','#VALUE')}}".replace('#VALUE',$('#filtro').val());
 			console.log(url_);
 			$.ajax(
 				{
 					url: url_,
 					async: false,//importante
 					success: function(result){
-	        		clientes_filtrados=JSON.parse(JSON.stringify(result));
+	        		trabajos_filtrados=JSON.parse(JSON.stringify(result));
 	    		},error:function (xhr, ajaxOptions, thrownError) {
 		        console.log(xhr.status);
 		        console.log(thrownError);
@@ -74,17 +74,17 @@
 	    	});
 	    	//console.log(clientes_filtrados);
 	    	$("#table > tbody").empty();
-	    	for(i in clientes_filtrados){
-	    		c=clientes_filtrados[i];
-	    		edit="{{action('ControladorCliente@editarClienteForm','#ID_CLIENTE')}}".replace("#ID_CLIENTE",c.id_cliente);
+	    	for(i in trabajos_filtrados){
+	    		c=trabajos_filtrados[i];
+	    		edit="{{action('ControladorTrabajo@editarTrabajoForm','#ID_CLIENTE')}}".replace("#ID_TRABAJO",c.id_trabajo);
 	    		info="#";
-	    		//info="{{action('ControladorCliente@editarClienteForm','#ID_CLIENTE')}}".replace("#ID_CLIENTE",c.id_cliente);
+	    		//info="{{action('ControladorTrabajo@editarTrabajoForm','#ID_TRABAJO')}}".replace("#ID_CLIENTE",c.id_cliente);
 	    		row="<tr>";
-	    		row+="<td>"+c.rut_cliente+"</td>";
-	    		row+="<td>"+c.nombre+"</td>";
-	    		row+="<td>"+c.direccion+"</td>";
-	    		row+="<td>"+c.telefono+"</td>";
-	    		row+="<td>"+c.giro+"</td>";
+	    		row+="<td>"+c.numero_factura+"</td>";
+	    		row+="<td>"+c.fecha_emision_cobro+"</td>";
+	    		row+="<td>"+c.fecha_pago+"</td>";
+	    		row+="<td>"+c.id_estado+"</td>";
+	    		row+="<td>"+c.receptor_factura+"</td>";
 				row+="<td>";
 				row+='<a class="btn btn-link" style="color:green" href="#LINK">Editar</a>'.replace("#LINK",edit);
 				row+='<a class="btn btn-link" style="color:blue" href="#LINK">Informacion</a>'.replace("#LINK",info);
@@ -94,17 +94,17 @@
 	    	}
 		}else{
 			$("#table > tbody").empty();
-	    	for(i in clientes){
-	    		c=clientes[i];
-				edit="{{action('ControladorCliente@editarClienteForm','#ID_CLIENTE')}}".replace("#ID_CLIENTE",c.id_cliente);
+	    	for(i in trabajos){
+	    		c=trabajos[i];
+				edit="{{action('ControladorTrabajo@editarTrabajoForm','#ID_TRABAJO')}}".replace("#ID_TRABAJO",c.id_TRABAJO);
 	    		info="#";
-	    		//info="{{action('ControladorCliente@editarClienteForm','#ID_CLIENTE')}}".replace("#ID_CLIENTE",c.id_cliente);
+	    		//info="{{action('ControladorTrabajo@editarTrabajoForm','#ID_TRABAJO')}}".replace("#ID_CLIENTE",c.id_cliente);
 	    		row="<tr>";
-	    		row+="<td>"+c.rut_cliente+"</td>";
-	    		row+="<td>"+c.nombre+"</td>";
-	    		row+="<td>"+c.direccion+"</td>";
-	    		row+="<td>"+c.telefono+"</td>";
-	    		row+="<td>"+c.giro+"</td>";
+	    		row+="<td>"+c.numero_factura+"</td>";
+	    		row+="<td>"+c.fecha_emision_cobro+"</td>";
+	    		row+="<td>"+c.fecha_pago+"</td>";
+	    		row+="<td>"+c.id_estado+"</td>";
+	    		row+="<td>"+c.receptor_factura+"</td>";
 				row+="<td>";
 				row+='<a class="btn btn-link" style="color:green" href="#LINK">Editar</a>'.replace("#LINK",edit);
 				row+='<a class="btn btn-link" style="color:blue" href="#LINK">Informacion</a>'.replace("#LINK",info);

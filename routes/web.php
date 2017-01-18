@@ -80,6 +80,9 @@ Route::get('API/contactosDeCliente/{id}','ControladorCliente@AJAX_contactosDeCli
 Route::get('API/buscarclientes/{texto}','ControladorCliente@AJAX_busquedaClientes');
 Route::get('API/buscaCotizacion/{texto}','ControladorCotizacion@busquedaCotizacion');
 
+Route::get('API/buscarTrabajo/{texto}','ControladorTrabajo@AJAX_busquedaTrabajos');
+
+
 Route::get('/activar/{token}','ControladorUsuario@activarUsuarioToken');
 Route::post('/activar/{token}','ControladorUsuario@activarUsuarioTokenFinal');
 
