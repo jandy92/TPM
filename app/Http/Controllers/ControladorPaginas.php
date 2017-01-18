@@ -7,6 +7,9 @@ use App\Cotizacion;
 
 class ControladorPaginas extends Controller
 {
+	/*
+	Función encargada en mostrar la primera pantalla de la aplicación junton con un dato extra que corresponde a la cantidad de cotizaciones que estan sin un trabajo asociado.
+	*/
     public function home()
 	{
 		 $cotizacion = Cotizacion::all();
