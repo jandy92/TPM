@@ -1,5 +1,5 @@
 @extends('master')
-@section('titulo','Lista de clientes')
+@section('titulo','Lista de Trabajo')
 @section('contenido')
 <script type="text/javascript">
 	var trabajos_filtrados=[];
@@ -44,11 +44,11 @@
 						<td>{{$cli->cotizacion->contacto->nombre." ".$cli->cotizacion->contacto->apellido}}</td>
 						<td>{{$cli->fecha_emision_cobro}}</td>
 						<td>{{$cli->fecha_pago}}</td>
-						<td>{{$cli->estado->nombre}}</td>
+						<td style="color:#{{$cli->estado->color_letra}}; background-color:#{{$cli->estado->color}}">{{$cli->estado->nombre}}</td>
 						<td>{{$cli->receptor_factura}}</td>
 						<td>
 							<a class="btn btn-link" style="color:green" href="{{action('ControladorTrabajo@editarTrabajoForm',$cli->id_trabajo)}}">Editar</a>
-							<a class="btn btn-link" style="color:blue" href="#">Informacion</a>
+							<a class="btn btn-link" style="color:blue" href="{{action('ControladorTrabajo@informacionTrabajo',$cli->id_trabajo)}}">Informacion</a>
 						</td>
 					</tr>
 					@endforeach
