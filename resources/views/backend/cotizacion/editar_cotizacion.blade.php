@@ -40,6 +40,7 @@
 								</select>
 							</div>
 						</div>
+						<div class="row">&nbsp;</div>
 
 						<div class="form-group">
 							<label class="control-label col-md-4">Tipo de trabajo</label>
@@ -51,6 +52,7 @@
 								</select>
 							</div>
 						</div>
+						<div class="row">&nbsp;</div>
 
 						<div class="form-group">
 							<label class="control-label col-md-4">Descripcion trabajo</label>
@@ -76,8 +78,9 @@
 												<th>Total</th>
 											</thead>
 											<tbody>
+											@foreach ($cotizacion->items as $item)		
 												<tr>
-													<td>0</td>
+													<td>{{$item->nombre}}</td>
 													<td>Ayudante</td>
 													<td>Mano de obra</td>
 													<td>c/u</td>
@@ -85,6 +88,7 @@
 													<td>4000</td>
 													<td>48.000</td>
 												</tr>
+											@endforeach
 											</tbody>
 										</table>
 									</div>

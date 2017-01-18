@@ -70,9 +70,15 @@ class ControladorTrabajo extends Controller{
         		$q->where('nombre','LIKE','%'.$texto.'%');})->orWhereHas('contacto',function($q)use($texto){
         			$q->where('nombre','LIKE','%'.$texto.'%');
         		});
-        })->orWhere('folio_cotizacion','LIKE','%'.$texto.'%')->get();
+        })->orWhere('folio_cotizacion','LIKE','%'.$texto.'%')->orWhere('numero_factura','LIKE','%'.$texto.'%')->get();
 
-        
+/*
+        $trabajo=Trabajo::where('id_trabajo','LIKE','%'.$texto.'%')->get();
+*/		foreach($trabajo as $tr){
+        	$tr['cliente']=$tr->cotizacion->cliente->nombre;
+        	$tr['contacto']=$tr->cotizacion->contacto->nombre." ".$tr->cotizacion->contacto->apellido;
+        	$tr['nombre_estado']=$tr->estado->nombre;
+    	}
        	return response()->json($trabajo);
 	}
 	function informacionTrabajo($id_trabajo){
