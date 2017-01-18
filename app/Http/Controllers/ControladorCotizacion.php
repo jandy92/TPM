@@ -19,6 +19,11 @@ class ControladorCotizacion extends Controller
     	return view('backend.cotizacion.crear_cotizacion', compact("tipoTrab"));
     }
 
+    function previewPdf($id){
+        $cotizacion=Cotizacion::find(1);
+        return view('backend.pdf.pdf_cotizacion_v2', compact('cotizacion'));
+    }
+
     function nuevaCotizacion(Request $r){
         
 

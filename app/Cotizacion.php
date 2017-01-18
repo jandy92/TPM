@@ -30,7 +30,7 @@ class Cotizacion extends Model
  	}
 
  	public function items(){
- 		return $this->belongsToMany('App\Item','cotizacion_item','folio_cotizacion','id_item');
+ 		return $this->belongsToMany('App\Item','cotizacion_item','folio_cotizacion','id_item')->withPivot('cantidad','precio_unitario');
  	}
 
  	public function trabajo(){

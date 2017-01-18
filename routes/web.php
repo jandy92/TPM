@@ -43,6 +43,7 @@ Route::group(['middleware'=>['checklog','web']],function(){
 		Route::get('/lista', 'ControladorCotizacion@listaCotizacion');
 		Route::post('/nueva','ControladorCotizacion@nuevaCotizacion');	
 		Route::get('/pdf','ControladorCotizacion@pdfCotizacionForm');
+		Route::get('/preview/{id}','ControladorCotizacion@previewPdf');
 		Route::get('/{id}/editar','ControladorCotizacion@editarCotizacionForm');
 	});
 
