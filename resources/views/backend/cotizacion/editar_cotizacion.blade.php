@@ -78,16 +78,22 @@
 												<th>Total</th>
 											</thead>
 											<tbody>
+											<?php
+											$cont=1;
+											?>
 											@foreach ($cotizacion->items as $item)		
 												<tr>
+													<td>{{$cont}}</td>
 													<td>{{$item->nombre}}</td>
-													<td>Ayudante</td>
-													<td>Mano de obra</td>
+													<td>{{$item->tipo_item->nombre}}</td>
 													<td>c/u</td>
-													<td>12</td>
-													<td>4000</td>
-													<td>48.000</td>
+													<td>{{$item->pivot->cantidad}}</td>
+													<td>{{$item->pivot->precio_unitario}}</td>
+													<td>{{$item->pivot->cantidad * $item->pivot->precio_unitario}}</td>
 												</tr>
+												<?php
+											$cont++;
+											?>
 											@endforeach
 											</tbody>
 										</table>

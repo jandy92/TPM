@@ -16,27 +16,17 @@ class ControladorCotizacion extends Controller
 {
     function nuevaCotizacionForm(){
         $tipoTrab = Tipo_trabajo::all();
-    	return view('backend.cotizacion.crear_cotizacion', compact("tipoTrab"));
+        $unid = Unidad_medida::all();
+    	return view('backend.cotizacion.crear_cotizacion', compact("tipoTrab","unid"));
+    }
+
+    function previewPdf($id){
+        $cotizacion=Cotizacion::find(1);
+        return view('backend.pdf.pdf_cotizacion_v2', compact('cotizacion'));
     }
 
     function nuevaCotizacion(Request $r){
         
-
-    	/*echo "NOMBR MATERIAL= ".$r->get('nomMat');
-    	echo "<br/>";
-    	echo "UNIDAD MEDIDA= ".$r->get('unidMed');
-    	echo "<br/>";
-    	echo "CANTIDAD= ".$r->get('cantidad');
-    	echo "<br/>";
-    	echo "VALOR UNITARIO= ".$r->get('valorUn');
-    	echo "<br/>";
-    	echo "TIPO MATERIAL= ".$r->get('tiposMat');
-    	echo "<br/>";
-    	echo "GASTO FIJO= ".$r->get('gastoFijo');
-    	echo "<br/>";
-    	echo "UTILIDAD (%)= ".$r->get('utilidad');
-    	echo "<br/>";
-        return $r->get('items')[0]['nombre'];*/
 
         $cliente=Cliente::whereRut_cliente($r->get('cliente'))->first();
         $contacto = Contacto::find($r->get('contactos'));

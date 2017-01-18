@@ -11,7 +11,6 @@ class PdfController extends Controller
     	$cotizacion = Cotizacion::find($folio_cotizacion);
     	$url = ".backend.pdf.pdf_cotizacion_v2";
     	
-    	
     	$view = \View::make($url,compact('cotizacion'))->render();
     	$pdf = \App::make('dompdf.wrapper');
     	$pdf -> loadHTML($view);
