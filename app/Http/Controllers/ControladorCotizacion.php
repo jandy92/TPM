@@ -14,20 +14,38 @@ use App\Unidad_medida;
 
 class ControladorCotizacion extends Controller
 {
+    /*
+    En esta funciona se le asignan todos los datos de Tipo_trabajo y Unidad_medida a 2 variables
+    para luego retornar una vista, la vista de crear cotización nueva juntos con todos los datos
+    guardado en las variables para que la vista pueda usar esos datos desde el comienzo
+    */
     function nuevaCotizacionForm(){
         $tipoTrab = Tipo_trabajo::all();
         $unid = Unidad_medida::all();
     	return view('backend.cotizacion.crear_cotizacion', compact("tipoTrab","unid"));
     }
 
+
+    /*
+    Metodo usado durante la implementacion del archivo pdf generado por el sistema,
+    este metodo carga la vista previa de lo que mostraria al generar el documento.
+    */
     function previewPdf($id){
         $cotizacion=Cotizacion::find(1);
         return view('backend.pdf.pdf_cotizacion_v2', compact('cotizacion'));
     }
 
-    function nuevaCotizacion(Request $r){
-        
 
+    /*
+     Este metodo se ejecuta al crear una nueva cotizacion, mediante el Request obtiene los datos desde la vista, con $r->('parametro') se pueden obtener los diferentes parametros obtenidos.
+
+     Primero se asigna a la variable $cliente, $contacto y $tipo un objeto de su tipo correspondiente que coincida con la consulta realizada, luego se crea un objeto de tipo Cotizacion y se le asigan los parametros que este requiere, con las funciones "associate" se crean las relaciones necesarias entre objetos luego se hace la insercion de los datos en la tabla cotizacion.
+
+     El for recorre cada uno de los "items" recibidos desde la vista y va creando un objeto con sus parametros, realiza las asociaciones y los envia a la base de datos.
+
+     el return llama a un controlador que se encarga de cargar la vista con la lista de cotizaciones junton a un mensaje de que la cotizacion se ha realizado con éxito.
+    */
+    function nuevaCotizacion(Request $r){    
         $cliente=Cliente::whereRut_cliente($r->get('cliente'))->first();
         $contacto = Contacto::find($r->get('contactos'));
         $tipo= Tipo_trabajo::find($r->get('tiposTrab'));
@@ -40,7 +58,6 @@ class ControladorCotizacion extends Controller
         $cotizacion->cliente()->associate($cliente);
         $cotizacion->contacto()->associate($contacto);
         $cotizacion->tipo_trabajo()->associate($tipo);
-        $cot = $cotizacion;
         $cotizacion->save();
 
         foreach ($r->get('items') as $item) {
@@ -65,17 +82,20 @@ class ControladorCotizacion extends Controller
     }
 
 
+    /*
+    Esta funcion toma toda lista de cotizaciones en la base de datos, se la asigna a una variable y retorna una vista junto con esta variable con la colección de datos para que esta los pueda trabajar.
+    */
     function listaCotizacion(){
         $cotizacion=Cotizacion::all();
-        /*if(empty($cotizacion[1]->trabajo)){
-    	   return "no tiene trabajo";
-        }else{
-            return "si tiene trabajo";
-        }*/
         return view('backend.cotizacion.lista_cotizacion',compact("cotizacion"));
     }
 
 
+    /*
+    Esta función se encarga de buscar cotizaciones en la base de datos segun el parametro que recibe, busca las cotizaciones donde el nombre de contacto o nombre de cliente o el folio de la cotizacion coinciden con el parametro ingresado y se asigna esa coleccion a la variable $cotizacion.
+
+    El for le agrega parametros extras a cada elemento de esta para luego enviar esta coleccion a la vista mediante JSON
+    */
     function busquedaCotizacion($texto){
 
         $cotizacion=Cotizacion::whereHas('contacto',function($q) use($texto){
@@ -103,10 +123,20 @@ class ControladorCotizacion extends Controller
         return response()->json($cotizacion);
     }
 
+
+    /*
+    Función utilizada tambien para ver una vista previa del documento PDF que generará el sistema.
+    */
     function pdfCotizacionForm(){
         $cotizacion=Cotizacion::find(1);
         return view('backend.pdf.pdf_cotizacion_v2', compact('cotizacion'));
     }
+
+
+    /*
+    Esta función recibe un numero de folio para obtener los datos de esa cotizacion en particular
+    para luego retornar la vista que contiene el formulario para editar una cotizacion junto con los datos de esa cotizacion para que la vista los utilice.
+    */
     function editarCotizacionForm($folio_cotizacion){
         $cotizacion=Cotizacion::find($folio_cotizacion);
         $cliente=Cliente::find($cotizacion->id_cliente);
