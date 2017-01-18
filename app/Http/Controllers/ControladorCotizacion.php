@@ -8,6 +8,9 @@ use DB;
 use App\Tipo_trabajo;
 use App\Cliente;
 use App\Contacto;
+use App\Item;
+use App\Tipo_item;
+use App\Unidad_medida;
 
 class ControladorCotizacion extends Controller
 {
@@ -17,6 +20,7 @@ class ControladorCotizacion extends Controller
     }
 
     function nuevaCotizacion(Request $r){
+        
 
     	/*echo "NOMBR MATERIAL= ".$r->get('nomMat');
     	echo "<br/>";
@@ -32,14 +36,9 @@ class ControladorCotizacion extends Controller
     	echo "<br/>";
     	echo "UTILIDAD (%)= ".$r->get('utilidad');
     	echo "<br/>";
+        return $r->get('items')[0]['nombre'];*/
 
-
-
-
-*/
-        return $r->get('items');
-
-      /*$cliente=Cliente::whereRut_cliente($r->get('cliente'))->first();
+        $cliente=Cliente::whereRut_cliente($r->get('cliente'))->first();
         $contacto = Contacto::find($r->get('contactos'));
         $tipo= Tipo_trabajo::find($r->get('tiposTrab'));
 
@@ -51,10 +50,28 @@ class ControladorCotizacion extends Controller
         $cotizacion->cliente()->associate($cliente);
         $cotizacion->contacto()->associate($contacto);
         $cotizacion->tipo_trabajo()->associate($tipo);
-
+        $cot = $cotizacion;
         $cotizacion->save();
+
+        foreach ($r->get('items') as $item) {
+            $tip=Tipo_item::whereNombre($item['tipo'])->first();
+            $un =Unidad_medida::whereNombre_abreviacion($item['unidad'])->first();
+            
+            $it=new Item(array('nombre'=>$item['nombre'],
+                'unidad_medida'=>$item['unidad'],
+                'id_tipo_item'=>$tip->id_tipo_item,
+                'id_unidad'=>$un->id_unidad
+                ));
+            $it->tipo_item()->associate($tip);
+
+            $it->save();
+            $cotizacion->items()->attach($it,['cantidad'=>$item['cantidad'],'precio_unitario'=>$item['valor']]);
+            
+        }
+
+
         $msj=["title" => "Cotizacion", "text" => "Cotizacion registrada con éxito"];
-        return redirect()->action('ControladorCotizacion@listaCotizacion')->with("mensaje", $msj);*/
+        return redirect()->action('ControladorCotizacion@listaCotizacion')->with("mensaje", $msj);
     }
 
 

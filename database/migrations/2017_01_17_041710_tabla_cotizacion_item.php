@@ -17,8 +17,8 @@ class TablaCotizacionItem extends Migration
             $table->integer('id_item')->unsigned();
             $table->integer('folio_cotizacion')->unsigned();
             
-            $table->integer('cantidad');
-            $table->integer('precio_unitario');
+            $table->integer('cantidad')->nullable();
+            $table->integer('precio_unitario')->nullable();
 
             $table->foreign('id_item')->references('id_item')->on('item')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('folio_cotizacion')->references('folio_cotizacion')->on('cotizacion')->onDelete('cascade')->onUpdate('cascade');

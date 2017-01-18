@@ -29,8 +29,8 @@ class Cotizacion extends Model
  		//return $this->hasMany('App\Id_trabajo','id_tipo_item','id_tipo_item');
  	}
 
- 	public function item(){
- 		return $this->belongsToMany('App\Item','cotizacion_item','id_item','folio_cotizacion');
+ 	public function items(){
+ 		return $this->belongsToMany('App\Item','cotizacion_item','folio_cotizacion','id_item');
  	}
 
 

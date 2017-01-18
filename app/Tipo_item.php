@@ -15,6 +15,6 @@ class Tipo_item extends Model
 	protected $primaryKey='id_tipo_item';
 
 	public function item(){
-		return $this->belongsTo('App\Item','id_tipo_item','id_tipo_item');
+		return $this->hasMany('App\Item','id_tipo_item','id_tipo_item');
 	}
 }

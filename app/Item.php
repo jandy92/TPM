@@ -14,12 +14,12 @@ class Item extends Model{
    protected $primaryKey='id_item';
 
    public function cotizacion(){
- 		return $this->belongsToMany('App\Cotizacion','cotizacion_item','folio_cotizacion','id_item');
+ 		return $this->belongsToMany('App\Cotizacion','cotizacion_item','id_item','folio_cotizacion');
  	}
 
    public function tipo_item(){
 
-   	return $this->hasMany('App\Tipo_item', 'id_tipo_item',,'id_tipo_item');
+   	return $this->belongsTo('App\Tipo_item', 'id_tipo_item','id_tipo_item');
    }
 
 

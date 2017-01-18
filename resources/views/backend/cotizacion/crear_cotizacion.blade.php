@@ -338,11 +338,15 @@
 			for(i in items){
 				c=items[i];
 				console.log(c);
-				input="<input type='hidden' name='items["+c.id+"][id]' value="+c.id+" >";
-				$('#tabla_items').append(input);
 				input="<input type='hidden' name='items["+c.id+"][nombre]' value="+c.nombre+" >";
 				$('#tabla_items').append(input);
+				input="<input type='hidden' name='items["+c.id+"][tipo]' value="+c.tipo+" >";
+				$('#tabla_items').append(input);
 				input="<input type='hidden' name='items["+c.id+"][unidad]' value="+c.unidad+" >";
+				$('#tabla_items').append(input);
+				input="<input type='hidden' name='items["+c.id+"][cantidad]' value="+c.cantidad+" >";
+				$('#tabla_items').append(input);
+				input="<input type='hidden' name='items["+c.id+"][valor]' value="+c.valorUn+" >";
 				$('#tabla_items').append(input);
 			}
 			//return false;
