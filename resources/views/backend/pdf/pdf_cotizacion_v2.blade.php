@@ -27,6 +27,10 @@
 			background-color: lightgray;
 		}
 	</style>
+	<script type="text/javascript">
+		var item_cot=[];
+		var cont = 1;
+	</script>
 	<head>
 		<title>PDF Cotizacion</title>
 	</head>
@@ -91,27 +95,21 @@
 							</thead>
 							<tbody>
 								<tr></tr>
+								@foreach($cotizacion->items as $it)
+								{{$it->pivot->cantidad}}
+								<tr></tr>
 								<tr>
-									<td class="d1">0</td>
-									<td class="d1">Movilizacion</td>
-									<td class="d1">1</td>
+									<td class="d1">cont</td>
+									<td class="d1">{{$it->nombre}}</td>
+									<td class="d1"></td>
 									<td class="d1">10.000</td>
 									<td>10.000</td>
 								</tr>
-								<tr>
-									<td class="d1">1</td>
-									<td class="d1">Esmalte con anticorrosivo gris</td>
-									<td class="d1">1</td>
-									<td class="d1">19.500</td>
-									<td>19.500</td>
-								</tr>
-								<tr>
-									<td class="d1">2</td>
-									<td class="d1">Esmalte con anticorrosivo gris para puertas que sirven para nada grises</td>
-									<td class="d1">0</td>
-									<td class="d1">0</td>
-									<td>0</td>
-								</tr>
+
+
+
+
+								@endforeach
 							</tbody>
 						</table>
 						<table class="d2">

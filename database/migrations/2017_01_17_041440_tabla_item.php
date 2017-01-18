@@ -20,7 +20,7 @@ class TablaItem extends Migration
             $table->integer('id_tipo_item')->unsigned();
             $table->integer('id_unidad')->unsigned();
             $table->timestamps();
-
+            $table->softDeletes();
             $table->foreign('id_tipo_item')->references('id_tipo_item')->on('tipo_item')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('id_unidad')->references('id_unidad')->on('unidad_medida')->onUpdate('cascade')->onDelete('cascade'); 
 

@@ -62,7 +62,6 @@
 
 
 						@else
-							No hay cotizaciones por aceptar o
 
 						@endif
 
