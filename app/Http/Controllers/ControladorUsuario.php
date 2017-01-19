@@ -13,17 +13,33 @@ use App\User;
 use App\Role;
 use Mail;
 class ControladorUsuario extends Controller{
-
+    /* 
+    Se obtienen todos los usuarios y luego se retorna a la vista
+    de lista de usuarion junton con la coleccion de datos.
+    */
     function listaUsuario(){
     	$usuarios=User::all();
     	return view ('backend.usuario.lista_usuario',compact('usuarios'));
     }
 
+
+    /*
+    se cargan los roles disponibles para usuarios y se retorna la vista
+    para crear un nuevo usuario junton con la coleccion de datos.
+    */
     function nuevoUsuarioForm(){
     	$roles=Role::all();
     	return view('backend.usuario.nuevo',compact('roles'));
     }
 
+
+    /*
+    se reciben los datos del nuevo usuario, se crea el objeto con sus valores
+    correspondientes, dependiendo de el valor del campo 'activado', se activa
+    en ese momento, o se envia un link de activacion al cliente mediante correo
+    luego se hace la asociacion con su rol correspondiente, se retorna a la vista
+    lista de usuarios junton con un mensaje de éxito al crear usuario.
+    */
     function crearNuevoUsuario(NuevoUsuarioRequest $req){
         $u = new User(array(
             'name'=>$req->get('nombre'),
@@ -49,6 +65,13 @@ class ControladorUsuario extends Controller{
     		Usuario creado con éxito!']);
     }
 
+
+    /*
+    función en cargada de la activacion de un usuario entregando su id como parametro.
+    si su campo activado es 0 entonces se cambia por 1  se guarda en base de datos, se retorna
+    a la lista de usuarios con un mensaje de activación exitosa, si su campo ya es 1
+    entonce se retorna a la lista de usuarios con un mensaje de que el usuario estaba activado.
+    */
     function activarUsuario($id){
         $u=User::whereId($id)->first();
         if($u->activado==0){
@@ -63,6 +86,10 @@ class ControladorUsuario extends Controller{
         }
     }
 
+
+    /*
+
+    */
     function activarUsuarioToken($token){
         if($token!=""){
             $usuario=User::whereActivation_token($token)->first();
